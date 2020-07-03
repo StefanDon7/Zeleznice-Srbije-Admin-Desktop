@@ -6,9 +6,9 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>../ZelezniceSrbije-lib</module>
-        <module>../ZelezniceSrbije-server</module>
-        <module>../ZelezniceSrbije-klijent</module>
+        <module>../ZelezniceSrbije-server-maven</module>
+        <module>../ZelezniceSrbije-lib-maven</module>
+        <module>../ZelezniceSrbije-klijent-maven</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
