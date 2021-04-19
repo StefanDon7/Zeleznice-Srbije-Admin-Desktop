@@ -8,7 +8,6 @@ package rs.stefanlezaic.zeleznice.srbije.admin.form;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabeleMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
-import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Kalendar;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
@@ -34,6 +33,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
 
 /**
  *
@@ -47,7 +47,6 @@ public class FormaLinija extends javax.swing.JFrame {
     ModelTabelePolaska mtsp = new ModelTabelePolaska();
     Sat sat;
     Tema tema;
-    Kalendar kalendar;
     Tabela tabela;
 
     /**
@@ -57,11 +56,15 @@ public class FormaLinija extends javax.swing.JFrame {
         initComponents();
         centrirajFrame();
         tema = new Tema(this);
-        tabela = new Tabela(this);
-        kalendar = new Kalendar(cmbDani, cmbMeseci, cmbGodina);
-        kalendar.srediDaneMeseceGodinu();
+        tabela = new Tabela();
+        tabela.ulepsajTabelu(tabelaPolazaka);
+        tabela.ulepsajTabelu(tabelaMedjustanica);
+        tabela.ulepsajTabelu(tabelaSviPolasci);
         sat = new Sat(lblSat);
+        panelDatum.postavi(10, Vreme.Unapred);
+        panelDatum.postaviDanasnjiDatum();
         ukljuciDarkMode();
+        ucitajSvePolaske();
         ucitajSveIzBaze();
         urediTabeluPolazaka();
         urediTabeluSviPolasci();
@@ -91,11 +94,8 @@ public class FormaLinija extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblDatum1 = new javax.swing.JLabel();
         spinerMinuti = new javax.swing.JSpinner();
-        cmbDani = new javax.swing.JComboBox();
         lblNazivPolaska = new javax.swing.JLabel();
-        cmbMeseci = new javax.swing.JComboBox<>();
         cmbLinijaPolazak = new javax.swing.JComboBox();
-        cmbGodina = new javax.swing.JComboBox();
         lblListaPolazaka = new javax.swing.JLabel();
         btnDodajPolazak = new javax.swing.JButton();
         btnZapamtiPolaske = new javax.swing.JButton();
@@ -108,6 +108,16 @@ public class FormaLinija extends javax.swing.JFrame {
         btnObrisiListu = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        panelDatum = new rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum();
+        panelSviPolasci = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaSviPolasci = new javax.swing.JTable();
+        btnObrisiPolazakIzTabeleSviPolasci = new javax.swing.JButton();
+        btnUpdejtuj = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cmbSortiraj = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        btnOsveziListuSviPolasci = new javax.swing.JButton();
         panelLinija = new javax.swing.JPanel();
         lblNazivFrejma = new javax.swing.JLabel();
         lblMin = new javax.swing.JLabel();
@@ -148,14 +158,6 @@ public class FormaLinija extends javax.swing.JFrame {
         lblDarkMode = new javax.swing.JLabel();
         lblWhiteMode = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        panelSviPolasci = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tabelaSviPolasci = new javax.swing.JTable();
-        btnObrisiPolazakIzTabeleSviPolasci = new javax.swing.JButton();
-        btnUpdejtuj = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        cmbSortiraj = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MeniLinijia = new javax.swing.JMenu();
         MeniPolazak = new javax.swing.JMenu();
@@ -244,7 +246,7 @@ public class FormaLinija extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_sand_watch_32px.png"))); // NOI18N
         jLabel2.setText("Vreme:");
         panelPolazak.add(jLabel2);
-        jLabel2.setBounds(450, 110, 90, 30);
+        jLabel2.setBounds(520, 110, 90, 40);
 
         lblDatum1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblDatum1.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,30 +261,13 @@ public class FormaLinija extends javax.swing.JFrame {
         spinerMinuti.setFocusable(false);
         spinerMinuti.setOpaque(false);
         panelPolazak.add(spinerMinuti);
-        spinerMinuti.setBounds(630, 110, 70, 30);
+        spinerMinuti.setBounds(700, 110, 70, 40);
         spinerMinuti.setBackground(new Color(112, 122, 122));
         spinerMinuti.setForeground(Color.BLACK);
-
-        cmbDani.setBackground(new java.awt.Color(153, 153, 153));
-        cmbDani.setForeground(new java.awt.Color(0, 0, 0));
-        cmbDani.setOpaque(false);
-        panelPolazak.add(cmbDani);
-        cmbDani.setBounds(170, 110, 70, 30);
 
         lblNazivPolaska.setForeground(new java.awt.Color(255, 255, 255));
         panelPolazak.add(lblNazivPolaska);
         lblNazivPolaska.setBounds(170, 190, 840, 30);
-
-        cmbMeseci.setBackground(new java.awt.Color(153, 153, 153));
-        cmbMeseci.setForeground(new java.awt.Color(0, 0, 0));
-        cmbMeseci.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar" }));
-        cmbMeseci.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbMeseciItemStateChanged(evt);
-            }
-        });
-        panelPolazak.add(cmbMeseci);
-        cmbMeseci.setBounds(250, 110, 100, 30);
 
         cmbLinijaPolazak.setBackground(new java.awt.Color(153, 153, 153));
         cmbLinijaPolazak.setForeground(new java.awt.Color(0, 0, 0));
@@ -295,17 +280,6 @@ public class FormaLinija extends javax.swing.JFrame {
         });
         panelPolazak.add(cmbLinijaPolazak);
         cmbLinijaPolazak.setBounds(170, 70, 640, 30);
-
-        cmbGodina.setBackground(new java.awt.Color(153, 153, 153));
-        cmbGodina.setForeground(new java.awt.Color(0, 0, 0));
-        cmbGodina.setOpaque(false);
-        cmbGodina.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbGodinaItemStateChanged(evt);
-            }
-        });
-        panelPolazak.add(cmbGodina);
-        cmbGodina.setBounds(360, 110, 80, 30);
 
         lblListaPolazaka.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblListaPolazaka.setForeground(new java.awt.Color(255, 255, 255));
@@ -360,27 +334,28 @@ public class FormaLinija extends javax.swing.JFrame {
         btnObrisiPolazak.setBounds(560, 290, 300, 45);
 
         spinerSati.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
+        spinerSati.setBorder(null);
         spinerSati.setFocusable(false);
         spinerSati.setOpaque(false);
         panelPolazak.add(spinerSati);
-        spinerSati.setBounds(550, 110, 70, 30);
+        spinerSati.setBounds(620, 110, 70, 40);
 
         cmbBrojDanaZaPolazak.setBackground(new java.awt.Color(153, 153, 153));
         cmbBrojDanaZaPolazak.setForeground(new java.awt.Color(0, 0, 0));
         cmbBrojDanaZaPolazak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 dan", "7 dana", "10 dana", "15 dana" }));
         panelPolazak.add(cmbBrojDanaZaPolazak);
-        cmbBrojDanaZaPolazak.setBounds(800, 110, 100, 30);
+        cmbBrojDanaZaPolazak.setBounds(870, 110, 100, 40);
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Za narednih:");
         panelPolazak.add(jLabel1);
-        jLabel1.setBounds(710, 110, 80, 30);
+        jLabel1.setBounds(780, 110, 80, 40);
 
         cboxPovratna.setBackground(new java.awt.Color(102, 102, 102));
         cboxPovratna.setForeground(new java.awt.Color(255, 255, 255));
         cboxPovratna.setText("Povratna?");
         panelPolazak.add(cboxPovratna);
-        cboxPovratna.setBounds(910, 110, 90, 30);
+        cboxPovratna.setBounds(980, 110, 90, 40);
 
         btnObrisiListu.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiListu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -402,6 +377,97 @@ public class FormaLinija extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         panelPolazak.add(jSeparator4);
         jSeparator4.setBounds(170, 180, 100, 10);
+        panelPolazak.add(panelDatum);
+        panelDatum.setBounds(170, 110, 338, 40);
+
+        panelSviPolasci.setBackground(new java.awt.Color(44, 44, 44));
+        panelSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
+        panelSviPolasci.setMinimumSize(new java.awt.Dimension(1550, 1000));
+        panelSviPolasci.setPreferredSize(new java.awt.Dimension(1500, 1000));
+        panelSviPolasci.setLayout(null);
+
+        tabelaSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
+        tabelaSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaSviPolasci.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabelaSviPolasci.setFocusable(false);
+        tabelaSviPolasci.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tabelaSviPolasci.setRowHeight(25);
+        tabelaSviPolasci.setShowVerticalLines(false);
+        tabelaSviPolasci.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(tabelaSviPolasci);
+
+        panelSviPolasci.add(jScrollPane3);
+        jScrollPane3.setBounds(15, 50, 1270, 530);
+
+        btnObrisiPolazakIzTabeleSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
+        btnObrisiPolazakIzTabeleSviPolasci.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnObrisiPolazakIzTabeleSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
+        btnObrisiPolazakIzTabeleSviPolasci.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"))); // NOI18N
+        btnObrisiPolazakIzTabeleSviPolasci.setText("Obrisi polazak");
+        btnObrisiPolazakIzTabeleSviPolasci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiPolazakIzTabeleSviPolasciActionPerformed(evt);
+            }
+        });
+        panelSviPolasci.add(btnObrisiPolazakIzTabeleSviPolasci);
+        btnObrisiPolazakIzTabeleSviPolasci.setBounds(680, 590, 300, 50);
+
+        btnUpdejtuj.setBackground(new java.awt.Color(153, 153, 153));
+        btnUpdejtuj.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnUpdejtuj.setForeground(new java.awt.Color(0, 0, 0));
+        btnUpdejtuj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_refresh_64px_1.png"))); // NOI18N
+        btnUpdejtuj.setText("Izmeni polaske");
+        btnUpdejtuj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdejtujActionPerformed(evt);
+            }
+        });
+        panelSviPolasci.add(btnUpdejtuj);
+        btnUpdejtuj.setBounds(990, 590, 300, 50);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px_1.png"))); // NOI18N
+        jLabel4.setText("TABELA SVIH POLAZAKA:");
+        panelSviPolasci.add(jLabel4);
+        jLabel4.setBounds(15, 15, 300, 30);
+
+        cmbSortiraj.setBackground(new java.awt.Color(153, 153, 153));
+        cmbSortiraj.setForeground(new java.awt.Color(0, 0, 0));
+        cmbSortiraj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "po datumu u opadajucem", "po datumu u rastucem ", "po liniji" }));
+        cmbSortiraj.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSortirajItemStateChanged(evt);
+            }
+        });
+        panelSviPolasci.add(cmbSortiraj);
+        cmbSortiraj.setBounds(500, 15, 200, 30);
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_sort_32px_1.png"))); // NOI18N
+        jLabel5.setText("Sortiraj:");
+        panelSviPolasci.add(jLabel5);
+        jLabel5.setBounds(400, 15, 90, 30);
+
+        btnOsveziListuSviPolasci.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_refresh_64px_1.png"))); // NOI18N
+        btnOsveziListuSviPolasci.setText("Osvezi listu");
+        btnOsveziListuSviPolasci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOsveziListuSviPolasciActionPerformed(evt);
+            }
+        });
+        panelSviPolasci.add(btnOsveziListuSviPolasci);
+        btnOsveziListuSviPolasci.setBounds(20, 590, 180, 50);
 
         panelLinija.setBackground(new java.awt.Color(44, 44, 44));
         panelLinija.setForeground(new java.awt.Color(0, 0, 0));
@@ -702,85 +768,6 @@ public class FormaLinija extends javax.swing.JFrame {
         panelLinija.add(jSeparator6);
         jSeparator6.setBounds(15, 345, 470, 10);
 
-        panelSviPolasci.setBackground(new java.awt.Color(44, 44, 44));
-        panelSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
-        panelSviPolasci.setMinimumSize(new java.awt.Dimension(1550, 1000));
-        panelSviPolasci.setPreferredSize(new java.awt.Dimension(1500, 1000));
-        panelSviPolasci.setLayout(null);
-
-        tabelaSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
-        tabelaSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaSviPolasci.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tabelaSviPolasci.setFocusable(false);
-        tabelaSviPolasci.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tabelaSviPolasci.setRowHeight(25);
-        tabelaSviPolasci.setShowVerticalLines(false);
-        tabelaSviPolasci.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(tabelaSviPolasci);
-
-        panelSviPolasci.add(jScrollPane3);
-        jScrollPane3.setBounds(15, 50, 1270, 530);
-
-        btnObrisiPolazakIzTabeleSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
-        btnObrisiPolazakIzTabeleSviPolasci.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnObrisiPolazakIzTabeleSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
-        btnObrisiPolazakIzTabeleSviPolasci.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"))); // NOI18N
-        btnObrisiPolazakIzTabeleSviPolasci.setText("Obrisi polazak");
-        btnObrisiPolazakIzTabeleSviPolasci.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiPolazakIzTabeleSviPolasciActionPerformed(evt);
-            }
-        });
-        panelSviPolasci.add(btnObrisiPolazakIzTabeleSviPolasci);
-        btnObrisiPolazakIzTabeleSviPolasci.setBounds(680, 590, 300, 50);
-
-        btnUpdejtuj.setBackground(new java.awt.Color(153, 153, 153));
-        btnUpdejtuj.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnUpdejtuj.setForeground(new java.awt.Color(0, 0, 0));
-        btnUpdejtuj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_refresh_64px_1.png"))); // NOI18N
-        btnUpdejtuj.setText("Izmeni polaske");
-        btnUpdejtuj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdejtujActionPerformed(evt);
-            }
-        });
-        panelSviPolasci.add(btnUpdejtuj);
-        btnUpdejtuj.setBounds(990, 590, 300, 50);
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px_1.png"))); // NOI18N
-        jLabel4.setText("TABELA SVIH POLAZAKA:");
-        panelSviPolasci.add(jLabel4);
-        jLabel4.setBounds(15, 15, 300, 30);
-
-        cmbSortiraj.setBackground(new java.awt.Color(153, 153, 153));
-        cmbSortiraj.setForeground(new java.awt.Color(0, 0, 0));
-        cmbSortiraj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "po datumu u opadajucem", "po datumu u rastucem ", "po liniji " }));
-        cmbSortiraj.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbSortirajItemStateChanged(evt);
-            }
-        });
-        panelSviPolasci.add(cmbSortiraj);
-        cmbSortiraj.setBounds(500, 15, 200, 30);
-
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_sort_32px_1.png"))); // NOI18N
-        jLabel5.setText("Sortiraj:");
-        panelSviPolasci.add(jLabel5);
-        jLabel5.setBounds(400, 15, 90, 30);
-
         jMenuBar1.setBackground(new java.awt.Color(187, 187, 187));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(620, 80));
@@ -947,114 +934,43 @@ public class FormaLinija extends javax.swing.JFrame {
         promeniMedjustaniceZaLiniju();
     }//GEN-LAST:event_cmbLinijeItemStateChanged
 
-    //************************POSTAVI DANE KADA SE KLIKNE NA ODGOVARAJUCI MESEC U KOMBO BOX**************************************//
-    private void cmbMeseciItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMeseciItemStateChanged
-        kalendar.promena();
-    }//GEN-LAST:event_cmbMeseciItemStateChanged
-
-    //************************POSTAVI DANE KADA SE KLIKNE NA ODGOVOARAJUCU GODINU U KOMBO BOX***************************************//
-    private void cmbGodinaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGodinaItemStateChanged
-        kalendar.promena();
-    }//GEN-LAST:event_cmbGodinaItemStateChanged
-
     //************************DODAJ POLAZAK***************************************//
     private void btnDodajPolazakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajPolazakActionPerformed
         Linija l = (Linija) cmbLinijaPolazak.getSelectedItem();
         Voz v = (Voz) cmbVoz.getSelectedItem();
-        int godina = (int) cmbGodina.getSelectedItem();
-        int mesec = cmbMeseci.getSelectedIndex();
-        int dan = (int) cmbDani.getSelectedItem();
-        int sati = (Integer) spinerSati.getValue();
-        int minuti = (Integer) spinerMinuti.getValue();
-        int satiLinije = l.getMinutaza() / 60;
-        int minutiLinije = l.getMinutaza() % 60;
-        //u kalendaru meseci idu od 0 a u util datu idu od 1
 
-        Calendar pocetniDatum = new GregorianCalendar(godina, mesec, dan, sati, minuti);
-        Calendar krajnjiDatum = new GregorianCalendar(godina, mesec, dan, sati + satiLinije, minuti + minutiLinije);
-        Date pocetni = pocetniDatum.getTime();
-        Date krajnji = krajnjiDatum.getTime();
-        Date danasnji = new Date();
-        Calendar pocetniDatumaa2 = new GregorianCalendar(godina, mesec, dan, sati - 1, minuti);
-        Date pocetniaa2 = pocetniDatumaa2.getTime();
-        if (danasnji.after(pocetniaa2)) {
-            JOptionPane.showMessageDialog(this, "Ne mozete napraviti polazak za datum koji je prosao!");
-            return;
+        int broj = cmbBrojDanaZaPolazak.getSelectedIndex();
+        int brojDana = 0;
+        switch (broj) {
+            case 0:
+                break;
+            case 1:
+                brojDana = 6;
+                break;
+            case 2:
+                brojDana = 9;
+                break;
+            case 3:
+                brojDana = 14;
+                break;
+            default:
+                break;
         }
-        String datumPocetni = sdf.format(pocetni);
-        String datumKrajnji = sdf.format(krajnji);
-        lblDatumDolaska.setText(datumKrajnji);
-        lblNazivPolaska.setText(l.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]");
-        String naziv = lblNazivPolaska.getText();
-        Polazak polazak = new Polazak(-1, naziv, pocetni, krajnji, l, v);
-        mtp.dodajUTabelu(polazak);
-        boolean povratna = cboxPovratna.isSelected();
-        ArrayList<Linija> listalinija = null;
-        try {
-            listalinija = Kontroler.getInstance().vratiMiSveLinije();
-        } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        Linija l2 = null;
-        if (povratna) {
-            for (Linija linija : listalinija) {
-                if (linija.getTipLinije().getTipLinijeID() == l.getTipLinije().getTipLinijeID() && linija.getStanicaPocetna().getStanicaID() == l.getStanicaKrajnja().getStanicaID() && linija.getStanicaKrajnja().getStanicaID() == l.getStanicaPocetna().getStanicaID()) {
-                    l2 = linija;
-                    break;
-                }
+        for (int i = 0; i <= brojDana; i++) {
+            Polazak polazak = napraviPolazak(l, v, i);
+            if (new Date().after(polazak.getDatumPolaska())) {
+                JOptionPane.showMessageDialog(this, "Ne mozete napraviti polazak za datum koji je prosao!");
+                return;
             }
-        }
-        Polazak povratni = null;
-        if (povratna) {
-            Calendar pocetniDatum2 = new GregorianCalendar(godina, mesec, dan, sati + satiLinije, minuti + minutiLinije + 30);
-            Calendar krajnjiDatum2 = new GregorianCalendar(godina, mesec, dan, sati + satiLinije + satiLinije, minuti + minutiLinije + 30 + minutiLinije);
-            Date pocetni2 = pocetniDatum2.getTime();
-            Date krajnji2 = krajnjiDatum2.getTime();
-            String datumPocetni2 = sdf.format(pocetni2);
-            String datumKrajnji2 = sdf.format(krajnji2);
-            String naziv2 = l2.getNaziv() + " [" + datumPocetni2 + " -> " + datumKrajnji2 + "]";
-            povratni = new Polazak(-1, naziv2, pocetni2, krajnji2, l2, v);
-            mtp.dodajUTabelu(povratni);
-        }
-        if (cmbBrojDanaZaPolazak.getSelectedIndex() != 0) {
-            int broj = cmbBrojDanaZaPolazak.getSelectedIndex();
-            int brojDana = 0;
-            switch (broj) {
-                case 1:
-                    brojDana = 6;
-                    break;
-                case 2:
-                    brojDana = 9;
-                    break;
-                case 3:
-                    brojDana = 14;
-                    break;
-                default:
-                    break;
-            }
-            for (int i = 1; i <= brojDana; i++) {
-                Calendar pocetniDatumZ = new GregorianCalendar(godina, mesec, dan + i, sati, minuti);
-                Calendar krajnjiDatumZ = new GregorianCalendar(godina, mesec, dan + i, sati + satiLinije, minuti + minutiLinije);
-                Date pocetniZ = pocetniDatumZ.getTime();
-                Date krajnjiZ = krajnjiDatumZ.getTime();
-                String datumPocetniZ = sdf.format(pocetniZ);
-                String datumKrajnjiZ = sdf.format(krajnjiZ);
-                lblDatumDolaska.setText(datumKrajnji);
-                String nazivZ = l.getNaziv() + " [" + datumPocetniZ + " -> " + datumKrajnjiZ + "]";
-                Polazak polazakZ = new Polazak(-1, nazivZ, pocetniZ, krajnjiZ, l, v);
-                mtp.dodajUTabelu(polazakZ);
-                if (povratna) {
-                    Calendar pocetniDatum2 = new GregorianCalendar(godina, mesec, dan + i, sati + satiLinije, minuti + minutiLinije + 30);
-                    Calendar krajnjiDatum2 = new GregorianCalendar(godina, mesec, dan + i, sati + satiLinije + satiLinije, minuti + minutiLinije + 30 + minutiLinije);
-                    Date pocetni2 = pocetniDatum2.getTime();
-                    Date krajnji2 = krajnjiDatum2.getTime();
-                    String datumPocetni2 = sdf.format(pocetni2);
-                    String datumKrajnji2 = sdf.format(krajnji2);
-                    String naziv2 = l2.getNaziv() + " [" + datumPocetni2 + " -> " + datumKrajnji2 + "]";
-                    povratni = new Polazak(-1, naziv2, pocetni2, krajnji2, l2, v);
-                    mtp.dodajUTabelu(povratni);
-                }
+            lblNazivPolaska.setText(polazak.getNaziv());
+            lblDatumDolaska.setText(sdf.format(polazak.getDatumDolaska()));
+            mtp.dodajUTabelu(polazak);
+
+            Linija linijaPovratna = Kontroler.getInstance().vratiMiPovratnu(l);
+            boolean povratna = cboxPovratna.isSelected();
+            if (linijaPovratna != null && povratna) {
+                Polazak povratniPolazak = napraviPovratniPolazak(polazak, linijaPovratna);
+                mtp.dodajUTabelu(povratniPolazak);
             }
         }
     }//GEN-LAST:event_btnDodajPolazakActionPerformed
@@ -1116,7 +1032,7 @@ public class FormaLinija extends javax.swing.JFrame {
 
     private void MeniSviPolasciMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MeniSviPolasciMouseClicked
         pokreniPanelSviPolasci();
-        dodajPolaske();
+//dodajPolaske();
     }//GEN-LAST:event_MeniSviPolasciMouseClicked
 
     private void btnUnesiStanicuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnesiStanicuActionPerformed
@@ -1203,11 +1119,11 @@ public class FormaLinija extends javax.swing.JFrame {
                             return -1;
                         }
                         return 1;
-                    case 2:
-                        if (o1.getLinija().getLinijaID() >= o2.getLinija().getLinijaID()) {
-                            return -1;
-                        }
-                        return 1;
+//                    case 2:
+//                        if (o1.getLinija().getLinijaID() >= o2.getLinija().getLinijaID()) {
+//                            return 1;
+//                        }
+//                        return -1;
                 }
                 return 0;
             }
@@ -1259,48 +1175,21 @@ public class FormaLinija extends javax.swing.JFrame {
         iskljuciDarkMode();
     }//GEN-LAST:event_lblWhiteModeMouseClicked
 
+    private void btnOsveziListuSviPolasciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOsveziListuSviPolasciActionPerformed
+        ArrayList<Polazak> polasci = null;
+        try {
+            polasci = Kontroler.getInstance().vratiListuPolazaka();
+        } catch (Exception ex) {
+            Logger.getLogger(FormaLinija.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dodajPolaske(polasci);
+    }//GEN-LAST:event_btnOsveziListuSviPolasciActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormaLinija.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormaLinija.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormaLinija.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormaLinija.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormaLinija().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MeniLinijia;
@@ -1315,19 +1204,17 @@ public class FormaLinija extends javax.swing.JFrame {
     private javax.swing.JButton btnObrisiMedjustanicu;
     private javax.swing.JButton btnObrisiPolazak;
     private javax.swing.JButton btnObrisiPolazakIzTabeleSviPolasci;
+    private javax.swing.JButton btnOsveziListuSviPolasci;
     private javax.swing.JButton btnUnesiLiniju;
     private javax.swing.JButton btnUnesiStanicu;
     private javax.swing.JButton btnUpdejtuj;
     private javax.swing.JButton btnZapamtiPolaske;
     private javax.swing.JCheckBox cboxPovratna;
     private javax.swing.JComboBox<String> cmbBrojDanaZaPolazak;
-    private javax.swing.JComboBox cmbDani;
-    private javax.swing.JComboBox cmbGodina;
     private javax.swing.JComboBox cmbKrajnja;
     private javax.swing.JComboBox cmbLinijaPolazak;
     private javax.swing.JComboBox cmbLinije;
     private javax.swing.JComboBox cmbMedjustanica;
-    private javax.swing.JComboBox<String> cmbMeseci;
     private javax.swing.JComboBox cmbMestaZaStanice;
     private javax.swing.JComboBox cmbPocetna;
     private javax.swing.JComboBox<String> cmbSortiraj;
@@ -1374,6 +1261,7 @@ public class FormaLinija extends javax.swing.JFrame {
     private javax.swing.JLabel lblWhiteMode;
     private javax.swing.JLabel lblpocetna;
     private javax.swing.JLabel lblpocetna1;
+    private rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum panelDatum;
     private javax.swing.JPanel panelLinija;
     private javax.swing.JPanel panelPolazak;
     private javax.swing.JPanel panelSviPolasci;
@@ -1473,16 +1361,16 @@ public class FormaLinija extends javax.swing.JFrame {
         }
     }
 
-    private void dodajPolaske() {
+    private void dodajPolaske(ArrayList<Polazak> lista) {
         tabelaSviPolasci.setModel(mtsp);
-        ArrayList<Polazak> polasci = null;
-        try {
-            polasci = Kontroler.getInstance().vratiListuPolazaka();
-        } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        mtsp.setList(polasci);
+//        ArrayList<Polazak> polasci = null;
+//        try {
+//            polasci = Kontroler.getInstance().vratiListuPolazaka();
+//        } catch (Exception ex) {
+//            Logger.getLogger(FormaLinija.class
+//                    .getName()).log(Level.SEVERE, null, ex);
+//        }
+        mtsp.setList(lista);
         mtsp.fireTableDataChanged();
     }
 
@@ -1492,7 +1380,7 @@ public class FormaLinija extends javax.swing.JFrame {
         dodajTipoveLinija();
         dodajStanice();
         dodajSveLinije();
-        dodajPolaske();
+        dodajPolaske(Kontroler.getInstance().getSviPolasci());
     }
 
     private void urediTabeluPolazaka() {
@@ -1596,4 +1484,69 @@ public class FormaLinija extends javax.swing.JFrame {
         panelSviPolasci.setVisible(true);
     }
 
+    private void ucitajSvePolaske() {
+        try {
+            Kontroler.getInstance().setSviPolasci(Kontroler.getInstance().vratiListuPolazaka());
+        } catch (Exception ex) {
+            Logger.getLogger(FormaLinija.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private Polazak napraviPolazak(Linija l, Voz v, int i) {
+        int sati = (Integer) spinerSati.getValue();
+        int minuti = (Integer) spinerMinuti.getValue();
+        int satiLinije = l.getMinutaza() / 60;
+        int minutiLinije = l.getMinutaza() % 60;
+        
+        Date pocetni = napraviDatum(panelDatum.getYear(), panelDatum.getMount(), panelDatum.getDay() + i, sati, minuti);
+        Date krajnji = napraviDatum(panelDatum.getYear(), panelDatum.getMount(), panelDatum.getDay() + i, sati + satiLinije, minuti + minutiLinije);
+        
+        String datumPocetni = sdf.format(pocetni);
+        String datumKrajnji = sdf.format(krajnji);
+        
+        String naziv = l.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
+        Polazak polazak = new Polazak(-1, naziv, pocetni, krajnji, l, v);
+        return polazak;
+    }
+
+    private Polazak napraviPovratniPolazak(Polazak polazak, Linija linijaPovratna) {
+        int satiLinije = linijaPovratna.getMinutaza() / 60;
+        int minutiLinije = linijaPovratna.getMinutaza() % 60;
+
+        Date datumDolaskaPravacPRVI = polazak.getDatumDolaska();
+        
+        Calendar calendar = dateUCalendar(datumDolaskaPravacPRVI);
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE) + 30);
+        Date datumPolaska = calendarUDate(calendar);
+        
+        Calendar calendarDolazak = dateUCalendar(datumDolaskaPravacPRVI);
+        calendarDolazak.set(calendarDolazak.get(Calendar.YEAR), calendarDolazak.get(Calendar.MONTH), calendarDolazak.get(Calendar.DAY_OF_MONTH), calendarDolazak.get(Calendar.HOUR_OF_DAY) + satiLinije, calendarDolazak.get(Calendar.MINUTE) + minutiLinije);
+        Date datumDolaska = calendarUDate(calendarDolazak);
+        
+        String datumPocetni = sdf.format(datumPolaska);
+        String datumKrajnji = sdf.format(datumDolaska);
+        
+        String naziv = linijaPovratna.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
+        Polazak p = new Polazak(-1, naziv, datumPolaska, datumDolaska, linijaPovratna, polazak.getVoz());
+        return p;
+
+    }
+
+    private Calendar dateUCalendar(Date d) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        return cal;
+    }
+
+    private Date calendarUDate(Calendar calendar) {
+        Date datum = calendar.getTime();
+        return datum;
+    }
+
+    private Date napraviDatum(int godina, int mesec, int dan, int sati, int minuti) {
+        System.out.println(dan+"."+mesec+"."+godina+" "+sati+":"+minuti);
+        Calendar datumCalendar = new GregorianCalendar(godina, mesec-1, dan, sati, minuti);
+        Date datum = datumCalendar.getTime();
+        return datum;
+    }
 }

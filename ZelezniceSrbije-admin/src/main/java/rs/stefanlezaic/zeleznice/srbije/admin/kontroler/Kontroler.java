@@ -29,8 +29,11 @@ public class Kontroler {
 
     private static Kontroler instance;
     private KlijentskiZahtev kz;
+    private ArrayList<Polazak> sviPolasci;
+    private ArrayList<Linija> sveLinije;
 
     private Kontroler() {
+        sviPolasci = new ArrayList<>();
     }
 
     public static Kontroler getInstance() {
@@ -150,6 +153,7 @@ public class Kontroler {
         KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
         ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
         ArrayList<Linija> listaLinija = (ArrayList<Linija>) so.getOdgovor();
+        sveLinije = listaLinija;
         if (so.getStatus() == ResponseStatus.ERROR) {
             Exception ex = (Exception) so.getError();
             throw ex;
@@ -333,4 +337,20 @@ public class Kontroler {
         return listaRezervacija;
     }
 
+    public ArrayList<Polazak> getSviPolasci() {
+        return sviPolasci;
+    }
+
+    public void setSviPolasci(ArrayList<Polazak> sviPolasci) {
+        this.sviPolasci = sviPolasci;
+    }
+
+    public Linija vratiMiPovratnu(Linija l) {
+        for (Linija linija : sveLinije) {
+            if (linija.getTipLinije().getTipLinijeID() == l.getTipLinije().getTipLinijeID() && linija.getStanicaPocetna().getStanicaID() == l.getStanicaKrajnja().getStanicaID() && linija.getStanicaKrajnja().getStanicaID() == l.getStanicaPocetna().getStanicaID()) {
+                return linija;
+            }
+        }
+        return null;
+    }
 }
