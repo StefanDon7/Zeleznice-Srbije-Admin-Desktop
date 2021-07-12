@@ -5,6 +5,7 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.component;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -45,8 +46,6 @@ public class PanelLinija extends javax.swing.JPanel {
         lblMin = new javax.swing.JLabel();
         txtMinutaza = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        lblNaziv = new javax.swing.JLabel();
-        lblNazivLinije = new javax.swing.JLabel();
         btnUnesiLiniju = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,14 +113,6 @@ public class PanelLinija extends javax.swing.JPanel {
         jLabel7.setText("Min");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 222, 30, 30));
 
-        lblNaziv.setForeground(new java.awt.Color(255, 255, 255));
-        lblNaziv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_itinerary_32px.png"))); // NOI18N
-        lblNaziv.setText("Naziv:");
-        add(lblNaziv, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 262, 140, 30));
-
-        lblNazivLinije.setForeground(new java.awt.Color(255, 255, 255));
-        add(lblNazivLinije, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 262, 300, 30));
-
         btnUnesiLiniju.setBackground(new java.awt.Color(153, 153, 153));
         btnUnesiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnUnesiLiniju.setForeground(new java.awt.Color(0, 0, 0));
@@ -132,7 +123,7 @@ public class PanelLinija extends javax.swing.JPanel {
                 btnUnesiLinijuActionPerformed(evt);
             }
         });
-        add(btnUnesiLiniju, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 302, 300, 40));
+        add(btnUnesiLiniju, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 300, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUnesiLinijuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnesiLinijuActionPerformed
@@ -211,28 +202,12 @@ public class PanelLinija extends javax.swing.JPanel {
         this.lblMin = lblMin;
     }
 
-    public JLabel getLblNaziv() {
-        return lblNaziv;
-    }
-
-    public void setLblNaziv(JLabel lblNaziv) {
-        this.lblNaziv = lblNaziv;
-    }
-
     public JLabel getLblNazivFrejma1() {
         return lblNazivFrejma1;
     }
 
     public void setLblNazivFrejma1(JLabel lblNazivFrejma1) {
         this.lblNazivFrejma1 = lblNazivFrejma1;
-    }
-
-    public JLabel getLblNazivLinije() {
-        return lblNazivLinije;
-    }
-
-    public void setLblNazivLinije(JLabel lblNazivLinije) {
-        this.lblNazivLinije = lblNazivLinije;
     }
 
     public JLabel getLblTip() {
@@ -278,12 +253,14 @@ public class PanelLinija extends javax.swing.JPanel {
     private javax.swing.JLabel lblKm;
     private javax.swing.JLabel lblKranja;
     private javax.swing.JLabel lblMin;
-    private javax.swing.JLabel lblNaziv;
     private javax.swing.JLabel lblNazivFrejma1;
-    private javax.swing.JLabel lblNazivLinije;
     private javax.swing.JLabel lblTip;
     private javax.swing.JLabel lblpocetna;
     private javax.swing.JTextField txtKilometraza;
     private javax.swing.JTextField txtMinutaza;
     // End of variables declaration//GEN-END:variables
+
+    public void btnUnesiLiniju(ActionListener actionListener) {
+        btnUnesiLiniju.addActionListener(actionListener);
+    }
 }

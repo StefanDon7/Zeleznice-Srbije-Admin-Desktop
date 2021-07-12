@@ -18,14 +18,11 @@ public class PanelPolazak extends javax.swing.JPanel {
         initComponents();
     }
 
-    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak getPanelPolazak1() {
-        return panelPolazak1;
+    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak getPanelPolazak() {
+        return panelPolazak;
     }
 
-    public void setPanelPolazak1(rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak panelPolazak1) {
-        this.panelPolazak1 = panelPolazak1;
-    }
-    
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +33,7 @@ public class PanelPolazak extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPolazak1 = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak();
+        panelPolazak = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -44,20 +41,20 @@ public class PanelPolazak extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPolazak1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelPolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPolazak1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelPolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak panelPolazak1;
+    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak panelPolazak;
     // End of variables declaration//GEN-END:variables
 }

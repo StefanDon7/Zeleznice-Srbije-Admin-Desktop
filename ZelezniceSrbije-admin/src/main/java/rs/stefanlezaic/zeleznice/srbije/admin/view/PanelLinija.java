@@ -21,29 +21,23 @@ public class PanelLinija extends javax.swing.JPanel {
         initComponents();
     }
 
-    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija getPanelLinija1() {
-        return panelLinija1;
+    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija getPanelLinija() {
+        return panelLinija;
     }
 
-    public void setPanelLinija1(rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija panelLinija1) {
-        this.panelLinija1 = panelLinija1;
+    
+
+    public PanelMedjustanice getPanelMedjustanice() {
+        return panelMedjustanice;
     }
 
-    public PanelMedjustanice getPanelMedjustanice1() {
-        return panelMedjustanice1;
+    
+
+    public PanelStanica getPanelStanica() {
+        return panelStanica;
     }
 
-    public void setPanelMedjustanice1(PanelMedjustanice panelMedjustanice1) {
-        this.panelMedjustanice1 = panelMedjustanice1;
-    }
-
-    public PanelStanica getPanelStanica1() {
-        return panelStanica1;
-    }
-
-    public void setPanelStanica1(PanelStanica panelStanica1) {
-        this.panelStanica1 = panelStanica1;
-    }
+   
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,20 +48,20 @@ public class PanelLinija extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLinija1 = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija();
-        panelMedjustanice1 = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice();
-        panelStanica1 = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica();
+        panelLinija = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija();
+        panelMedjustanice = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice();
+        panelStanica = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(panelLinija1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-        add(panelMedjustanice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 660, 560));
-        add(panelStanica1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 460, -1));
+        add(panelLinija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        add(panelMedjustanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 660, 560));
+        add(panelStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 460, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija panelLinija1;
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice panelMedjustanice1;
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica panelStanica1;
+    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija panelLinija;
+    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice panelMedjustanice;
+    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica panelStanica;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,7 +20,7 @@ import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 public class ModelTabelePolaska extends AbstractTableModel {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-    ArrayList<Polazak> list = new ArrayList<>();
+    ArrayList<Polazak> list = new ArrayList<Polazak>();
     String[] kolone = {"R.B", "Linija", "Datum polaska", "Datum dolaska", "Broj mesta", "Napomena"};
     private final Class[] columnsType = new Class[]{Polazak.class, String.class, Polazak.class, Polazak.class, String.class, String.class};
 
@@ -48,14 +48,7 @@ public class ModelTabelePolaska extends AbstractTableModel {
             case 3:
                 return sdf.format(p.getDatumDolaska());
             case 4:
-                int broj;
-                try {
-                    broj = (int) Kontroler.getInstance().vratiRezervacijePolaska(new Rezervacija(null, p, new Date())).size();
-                } catch (Exception ex) {
-                    broj = 0;
-                }
-                return broj + "/" + p.getVoz().getBrojSedista();
-
+                return 0 + "/" + p.getVoz().getBrojSedista();
             case 5:
                 return p.getNapomena();
             default:

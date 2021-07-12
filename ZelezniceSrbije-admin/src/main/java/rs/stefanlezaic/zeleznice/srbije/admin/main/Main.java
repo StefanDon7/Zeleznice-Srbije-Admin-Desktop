@@ -5,7 +5,10 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.main;
 
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
+import java.awt.Color;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija2;
 
 /**
  *
@@ -14,7 +17,18 @@ import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
 public class Main {
 
     public static void main(String[] args) {
-        FormaLinija formaLinija = new FormaLinija();
-        formaLinija.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                UIManager.put("OptionPane.background", Color.WHITE);
+                UIManager.put("Panel.background", Color.WHITE);
+                UIManager.put("Button.background", new Color(155, 155, 155));
+            }
+        });
+//        FormaLinija formaLinija = new FormaLinija();
+//        formaLinija.setVisible(true);
+        FormaLinija2 fl = new FormaLinija2(null, true);
+        fl.setLocationRelativeTo(null);
+        fl.setVisible(true);
+
     }
 }

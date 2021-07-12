@@ -30,10 +30,26 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
 
 /**
  *
@@ -57,9 +73,9 @@ public class FormaLinija extends javax.swing.JFrame {
         centrirajFrame();
         tema = new Tema(this);
         tabela = new Tabela();
-        tabela.ulepsajTabelu(tabelaPolazaka);
-        tabela.ulepsajTabelu(tabelaMedjustanica);
-        tabela.ulepsajTabelu(tabelaSviPolasci);
+        tabela.urediTabelu(tabelaPolazaka);
+        tabela.urediTabelu(tabelaMedjustanica);
+        tabela.urediTabelu(tabelaSviPolasci);
         sat = new Sat(lblSat);
         panelDatum.postavi(10, Vreme.Unapred);
         panelDatum.postaviDanasnjiDatum();
@@ -82,42 +98,6 @@ public class FormaLinija extends javax.swing.JFrame {
     private void initComponents() {
 
         lblSat = new javax.swing.JLabel();
-        panelPolazak = new javax.swing.JPanel();
-        lblNaziv4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaPolazaka = new javax.swing.JTable();
-        lblDatum = new javax.swing.JLabel();
-        lblVoz = new javax.swing.JLabel();
-        lblpocetna1 = new javax.swing.JLabel();
-        lblDatumDolaska = new javax.swing.JLabel();
-        cmbVoz = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        lblDatum1 = new javax.swing.JLabel();
-        spinerMinuti = new javax.swing.JSpinner();
-        lblNazivPolaska = new javax.swing.JLabel();
-        cmbLinijaPolazak = new javax.swing.JComboBox();
-        lblListaPolazaka = new javax.swing.JLabel();
-        btnDodajPolazak = new javax.swing.JButton();
-        btnZapamtiPolaske = new javax.swing.JButton();
-        btnLinija = new javax.swing.JLabel();
-        btnObrisiPolazak = new javax.swing.JButton();
-        spinerSati = new javax.swing.JSpinner();
-        cmbBrojDanaZaPolazak = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        cboxPovratna = new javax.swing.JCheckBox();
-        btnObrisiListu = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        panelDatum = new rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum();
-        panelSviPolasci = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tabelaSviPolasci = new javax.swing.JTable();
-        btnObrisiPolazakIzTabeleSviPolasci = new javax.swing.JButton();
-        btnUpdejtuj = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        cmbSortiraj = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        btnOsveziListuSviPolasci = new javax.swing.JButton();
         panelLinija = new javax.swing.JPanel();
         lblNazivFrejma = new javax.swing.JLabel();
         lblMin = new javax.swing.JLabel();
@@ -158,6 +138,42 @@ public class FormaLinija extends javax.swing.JFrame {
         lblDarkMode = new javax.swing.JLabel();
         lblWhiteMode = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
+        panelPolazak = new javax.swing.JPanel();
+        lblNaziv4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaPolazaka = new javax.swing.JTable();
+        lblDatum = new javax.swing.JLabel();
+        lblVoz = new javax.swing.JLabel();
+        lblpocetna1 = new javax.swing.JLabel();
+        lblDatumDolaska = new javax.swing.JLabel();
+        cmbVoz = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        lblDatum1 = new javax.swing.JLabel();
+        spinerMinuti = new javax.swing.JSpinner();
+        lblNazivPolaska = new javax.swing.JLabel();
+        cmbLinijaPolazak = new javax.swing.JComboBox();
+        lblListaPolazaka = new javax.swing.JLabel();
+        btnDodajPolazak = new javax.swing.JButton();
+        btnZapamtiPolaske = new javax.swing.JButton();
+        btnLinija = new javax.swing.JLabel();
+        btnObrisiPolazak = new javax.swing.JButton();
+        spinerSati = new javax.swing.JSpinner();
+        cmbBrojDanaZaPolazak = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        cboxPovratna = new javax.swing.JCheckBox();
+        btnObrisiListu = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        panelDatum = new rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum();
+        panelSviPolasci = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaSviPolasci = new javax.swing.JTable();
+        btnObrisiPolazakIzTabeleSviPolasci = new javax.swing.JButton();
+        btnUpdejtuj = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cmbSortiraj = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        btnOsveziListuSviPolasci = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MeniLinijia = new javax.swing.JMenu();
         MeniPolazak = new javax.swing.JMenu();
@@ -167,13 +183,313 @@ public class FormaLinija extends javax.swing.JFrame {
         setTitle("ZELEZNICE SRBIJE");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1336, 768));
-        setResizable(false);
 
         lblSat.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblSat.setForeground(new java.awt.Color(255, 255, 255));
         lblSat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_schedule_32px.png"))); // NOI18N
         lblSat.setToolTipText("");
+
+        panelLinija.setBackground(new java.awt.Color(44, 44, 44));
+        panelLinija.setForeground(new java.awt.Color(0, 0, 0));
+        panelLinija.setMinimumSize(new java.awt.Dimension(1550, 1000));
+        panelLinija.setPreferredSize(new java.awt.Dimension(1550, 1000));
+        panelLinija.setLayout(null);
+
+        lblNazivFrejma.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblNazivFrejma.setForeground(new java.awt.Color(255, 255, 255));
+        lblNazivFrejma.setText("Unos medjustanica");
+        panelLinija.add(lblNazivFrejma);
+        lblNazivFrejma.setBounds(520, 5, 350, 40);
+
+        lblMin.setForeground(new java.awt.Color(255, 255, 255));
+        lblMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_stopwatch_32px.png"))); // NOI18N
+        lblMin.setText("Minutaza:");
+        panelLinija.add(lblMin);
+        lblMin.setBounds(15, 220, 140, 30);
+
+        btnObrisiMedjustanicu.setBackground(new java.awt.Color(153, 153, 153));
+        btnObrisiMedjustanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnObrisiMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
+        btnObrisiMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_minus_64px.png"))); // NOI18N
+        btnObrisiMedjustanicu.setText("Obrisi");
+        btnObrisiMedjustanicu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiMedjustanicuActionPerformed(evt);
+            }
+        });
+        panelLinija.add(btnObrisiMedjustanicu);
+        btnObrisiMedjustanicu.setBounds(740, 140, 190, 40);
+
+        cmbLinije.setBackground(new java.awt.Color(153, 153, 153));
+        cmbLinije.setForeground(new java.awt.Color(0, 0, 0));
+        cmbLinije.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbLinije.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbLinijeItemStateChanged(evt);
+            }
+        });
+        panelLinija.add(cmbLinije);
+        cmbLinije.setBounds(630, 60, 490, 30);
+
+        btnDodajMedjustanicu.setBackground(new java.awt.Color(153, 153, 153));
+        btnDodajMedjustanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnDodajMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
+        btnDodajMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_plus_64px.png"))); // NOI18N
+        btnDodajMedjustanicu.setText("Dodaj ");
+        btnDodajMedjustanicu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajMedjustanicuActionPerformed(evt);
+            }
+        });
+        panelLinija.add(btnDodajMedjustanicu);
+        btnDodajMedjustanicu.setBounds(940, 140, 180, 40);
+
+        lblNaziv.setForeground(new java.awt.Color(255, 255, 255));
+        lblNaziv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_itinerary_32px.png"))); // NOI18N
+        lblNaziv.setText("Naziv:");
+        panelLinija.add(lblNaziv);
+        lblNaziv.setBounds(15, 260, 140, 30);
+
+        cmbMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
+        cmbMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
+        cmbMedjustanica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panelLinija.add(cmbMedjustanica);
+        cmbMedjustanica.setBounds(770, 100, 350, 30);
+
+        lblTip.setForeground(new java.awt.Color(255, 255, 255));
+        lblTip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_city_railway_station_32px.png"))); // NOI18N
+        lblTip.setText("Tip linije:");
+        lblTip.setPreferredSize(new java.awt.Dimension(50, 15));
+        lblTip.setRequestFocusEnabled(false);
+        panelLinija.add(lblTip);
+        lblTip.setBounds(15, 140, 140, 30);
+
+        txtKilometraza.setBackground(new java.awt.Color(102, 102, 102));
+        txtKilometraza.setForeground(new java.awt.Color(0, 0, 0));
+        panelLinija.add(txtKilometraza);
+        txtKilometraza.setBounds(170, 180, 120, 30);
+
+        lblNaziv2.setForeground(new java.awt.Color(255, 255, 255));
+        lblNaziv2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_flag_filled_32px.png"))); // NOI18N
+        lblNaziv2.setText("Medjustanica:");
+        panelLinija.add(lblNaziv2);
+        lblNaziv2.setBounds(630, 100, 130, 30);
+
+        btnIzmeniRedosledMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
+        btnIzmeniRedosledMedjustanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnIzmeniRedosledMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
+        btnIzmeniRedosledMedjustanica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_save_64px.png"))); // NOI18N
+        btnIzmeniRedosledMedjustanica.setText("Izmeni redosled");
+        btnIzmeniRedosledMedjustanica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIzmeniRedosledMedjustanicaActionPerformed(evt);
+            }
+        });
+        panelLinija.add(btnIzmeniRedosledMedjustanica);
+        btnIzmeniRedosledMedjustanica.setBounds(820, 370, 310, 50);
+
+        lblNazivLinijeKodTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblNazivLinijeKodTabele.setForeground(new java.awt.Color(255, 255, 255));
+        lblNazivLinijeKodTabele.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px.png"))); // NOI18N
+        lblNazivLinijeKodTabele.setText("Lista stanica:");
+        panelLinija.add(lblNazivLinijeKodTabele);
+        lblNazivLinijeKodTabele.setBounds(530, 140, 200, 40);
+
+        txtMinutaza.setBackground(new java.awt.Color(102, 102, 102));
+        txtMinutaza.setForeground(new java.awt.Color(0, 0, 0));
+        panelLinija.add(txtMinutaza);
+        txtMinutaza.setBounds(170, 220, 120, 30);
+
+        lblNazivLinije.setForeground(new java.awt.Color(255, 255, 255));
+        panelLinija.add(lblNazivLinije);
+        lblNazivLinije.setBounds(170, 260, 300, 30);
+
+        lblKranja.setForeground(new java.awt.Color(255, 255, 255));
+        lblKranja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
+        lblKranja.setText("Krajnja stanica:");
+        panelLinija.add(lblKranja);
+        lblKranja.setBounds(15, 100, 140, 30);
+
+        btnUnesiLiniju.setBackground(new java.awt.Color(153, 153, 153));
+        btnUnesiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnUnesiLiniju.setForeground(new java.awt.Color(0, 0, 0));
+        btnUnesiLiniju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_add_64px_2.png"))); // NOI18N
+        btnUnesiLiniju.setText("Unesi liniju");
+        btnUnesiLiniju.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnesiLinijuActionPerformed(evt);
+            }
+        });
+        panelLinija.add(btnUnesiLiniju);
+        btnUnesiLiniju.setBounds(170, 300, 300, 40);
+
+        lblKm.setForeground(new java.awt.Color(255, 255, 255));
+        lblKm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_length_32px_1.png"))); // NOI18N
+        lblKm.setText("Kilometraza:");
+        panelLinija.add(lblKm);
+        lblKm.setBounds(15, 180, 140, 30);
+
+        lblpocetna.setForeground(new java.awt.Color(255, 255, 255));
+        lblpocetna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
+        lblpocetna.setText("Pocetna stanica:");
+        panelLinija.add(lblpocetna);
+        lblpocetna.setBounds(15, 60, 140, 30);
+
+        cmbPocetna.setBackground(new java.awt.Color(102, 102, 102));
+        cmbPocetna.setForeground(new java.awt.Color(0, 0, 0));
+        cmbPocetna.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panelLinija.add(cmbPocetna);
+        cmbPocetna.setBounds(170, 60, 300, 30);
+
+        cmbKrajnja.setBackground(new java.awt.Color(153, 153, 153));
+        cmbKrajnja.setForeground(new java.awt.Color(0, 0, 0));
+        cmbKrajnja.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panelLinija.add(cmbKrajnja);
+        cmbKrajnja.setBounds(170, 100, 300, 30);
+
+        lblNaziv3.setForeground(new java.awt.Color(255, 255, 255));
+        lblNaziv3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_tracks_32px.png"))); // NOI18N
+        lblNaziv3.setText("Linija:");
+        panelLinija.add(lblNaziv3);
+        lblNaziv3.setBounds(530, 60, 100, 30);
+
+        jScrollPane1.setBackground(new java.awt.Color(187, 187, 187));
+
+        tabelaMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
+        tabelaMedjustanica.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabelaMedjustanica.setFocusable(false);
+        tabelaMedjustanica.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tabelaMedjustanica.setRowHeight(25);
+        jScrollPane1.setViewportView(tabelaMedjustanica);
+
+        panelLinija.add(jScrollPane1);
+        jScrollPane1.setBounds(530, 190, 600, 170);
+
+        cmbTip.setBackground(new java.awt.Color(153, 153, 153));
+        cmbTip.setForeground(new java.awt.Color(0, 0, 0));
+        cmbTip.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panelLinija.add(cmbTip);
+        cmbTip.setBounds(170, 140, 300, 30);
+
+        btnObrisiLiniju.setBackground(new java.awt.Color(153, 153, 153));
+        btnObrisiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnObrisiLiniju.setForeground(new java.awt.Color(0, 0, 0));
+        btnObrisiLiniju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"))); // NOI18N
+        btnObrisiLiniju.setText("OBRISI LINIJU");
+        btnObrisiLiniju.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiLinijuActionPerformed(evt);
+            }
+        });
+        panelLinija.add(btnObrisiLiniju);
+        btnObrisiLiniju.setBounds(530, 370, 280, 50);
+
+        btnUnesiStanicu.setBackground(new java.awt.Color(153, 153, 153));
+        btnUnesiStanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnUnesiStanicu.setForeground(new java.awt.Color(0, 0, 0));
+        btnUnesiStanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_add_64px_2.png"))); // NOI18N
+        btnUnesiStanicu.setText("Unesi stanicu");
+        btnUnesiStanicu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnesiStanicuActionPerformed(evt);
+            }
+        });
+        panelLinija.add(btnUnesiStanicu);
+        btnUnesiStanicu.setBounds(170, 500, 300, 40);
+
+        cmbMestaZaStanice.setBackground(new java.awt.Color(153, 153, 153));
+        cmbMestaZaStanice.setForeground(new java.awt.Color(0, 0, 0));
+        cmbMestaZaStanice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panelLinija.add(cmbMestaZaStanice);
+        cmbMestaZaStanice.setBounds(170, 460, 300, 30);
+
+        lblKm1.setForeground(new java.awt.Color(255, 255, 255));
+        lblKm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
+        lblKm1.setText("Mesto:");
+        panelLinija.add(lblKm1);
+        lblKm1.setBounds(15, 460, 140, 30);
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_flag_filled_32px.png"))); // NOI18N
+        jLabel3.setText("Naziv stanice:");
+        panelLinija.add(jLabel3);
+        jLabel3.setBounds(15, 420, 140, 30);
+
+        txtNazivStanice.setBackground(new java.awt.Color(102, 102, 102));
+        txtNazivStanice.setForeground(new java.awt.Color(0, 0, 0));
+        panelLinija.add(txtNazivStanice);
+        txtNazivStanice.setBounds(170, 420, 300, 30);
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        panelLinija.add(jSeparator2);
+        jSeparator2.setBounds(485, 0, 40, 700);
+
+        lblNazivFrejma1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblNazivFrejma1.setForeground(new java.awt.Color(255, 255, 255));
+        lblNazivFrejma1.setText("Unos linije voza");
+        panelLinija.add(lblNazivFrejma1);
+        lblNazivFrejma1.setBounds(15, 5, 300, 40);
+
+        lblNazivFrejma2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblNazivFrejma2.setForeground(new java.awt.Color(255, 255, 255));
+        lblNazivFrejma2.setText("Unos stanice");
+        panelLinija.add(lblNazivFrejma2);
+        lblNazivFrejma2.setBounds(15, 360, 300, 40);
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        panelLinija.add(jSeparator3);
+        jSeparator3.setBounds(170, 290, 300, 10);
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Km");
+        panelLinija.add(jLabel6);
+        jLabel6.setBounds(300, 180, 30, 30);
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Min");
+        panelLinija.add(jLabel7);
+        jLabel7.setBounds(300, 220, 30, 30);
+
+        lblDarkMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblDarkMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/darkMode.png"))); // NOI18N
+        lblDarkMode.setText("Dark theme");
+        lblDarkMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDarkModeMouseClicked(evt);
+            }
+        });
+        panelLinija.add(lblDarkMode);
+        lblDarkMode.setBounds(1131, 50, 190, 50);
+
+        lblWhiteMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblWhiteMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/whiteMode.png"))); // NOI18N
+        lblWhiteMode.setText("White theme");
+        lblWhiteMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblWhiteModeMouseClicked(evt);
+            }
+        });
+        panelLinija.add(lblWhiteMode);
+        lblWhiteMode.setBounds(1131, 50, 190, 50);
+
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+        panelLinija.add(jSeparator6);
+        jSeparator6.setBounds(15, 345, 470, 10);
 
         panelPolazak.setBackground(new java.awt.Color(44, 44, 44));
         panelPolazak.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,7 +573,6 @@ public class FormaLinija extends javax.swing.JFrame {
 
         spinerMinuti.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
         spinerMinuti.setToolTipText("");
-        spinerMinuti.setBorder(null);
         spinerMinuti.setFocusable(false);
         spinerMinuti.setOpaque(false);
         panelPolazak.add(spinerMinuti);
@@ -334,7 +649,6 @@ public class FormaLinija extends javax.swing.JFrame {
         btnObrisiPolazak.setBounds(560, 290, 300, 45);
 
         spinerSati.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
-        spinerSati.setBorder(null);
         spinerSati.setFocusable(false);
         spinerSati.setOpaque(false);
         panelPolazak.add(spinerSati);
@@ -351,7 +665,7 @@ public class FormaLinija extends javax.swing.JFrame {
         panelPolazak.add(jLabel1);
         jLabel1.setBounds(780, 110, 80, 40);
 
-        cboxPovratna.setBackground(new java.awt.Color(102, 102, 102));
+        cboxPovratna.setBackground(new java.awt.Color(153, 153, 153));
         cboxPovratna.setForeground(new java.awt.Color(255, 255, 255));
         cboxPovratna.setText("Povratna?");
         panelPolazak.add(cboxPovratna);
@@ -372,7 +686,7 @@ public class FormaLinija extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         panelPolazak.add(jSeparator1);
-        jSeparator1.setBounds(170, 220, 700, 10);
+        jSeparator1.setBounds(170, 220, 840, 10);
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         panelPolazak.add(jSeparator4);
@@ -445,6 +759,8 @@ public class FormaLinija extends javax.swing.JFrame {
         cmbSortiraj.setBackground(new java.awt.Color(153, 153, 153));
         cmbSortiraj.setForeground(new java.awt.Color(0, 0, 0));
         cmbSortiraj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "po datumu u opadajucem", "po datumu u rastucem ", "po liniji" }));
+        cmbSortiraj.setSelectedIndex(1);
+        cmbSortiraj.setToolTipText("");
         cmbSortiraj.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbSortirajItemStateChanged(evt);
@@ -468,305 +784,6 @@ public class FormaLinija extends javax.swing.JFrame {
         });
         panelSviPolasci.add(btnOsveziListuSviPolasci);
         btnOsveziListuSviPolasci.setBounds(20, 590, 180, 50);
-
-        panelLinija.setBackground(new java.awt.Color(44, 44, 44));
-        panelLinija.setForeground(new java.awt.Color(0, 0, 0));
-        panelLinija.setMinimumSize(new java.awt.Dimension(1550, 1000));
-        panelLinija.setPreferredSize(new java.awt.Dimension(1550, 1000));
-        panelLinija.setLayout(null);
-
-        lblNazivFrejma.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblNazivFrejma.setForeground(new java.awt.Color(255, 255, 255));
-        lblNazivFrejma.setText("Unos medjustanica");
-        panelLinija.add(lblNazivFrejma);
-        lblNazivFrejma.setBounds(520, 5, 350, 40);
-
-        lblMin.setForeground(new java.awt.Color(255, 255, 255));
-        lblMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_stopwatch_32px.png"))); // NOI18N
-        lblMin.setText("Minutaza:");
-        panelLinija.add(lblMin);
-        lblMin.setBounds(15, 220, 140, 30);
-
-        btnObrisiMedjustanicu.setBackground(new java.awt.Color(153, 153, 153));
-        btnObrisiMedjustanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnObrisiMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
-        btnObrisiMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_minus_64px.png"))); // NOI18N
-        btnObrisiMedjustanicu.setText("Obrisi");
-        btnObrisiMedjustanicu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiMedjustanicuActionPerformed(evt);
-            }
-        });
-        panelLinija.add(btnObrisiMedjustanicu);
-        btnObrisiMedjustanicu.setBounds(740, 140, 190, 40);
-
-        cmbLinije.setBackground(new java.awt.Color(153, 153, 153));
-        cmbLinije.setForeground(new java.awt.Color(0, 0, 0));
-        cmbLinije.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbLinije.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbLinijeItemStateChanged(evt);
-            }
-        });
-        panelLinija.add(cmbLinije);
-        cmbLinije.setBounds(590, 60, 530, 30);
-
-        btnDodajMedjustanicu.setBackground(new java.awt.Color(153, 153, 153));
-        btnDodajMedjustanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnDodajMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
-        btnDodajMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_plus_64px.png"))); // NOI18N
-        btnDodajMedjustanicu.setText("Dodaj ");
-        btnDodajMedjustanicu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDodajMedjustanicuActionPerformed(evt);
-            }
-        });
-        panelLinija.add(btnDodajMedjustanicu);
-        btnDodajMedjustanicu.setBounds(940, 140, 180, 40);
-
-        lblNaziv.setForeground(new java.awt.Color(255, 255, 255));
-        lblNaziv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_itinerary_32px.png"))); // NOI18N
-        lblNaziv.setText("Naziv:");
-        panelLinija.add(lblNaziv);
-        lblNaziv.setBounds(15, 260, 140, 30);
-
-        cmbMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
-        cmbMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
-        cmbMedjustanica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelLinija.add(cmbMedjustanica);
-        cmbMedjustanica.setBounds(770, 100, 350, 30);
-
-        lblTip.setForeground(new java.awt.Color(255, 255, 255));
-        lblTip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_city_railway_station_32px.png"))); // NOI18N
-        lblTip.setText("Tip linije:");
-        lblTip.setPreferredSize(new java.awt.Dimension(50, 15));
-        lblTip.setRequestFocusEnabled(false);
-        panelLinija.add(lblTip);
-        lblTip.setBounds(15, 140, 140, 30);
-
-        txtKilometraza.setBackground(new java.awt.Color(102, 102, 102));
-        txtKilometraza.setForeground(new java.awt.Color(0, 0, 0));
-        panelLinija.add(txtKilometraza);
-        txtKilometraza.setBounds(170, 180, 120, 30);
-
-        lblNaziv2.setForeground(new java.awt.Color(255, 255, 255));
-        lblNaziv2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_flag_filled_32px.png"))); // NOI18N
-        lblNaziv2.setText("Medjustanica:");
-        panelLinija.add(lblNaziv2);
-        lblNaziv2.setBounds(630, 100, 130, 30);
-
-        btnIzmeniRedosledMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
-        btnIzmeniRedosledMedjustanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnIzmeniRedosledMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
-        btnIzmeniRedosledMedjustanica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_save_64px.png"))); // NOI18N
-        btnIzmeniRedosledMedjustanica.setText("Izmeni redosled");
-        btnIzmeniRedosledMedjustanica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIzmeniRedosledMedjustanicaActionPerformed(evt);
-            }
-        });
-        panelLinija.add(btnIzmeniRedosledMedjustanica);
-        btnIzmeniRedosledMedjustanica.setBounds(810, 550, 310, 50);
-
-        lblNazivLinijeKodTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblNazivLinijeKodTabele.setForeground(new java.awt.Color(255, 255, 255));
-        lblNazivLinijeKodTabele.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px.png"))); // NOI18N
-        lblNazivLinijeKodTabele.setText("Lista stanica:");
-        panelLinija.add(lblNazivLinijeKodTabele);
-        lblNazivLinijeKodTabele.setBounds(520, 140, 210, 40);
-
-        txtMinutaza.setBackground(new java.awt.Color(102, 102, 102));
-        txtMinutaza.setForeground(new java.awt.Color(0, 0, 0));
-        panelLinija.add(txtMinutaza);
-        txtMinutaza.setBounds(170, 220, 120, 30);
-
-        lblNazivLinije.setForeground(new java.awt.Color(255, 255, 255));
-        panelLinija.add(lblNazivLinije);
-        lblNazivLinije.setBounds(170, 260, 300, 30);
-
-        lblKranja.setForeground(new java.awt.Color(255, 255, 255));
-        lblKranja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
-        lblKranja.setText("Krajnja stanica:");
-        panelLinija.add(lblKranja);
-        lblKranja.setBounds(15, 100, 140, 30);
-
-        btnUnesiLiniju.setBackground(new java.awt.Color(153, 153, 153));
-        btnUnesiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnUnesiLiniju.setForeground(new java.awt.Color(0, 0, 0));
-        btnUnesiLiniju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_add_64px_2.png"))); // NOI18N
-        btnUnesiLiniju.setText("Unesi liniju");
-        btnUnesiLiniju.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUnesiLinijuActionPerformed(evt);
-            }
-        });
-        panelLinija.add(btnUnesiLiniju);
-        btnUnesiLiniju.setBounds(170, 300, 300, 40);
-
-        lblKm.setForeground(new java.awt.Color(255, 255, 255));
-        lblKm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_length_32px_1.png"))); // NOI18N
-        lblKm.setText("Kilometraza:");
-        panelLinija.add(lblKm);
-        lblKm.setBounds(15, 180, 140, 30);
-
-        lblpocetna.setForeground(new java.awt.Color(255, 255, 255));
-        lblpocetna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
-        lblpocetna.setText("Pocetna stanica:");
-        panelLinija.add(lblpocetna);
-        lblpocetna.setBounds(15, 60, 140, 30);
-
-        cmbPocetna.setBackground(new java.awt.Color(102, 102, 102));
-        cmbPocetna.setForeground(new java.awt.Color(0, 0, 0));
-        cmbPocetna.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelLinija.add(cmbPocetna);
-        cmbPocetna.setBounds(170, 60, 300, 30);
-
-        cmbKrajnja.setBackground(new java.awt.Color(153, 153, 153));
-        cmbKrajnja.setForeground(new java.awt.Color(0, 0, 0));
-        cmbKrajnja.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelLinija.add(cmbKrajnja);
-        cmbKrajnja.setBounds(170, 100, 300, 30);
-
-        lblNaziv3.setForeground(new java.awt.Color(255, 255, 255));
-        lblNaziv3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_tracks_32px.png"))); // NOI18N
-        lblNaziv3.setText("Linija:");
-        panelLinija.add(lblNaziv3);
-        lblNaziv3.setBounds(510, 60, 70, 30);
-
-        jScrollPane1.setBackground(new java.awt.Color(187, 187, 187));
-
-        tabelaMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
-        tabelaMedjustanica.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tabelaMedjustanica.setFocusable(false);
-        tabelaMedjustanica.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tabelaMedjustanica.setRowHeight(25);
-        jScrollPane1.setViewportView(tabelaMedjustanica);
-
-        panelLinija.add(jScrollPane1);
-        jScrollPane1.setBounds(520, 190, 600, 290);
-
-        cmbTip.setBackground(new java.awt.Color(153, 153, 153));
-        cmbTip.setForeground(new java.awt.Color(0, 0, 0));
-        cmbTip.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelLinija.add(cmbTip);
-        cmbTip.setBounds(170, 140, 300, 30);
-
-        btnObrisiLiniju.setBackground(new java.awt.Color(153, 153, 153));
-        btnObrisiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnObrisiLiniju.setForeground(new java.awt.Color(0, 0, 0));
-        btnObrisiLiniju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"))); // NOI18N
-        btnObrisiLiniju.setText("OBRISI LINIJU");
-        btnObrisiLiniju.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiLinijuActionPerformed(evt);
-            }
-        });
-        panelLinija.add(btnObrisiLiniju);
-        btnObrisiLiniju.setBounds(520, 550, 280, 50);
-
-        btnUnesiStanicu.setBackground(new java.awt.Color(153, 153, 153));
-        btnUnesiStanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnUnesiStanicu.setForeground(new java.awt.Color(0, 0, 0));
-        btnUnesiStanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_add_64px_2.png"))); // NOI18N
-        btnUnesiStanicu.setText("Unesi stanicu");
-        btnUnesiStanicu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUnesiStanicuActionPerformed(evt);
-            }
-        });
-        panelLinija.add(btnUnesiStanicu);
-        btnUnesiStanicu.setBounds(170, 500, 300, 40);
-
-        cmbMestaZaStanice.setBackground(new java.awt.Color(153, 153, 153));
-        cmbMestaZaStanice.setForeground(new java.awt.Color(0, 0, 0));
-        cmbMestaZaStanice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelLinija.add(cmbMestaZaStanice);
-        cmbMestaZaStanice.setBounds(170, 460, 300, 30);
-
-        lblKm1.setForeground(new java.awt.Color(255, 255, 255));
-        lblKm1.setText("Mesto:");
-        panelLinija.add(lblKm1);
-        lblKm1.setBounds(15, 460, 140, 30);
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Naziv stanice:");
-        panelLinija.add(jLabel3);
-        jLabel3.setBounds(15, 420, 140, 30);
-
-        txtNazivStanice.setBackground(new java.awt.Color(102, 102, 102));
-        txtNazivStanice.setForeground(new java.awt.Color(0, 0, 0));
-        panelLinija.add(txtNazivStanice);
-        txtNazivStanice.setBounds(170, 420, 300, 30);
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        panelLinija.add(jSeparator2);
-        jSeparator2.setBounds(485, 0, 40, 700);
-
-        lblNazivFrejma1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblNazivFrejma1.setForeground(new java.awt.Color(255, 255, 255));
-        lblNazivFrejma1.setText("Unos linije voza");
-        panelLinija.add(lblNazivFrejma1);
-        lblNazivFrejma1.setBounds(15, 5, 300, 40);
-
-        lblNazivFrejma2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblNazivFrejma2.setForeground(new java.awt.Color(255, 255, 255));
-        lblNazivFrejma2.setText("Unos stanice");
-        panelLinija.add(lblNazivFrejma2);
-        lblNazivFrejma2.setBounds(15, 360, 300, 40);
-
-        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        panelLinija.add(jSeparator3);
-        jSeparator3.setBounds(170, 290, 300, 10);
-
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Km");
-        panelLinija.add(jLabel6);
-        jLabel6.setBounds(300, 180, 30, 30);
-
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Min");
-        panelLinija.add(jLabel7);
-        jLabel7.setBounds(300, 220, 30, 30);
-
-        lblDarkMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblDarkMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/darkMode.png"))); // NOI18N
-        lblDarkMode.setText("Dark theme");
-        lblDarkMode.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblDarkModeMouseClicked(evt);
-            }
-        });
-        panelLinija.add(lblDarkMode);
-        lblDarkMode.setBounds(1131, 50, 190, 50);
-
-        lblWhiteMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblWhiteMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/whiteMode.png"))); // NOI18N
-        lblWhiteMode.setText("White theme");
-        lblWhiteMode.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblWhiteModeMouseClicked(evt);
-            }
-        });
-        panelLinija.add(lblWhiteMode);
-        lblWhiteMode.setBounds(1131, 50, 190, 50);
-
-        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        panelLinija.add(jSeparator6);
-        jSeparator6.setBounds(15, 345, 470, 10);
 
         jMenuBar1.setBackground(new java.awt.Color(187, 187, 187));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -851,7 +868,7 @@ public class FormaLinija extends javax.swing.JFrame {
             Kontroler.getInstance().unesiMedjustanicu(m);
             mtms.dodajUTabelu(m);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
         }
     }//GEN-LAST:event_btnDodajMedjustanicuActionPerformed
 
@@ -873,16 +890,15 @@ public class FormaLinija extends javax.swing.JFrame {
             if (n == 0) {
                 try {
                     Kontroler.getInstance().obrisiMedjustanicu(m);
-                    JOptionPane.showMessageDialog(this, "Uspesno ste obrisali medjustanicu iz baze!");
+                    new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste obrisali medjustanicu iz baze!"));
                     mtms.obrisi(red);
                     btnIzmeniRedosledMedjustanicaActionPerformed(evt);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, ex.getMessage());
+                    new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Morate da izaberete medjustanicu koju zelite da obrisete!");
-            return;
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Morate da izaberete medjustanicu koju zelite da obrisete!"));
         }
     }//GEN-LAST:event_btnObrisiMedjustanicuActionPerformed
 
@@ -892,7 +908,7 @@ public class FormaLinija extends javax.swing.JFrame {
         Stanica krajnja = (Stanica) cmbKrajnja.getSelectedItem();
         TipLinije tipLinije = (TipLinije) cmbTip.getSelectedItem();
         if (txtKilometraza.getText().isEmpty() || txtMinutaza.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Morate uneti i minutazu i kilometrazu.");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Morate uneti i minutazu i kilometrazu."));
             return;
         }
         int minutaza = Integer.parseInt(txtMinutaza.getText());
@@ -902,16 +918,15 @@ public class FormaLinija extends javax.swing.JFrame {
         Linija l = new Linija(-1, naziv, minutaza, kilometraza, pocetna, krajnja, tipLinije);
         try {
             Kontroler.getInstance().unesiLiniju(l);
-            JOptionPane.showMessageDialog(this, "Uspesno sacuvana linija: " + lblNazivLinije.getText() + "!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno sacuvana linija!"));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
             lblNazivLinije.setText("");
         } finally {
             txtKilometraza.setText("");
             txtMinutaza.setText("");
         }
         dodajSveLinije();
-
     }//GEN-LAST:event_btnUnesiLinijuActionPerformed
 
     //************************TODO***************************************//
@@ -920,9 +935,9 @@ public class FormaLinija extends javax.swing.JFrame {
         if (!list.isEmpty()) {
             try {
                 Kontroler.getInstance().izmeniSveMedjustanice(list);
-                JOptionPane.showMessageDialog(this, "Uspesno sacuvano");
+                new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno sacuvano"));
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "GRESKA!\nNeuspesno sacuvano!");
+                new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
             }
             promeniMedjustaniceZaLiniju();
         }
@@ -959,7 +974,7 @@ public class FormaLinija extends javax.swing.JFrame {
         for (int i = 0; i <= brojDana; i++) {
             Polazak polazak = napraviPolazak(l, v, i);
             if (new Date().after(polazak.getDatumPolaska())) {
-                JOptionPane.showMessageDialog(this, "Ne mozete napraviti polazak za datum koji je prosao!");
+                new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Greska kod datuma polaska"));
                 return;
             }
             lblNazivPolaska.setText(polazak.getNaziv());
@@ -978,16 +993,16 @@ public class FormaLinija extends javax.swing.JFrame {
     private void btnZapamtiPolaskeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZapamtiPolaskeActionPerformed
         ArrayList<Polazak> list = mtp.vratiListu();
         if (list.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Lista je prazna!", "PAZNJA!", 2);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Lista je prazna!"));
             return;
         }
         try {
             Kontroler.getInstance().unesiSvePolazke(list);
-            JOptionPane.showMessageDialog(this, "Uspesno ste uneli listu polazaka!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste uneli listu polazaka!"));
             mtp.obrisiListu();
             return;
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Neuspesan unos liste polazaka!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
             return;
         }
     }//GEN-LAST:event_btnZapamtiPolaskeActionPerformed
@@ -1022,9 +1037,9 @@ public class FormaLinija extends javax.swing.JFrame {
         if (n == 0) {
             try {
                 Kontroler.getInstance().obrisiLiniju(l);
-                JOptionPane.showMessageDialog(this, "Uspesno ste obrisali liniju: " + l.getNaziv() + ".");
+                new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste obrisali liniju: "));
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
             }
         }
         dodajSveLinije();
@@ -1032,13 +1047,13 @@ public class FormaLinija extends javax.swing.JFrame {
 
     private void MeniSviPolasciMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MeniSviPolasciMouseClicked
         pokreniPanelSviPolasci();
-//dodajPolaske();
+        //dodajPolaske();
     }//GEN-LAST:event_MeniSviPolasciMouseClicked
 
     private void btnUnesiStanicuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnesiStanicuActionPerformed
         String naziv = txtNazivStanice.getText();
         if (naziv.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Morate popunini polje naziv!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Morate popunini polje naziv!"));
             return;
         }
         naziv = naziv.toUpperCase();
@@ -1046,12 +1061,11 @@ public class FormaLinija extends javax.swing.JFrame {
         Stanica s = new Stanica(-1, naziv, mesto);
         try {
             Kontroler.getInstance().unesiNovuStanicu(s);
-            JOptionPane.showMessageDialog(this, "Uspesno ste uneli stanicu!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste uneli stanicu!"));
             txtNazivStanice.setText("");
-        } catch (Exception ex1) {
-            JOptionPane.showMessageDialog(this, "Neuspesna operacija unosa stanice!");
+        } catch (Exception ex) {
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
             txtNazivStanice.setText("");
-            Logger.getLogger(FormaLinija.class.getName()).log(Level.SEVERE, null, ex1);
         }
 
     }//GEN-LAST:event_btnUnesiStanicuActionPerformed
@@ -1059,7 +1073,7 @@ public class FormaLinija extends javax.swing.JFrame {
     private void cmbLinijaPolazakItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLinijaPolazakItemStateChanged
         Linija l = (Linija) cmbLinijaPolazak.getSelectedItem();
         if (l != null) {
-            Linija linijaZaPretrazivanje = new Linija(-1, "", 0, 0, l.getStanicaKrajnja(), l.getStanicaPocetna(), l.getTipLinije());
+            Linija linijaZaPretrazivanje = new Linija(-1, "", 0, 0, l.getStanicaPocetna(), l.getStanicaKrajnja(), l.getTipLinije());
             try {
                 Kontroler.getInstance().vratiLinijuNaOsnovuStanicaITipa(linijaZaPretrazivanje);
                 cboxPovratna.setEnabled(true);
@@ -1072,8 +1086,7 @@ public class FormaLinija extends javax.swing.JFrame {
     private void btnObrisiPolazakIzTabeleSviPolasciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiPolazakIzTabeleSviPolasciActionPerformed
         int broj = tabelaSviPolasci.getSelectedRow();
         if (broj == -1) {
-            JOptionPane.showMessageDialog(this, "Selektujte polazak koji zelite da obrisete!");
-            return;
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Selektujte polazak koji zelite da obrisete!"));
         } else {
             Polazak p = mtsp.getList().get(broj);
             Object[] options = {"Da", "Ne"};
@@ -1088,11 +1101,11 @@ public class FormaLinija extends javax.swing.JFrame {
             if (n == 0) {
                 try {
                     Kontroler.getInstance().obrisiPolazak(p);
-                    JOptionPane.showMessageDialog(this, "Uspesno ste obrisali polazak!");
+                    new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste obrisali polazak!"));
                     mtsp.obrisi(broj);
                     mtsp.fireTableDataChanged();
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Ne mozete obrisati ovaj polazak!");
+                    new JOptionPaneExample().createAndDisplayGUI(this, new PanelError("Ne mozete obrisati ovaj polazak!"));
                 }
             }
         }
@@ -1119,11 +1132,8 @@ public class FormaLinija extends javax.swing.JFrame {
                             return -1;
                         }
                         return 1;
-//                    case 2:
-//                        if (o1.getLinija().getLinijaID() >= o2.getLinija().getLinijaID()) {
-//                            return 1;
-//                        }
-//                        return -1;
+                    case 2:
+                        return o1.getLinija().getLinijaID() - o2.getLinija().getLinijaID();
                 }
                 return 0;
             }
@@ -1141,26 +1151,16 @@ public class FormaLinija extends javax.swing.JFrame {
             }
         }
         if (polasciZaMenjanje.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nema polazaka za izmenu!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Nema polazaka za izmenu!"));
             return;
         }
-        boolean uspesno = false;
+
         try {
             Kontroler.getInstance().updejtujMiPolaske(polasciZaMenjanje);
-            uspesno = true;
-
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("USPESNA IZMENA"));
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
         }
-        if (uspesno) {
-            JOptionPane.showMessageDialog(this, "USPESNA IZMENA");
-
-        } else {
-            JOptionPane.showMessageDialog(this, "NEUSPESNA IZMENA");
-
-        }
-
     }//GEN-LAST:event_btnUpdejtujActionPerformed
 
     private void btnObrisiListuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiListuActionPerformed
@@ -1180,8 +1180,7 @@ public class FormaLinija extends javax.swing.JFrame {
         try {
             polasci = Kontroler.getInstance().vratiListuPolazaka();
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
         }
         dodajPolaske(polasci);
     }//GEN-LAST:event_btnOsveziListuSviPolasciActionPerformed
@@ -1189,7 +1188,6 @@ public class FormaLinija extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MeniLinijia;
@@ -1274,7 +1272,7 @@ public class FormaLinija extends javax.swing.JFrame {
     private javax.swing.JTextField txtMinutaza;
     private javax.swing.JTextField txtNazivStanice;
     // End of variables declaration//GEN-END:variables
-
+    
     private void centrirajFrame() {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -1328,7 +1326,7 @@ public class FormaLinija extends javax.swing.JFrame {
             cmbTip.addItem(tipLinije);
         }
     }
-
+    
     private void dodajSveLinije() {
         cmbLinije.removeAllItems();
         cmbLinijaPolazak.removeAllItems();
@@ -1497,13 +1495,13 @@ public class FormaLinija extends javax.swing.JFrame {
         int minuti = (Integer) spinerMinuti.getValue();
         int satiLinije = l.getMinutaza() / 60;
         int minutiLinije = l.getMinutaza() % 60;
-        
+
         Date pocetni = napraviDatum(panelDatum.getYear(), panelDatum.getMount(), panelDatum.getDay() + i, sati, minuti);
         Date krajnji = napraviDatum(panelDatum.getYear(), panelDatum.getMount(), panelDatum.getDay() + i, sati + satiLinije, minuti + minutiLinije);
-        
+
         String datumPocetni = sdf.format(pocetni);
         String datumKrajnji = sdf.format(krajnji);
-        
+
         String naziv = l.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
         Polazak polazak = new Polazak(-1, naziv, pocetni, krajnji, l, v);
         return polazak;
@@ -1514,18 +1512,18 @@ public class FormaLinija extends javax.swing.JFrame {
         int minutiLinije = linijaPovratna.getMinutaza() % 60;
 
         Date datumDolaskaPravacPRVI = polazak.getDatumDolaska();
-        
+
         Calendar calendar = dateUCalendar(datumDolaskaPravacPRVI);
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE) + 30);
         Date datumPolaska = calendarUDate(calendar);
-        
+
         Calendar calendarDolazak = dateUCalendar(datumDolaskaPravacPRVI);
         calendarDolazak.set(calendarDolazak.get(Calendar.YEAR), calendarDolazak.get(Calendar.MONTH), calendarDolazak.get(Calendar.DAY_OF_MONTH), calendarDolazak.get(Calendar.HOUR_OF_DAY) + satiLinije, calendarDolazak.get(Calendar.MINUTE) + minutiLinije);
         Date datumDolaska = calendarUDate(calendarDolazak);
-        
+
         String datumPocetni = sdf.format(datumPolaska);
         String datumKrajnji = sdf.format(datumDolaska);
-        
+
         String naziv = linijaPovratna.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
         Polazak p = new Polazak(-1, naziv, datumPolaska, datumDolaska, linijaPovratna, polazak.getVoz());
         return p;
@@ -1544,8 +1542,8 @@ public class FormaLinija extends javax.swing.JFrame {
     }
 
     private Date napraviDatum(int godina, int mesec, int dan, int sati, int minuti) {
-        System.out.println(dan+"."+mesec+"."+godina+" "+sati+":"+minuti);
-        Calendar datumCalendar = new GregorianCalendar(godina, mesec-1, dan, sati, minuti);
+        System.out.println(dan + "." + mesec + "." + godina + " " + sati + ":" + minuti);
+        Calendar datumCalendar = new GregorianCalendar(godina, mesec - 1, dan, sati, minuti);
         Date datum = datumCalendar.getTime();
         return datum;
     }

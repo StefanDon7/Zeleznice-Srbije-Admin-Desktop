@@ -5,6 +5,8 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.component;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -28,88 +30,24 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         return btnDodajMedjustanicu;
     }
 
-    public void setBtnDodajMedjustanicu(JButton btnDodajMedjustanicu) {
-        this.btnDodajMedjustanicu = btnDodajMedjustanicu;
-    }
-
     public JButton getBtnIzmeniRedosledMedjustanica() {
         return btnIzmeniRedosledMedjustanica;
-    }
-
-    public void setBtnIzmeniRedosledMedjustanica(JButton btnIzmeniRedosledMedjustanica) {
-        this.btnIzmeniRedosledMedjustanica = btnIzmeniRedosledMedjustanica;
     }
 
     public JButton getBtnObrisiLiniju() {
         return btnObrisiLiniju;
     }
 
-    public void setBtnObrisiLiniju(JButton btnObrisiLiniju) {
-        this.btnObrisiLiniju = btnObrisiLiniju;
-    }
-
     public JButton getBtnObrisiMedjustanicu() {
         return btnObrisiMedjustanicu;
-    }
-
-    public void setBtnObrisiMedjustanicu(JButton btnObrisiMedjustanicu) {
-        this.btnObrisiMedjustanicu = btnObrisiMedjustanicu;
     }
 
     public JComboBox getCmbLinije() {
         return cmbLinije;
     }
 
-    public void setCmbLinije(JComboBox cmbLinije) {
-        this.cmbLinije = cmbLinije;
-    }
-
     public JComboBox getCmbMedjustanica() {
         return cmbMedjustanica;
-    }
-
-    public void setCmbMedjustanica(JComboBox cmbMedjustanica) {
-        this.cmbMedjustanica = cmbMedjustanica;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    public void setjScrollPane1(JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
-
-    public JLabel getLblNaziv2() {
-        return lblNaziv2;
-    }
-
-    public void setLblNaziv2(JLabel lblNaziv2) {
-        this.lblNaziv2 = lblNaziv2;
-    }
-
-    public JLabel getLblNaziv3() {
-        return lblNaziv3;
-    }
-
-    public void setLblNaziv3(JLabel lblNaziv3) {
-        this.lblNaziv3 = lblNaziv3;
-    }
-
-    public JLabel getLblNazivFrejma() {
-        return lblNazivFrejma;
-    }
-
-    public void setLblNazivFrejma(JLabel lblNazivFrejma) {
-        this.lblNazivFrejma = lblNazivFrejma;
-    }
-
-    public JLabel getLblNazivLinijeKodTabele() {
-        return lblNazivLinijeKodTabele;
-    }
-
-    public void setLblNazivLinijeKodTabele(JLabel lblNazivLinijeKodTabele) {
-        this.lblNazivLinijeKodTabele = lblNazivLinijeKodTabele;
     }
 
     public JTable getTabelaMedjustanica() {
@@ -157,11 +95,6 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         cmbLinije.setBackground(new java.awt.Color(153, 153, 153));
         cmbLinije.setForeground(new java.awt.Color(0, 0, 0));
         cmbLinije.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbLinije.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbLinijeItemStateChanged(evt);
-            }
-        });
         add(cmbLinije, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 75, 530, 30));
 
         lblNaziv2.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,11 +112,6 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         btnObrisiMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
         btnObrisiMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_minus_64px.png"))); // NOI18N
         btnObrisiMedjustanicu.setText("Obrisi");
-        btnObrisiMedjustanicu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiMedjustanicuActionPerformed(evt);
-            }
-        });
         add(btnObrisiMedjustanicu, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 155, 190, 40));
 
         btnDodajMedjustanicu.setBackground(new java.awt.Color(153, 153, 153));
@@ -191,11 +119,6 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         btnDodajMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
         btnDodajMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_plus_64px.png"))); // NOI18N
         btnDodajMedjustanicu.setText("Dodaj ");
-        btnDodajMedjustanicu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDodajMedjustanicuActionPerformed(evt);
-            }
-        });
         add(btnDodajMedjustanicu, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 155, 200, 40));
 
         lblNazivLinijeKodTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -230,11 +153,6 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         btnObrisiLiniju.setForeground(new java.awt.Color(0, 0, 0));
         btnObrisiLiniju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"))); // NOI18N
         btnObrisiLiniju.setText("OBRISI LINIJU");
-        btnObrisiLiniju.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiLinijuActionPerformed(evt);
-            }
-        });
         add(btnObrisiLiniju, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 502, 280, 50));
 
         btnIzmeniRedosledMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
@@ -242,33 +160,8 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         btnIzmeniRedosledMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
         btnIzmeniRedosledMedjustanica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_save_64px.png"))); // NOI18N
         btnIzmeniRedosledMedjustanica.setText("Izmeni redosled");
-        btnIzmeniRedosledMedjustanica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIzmeniRedosledMedjustanicaActionPerformed(evt);
-            }
-        });
         add(btnIzmeniRedosledMedjustanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 502, 320, 50));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbLinijeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLinijeItemStateChanged
-
-    }//GEN-LAST:event_cmbLinijeItemStateChanged
-
-    private void btnObrisiMedjustanicuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiMedjustanicuActionPerformed
-  
-    }//GEN-LAST:event_btnObrisiMedjustanicuActionPerformed
-
-    private void btnDodajMedjustanicuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajMedjustanicuActionPerformed
- 
-    }//GEN-LAST:event_btnDodajMedjustanicuActionPerformed
-
-    private void btnObrisiLinijuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiLinijuActionPerformed
-    
-    }//GEN-LAST:event_btnObrisiLinijuActionPerformed
-
-    private void btnIzmeniRedosledMedjustanicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmeniRedosledMedjustanicaActionPerformed
-   
-    }//GEN-LAST:event_btnIzmeniRedosledMedjustanicaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -285,4 +178,25 @@ public class PanelMedjustanice extends javax.swing.JPanel {
     private javax.swing.JLabel lblNazivLinijeKodTabele;
     private javax.swing.JTable tabelaMedjustanica;
     // End of variables declaration//GEN-END:variables
+
+    public void btnDodajMedjustanicu(ActionListener actionListener) {
+        btnDodajMedjustanicu.addActionListener(actionListener);
+    }
+
+    public void btnIzmeniRedosledMedjustanica(ActionListener actionListener) {
+        btnIzmeniRedosledMedjustanica.addActionListener(actionListener);
+    }
+
+    public void btnObrisiMedjustanicu(ActionListener actionListener) {
+        btnObrisiMedjustanicu.addActionListener(actionListener);
+    }
+
+    public void btnObrisiLiniju(ActionListener actionListener) {
+        btnObrisiLiniju.addActionListener(actionListener);
+    }
+    
+    public void cmbLinije(ItemListener itemListener) {
+        cmbLinije.addItemListener(itemListener);
+    }
+   
 }

@@ -5,6 +5,7 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.component;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -32,26 +33,25 @@ public class PanelStanica extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNazivFrejma2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNazivFrejma = new javax.swing.JLabel();
+        lblNazivStanice = new javax.swing.JLabel();
         txtNazivStanice = new javax.swing.JTextField();
         cmbMestaZaStanice = new javax.swing.JComboBox();
         btnUnesiStanicu = new javax.swing.JButton();
-        lblKm1 = new javax.swing.JLabel();
+        lblMesto = new javax.swing.JLabel();
 
-        lblNazivFrejma2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblNazivFrejma2.setForeground(new java.awt.Color(255, 255, 255));
-        lblNazivFrejma2.setText("Unos stanice");
+        lblNazivFrejma.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblNazivFrejma.setForeground(new java.awt.Color(255, 255, 255));
+        lblNazivFrejma.setText("Unos stanice");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Naziv stanice:");
+        lblNazivStanice.setForeground(new java.awt.Color(255, 255, 255));
+        lblNazivStanice.setText("Naziv stanice:");
 
         txtNazivStanice.setBackground(new java.awt.Color(102, 102, 102));
         txtNazivStanice.setForeground(new java.awt.Color(0, 0, 0));
 
         cmbMestaZaStanice.setBackground(new java.awt.Color(153, 153, 153));
         cmbMestaZaStanice.setForeground(new java.awt.Color(0, 0, 0));
-        cmbMestaZaStanice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnUnesiStanicu.setBackground(new java.awt.Color(153, 153, 153));
         btnUnesiStanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -64,8 +64,8 @@ public class PanelStanica extends javax.swing.JPanel {
             }
         });
 
-        lblKm1.setForeground(new java.awt.Color(255, 255, 255));
-        lblKm1.setText("Mesto:");
+        lblMesto.setForeground(new java.awt.Color(255, 255, 255));
+        lblMesto.setText("Mesto:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,14 +75,14 @@ public class PanelStanica extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnUnesiStanicu, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNazivFrejma2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNazivFrejma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblKm1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMesto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
                             .addComponent(cmbMestaZaStanice, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
                             .addComponent(txtNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -91,14 +91,14 @@ public class PanelStanica extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNazivFrejma2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNazivFrejma, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblKm1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMesto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbMestaZaStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(btnUnesiStanicu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,57 +114,25 @@ public class PanelStanica extends javax.swing.JPanel {
         return btnUnesiStanicu;
     }
 
-    public void setBtnUnesiStanicu(JButton btnUnesiStanicu) {
-        this.btnUnesiStanicu = btnUnesiStanicu;
-    }
-
     public JComboBox getCmbMestaZaStanice() {
         return cmbMestaZaStanice;
-    }
-
-    public void setCmbMestaZaStanice(JComboBox cmbMestaZaStanice) {
-        this.cmbMestaZaStanice = cmbMestaZaStanice;
-    }
-
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
-
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
-
-    public JLabel getLblKm1() {
-        return lblKm1;
-    }
-
-    public void setLblKm1(JLabel lblKm1) {
-        this.lblKm1 = lblKm1;
-    }
-
-    public JLabel getLblNazivFrejma2() {
-        return lblNazivFrejma2;
-    }
-
-    public void setLblNazivFrejma2(JLabel lblNazivFrejma2) {
-        this.lblNazivFrejma2 = lblNazivFrejma2;
     }
 
     public JTextField getTxtNazivStanice() {
         return txtNazivStanice;
     }
 
-    public void setTxtNazivStanice(JTextField txtNazivStanice) {
-        this.txtNazivStanice = txtNazivStanice;
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUnesiStanicu;
     private javax.swing.JComboBox cmbMestaZaStanice;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lblKm1;
-    private javax.swing.JLabel lblNazivFrejma2;
+    private javax.swing.JLabel lblMesto;
+    private javax.swing.JLabel lblNazivFrejma;
+    private javax.swing.JLabel lblNazivStanice;
     private javax.swing.JTextField txtNazivStanice;
     // End of variables declaration//GEN-END:variables
+
+    public void btnUnesiStanicu(ActionListener actionListener) {
+        btnUnesiStanicu.addActionListener(actionListener);
+    }
 }
