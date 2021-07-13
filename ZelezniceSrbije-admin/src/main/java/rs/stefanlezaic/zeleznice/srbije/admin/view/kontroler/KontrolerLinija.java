@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
@@ -105,8 +104,7 @@ public class KontrolerLinija {
         try {
             list = Kontroler.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            
         }
         for (Stanica stanica : list) {
             panelLinija.getCmbPocetna().addItem(stanica);
@@ -120,8 +118,7 @@ public class KontrolerLinija {
         try {
             list = Kontroler.getInstance().vratiMiSveTipoveLinije();
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+           
         }
         for (TipLinije tipLinije : list) {
             panelLinija.getCmbTip().addItem(tipLinije);

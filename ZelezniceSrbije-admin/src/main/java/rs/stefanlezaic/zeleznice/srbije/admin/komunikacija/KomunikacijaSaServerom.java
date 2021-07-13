@@ -11,8 +11,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.lib.transfer.KlijentskiZahtev;
 import rs.stefanlezaic.zeleznice.srbije.lib.transfer.ServerskiOdgovor;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 
 /**
  *
@@ -27,7 +30,8 @@ public class KomunikacijaSaServerom {
         try {
             s = new Socket("localhost", 8999);
         } catch (IOException ex) {
-            Logger.getLogger(KomunikacijaSaServerom.class.getName()).log(Level.SEVERE, null, ex);
+            new JOptionPaneExample().createAndDisplayGUI(new JFrame(), new PanelAttention("Ne mozemo da se konektujemo na server! Pokusajte kasnije!"));
+            System.exit(0);
         }
     }
 

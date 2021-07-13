@@ -14,9 +14,6 @@
               <Font name="Nirmala UI" size="24" style="3"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="meniLinijaMouseClicked"/>
-          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="meniPolazak">
           <Properties>
@@ -28,9 +25,6 @@
               <Font name="Nirmala UI" size="24" style="3"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="meniPolazakMouseClicked"/>
-          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="meniUpravljanjePolascima">
           <Properties>
@@ -42,9 +36,6 @@
               <Font name="Nirmala UI" size="24" style="3"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="meniUpravljanjePolascimaMouseClicked"/>
-          </Events>
         </Menu>
       </SubComponents>
     </Menu>
@@ -149,6 +140,11 @@
       </Layout>
       <SubComponents>
         <Component class="rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSat" name="panelSat1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Nirmala UI" size="14" style="3"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDarkMode">
           <Properties>
@@ -160,9 +156,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Tamno"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblDarkModeMouseClicked"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblWhiteMode">
           <Properties>
@@ -174,9 +167,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Svetlo"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblWhiteModeMouseClicked"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

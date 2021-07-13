@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci;
@@ -203,7 +202,8 @@ public class KontrolerUpravljanjePolascima {
         try {
             Kontroler.getInstance().setSviPolasci(Kontroler.getInstance().vratiListuPolazaka());
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Sistem ne moze da ucita polaske!");
+
         }
     }
 

@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabeleMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice;
@@ -126,8 +125,7 @@ public class KontrolerMedjustanica {
         try {
             lista = Kontroler.getInstance().vratiMiSveMedjustaniceZaLiniju(new MedjuStanica(null, l, -1));
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Sistem ne moze da vrati promeni medjustanice!");
         }
         mtms.setList(lista);
     }
@@ -194,8 +192,7 @@ public class KontrolerMedjustanica {
         try {
             lista = Kontroler.getInstance().vratiMiSveMedjustaniceZaLiniju(new MedjuStanica(null, linija, -1));
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Sistem ne moze da promeni linije!");
         }
         mtms.setList(lista);
     }
@@ -206,8 +203,7 @@ public class KontrolerMedjustanica {
         try {
             list = Kontroler.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Sistem ne moze da vrati stanice!");
         }
         for (Stanica stanica : list) {
             panelMedjustanice.getCmbMedjustanica().addItem(stanica);
@@ -223,8 +219,7 @@ public class KontrolerMedjustanica {
                 panelMedjustanice.getCmbLinije().addItem(linija);
             }
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Sistem ne moze da vrati linije!");
         }
     }
 

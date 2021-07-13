@@ -8,8 +8,8 @@ package rs.stefanlezaic.zeleznice.srbije.admin.main;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavniFrame;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 
 /**
  *
@@ -25,10 +25,8 @@ public class Main {
                 UIManager.put("Button.background", new Color(155, 155, 155));
             }
         });
-        GlavniFrame fl = new GlavniFrame();
-        fl.setLocationRelativeTo(null);
-        fl.setVisible(true);
-        fl.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        KontrolerGlavneForme kontrolerGlavneForme=new KontrolerGlavneForme(new GlavnaForma());
+        kontrolerGlavneForme.otvoriGlavnuFormu();
 
     }
 }

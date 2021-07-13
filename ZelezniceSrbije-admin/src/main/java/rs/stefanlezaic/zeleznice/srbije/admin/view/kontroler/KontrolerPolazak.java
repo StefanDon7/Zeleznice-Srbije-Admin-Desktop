@@ -16,13 +16,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTable;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
-import rs.stefanlezaic.zeleznice.srbije.lib.domen.TipLinije;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Voz;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
@@ -43,7 +41,7 @@ public class KontrolerPolazak {
     private JFrame forma;
     private ModelTabelePolaska mtp = new ModelTabelePolaska();
     private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-    private final Tabela tabela=new Tabela();
+    private final Tabela tabela = new Tabela();
 
     public KontrolerPolazak() {
     }
@@ -69,7 +67,7 @@ public class KontrolerPolazak {
                 panelPolazak.getCmbLinijaPolazak().addItem(linija);
             }
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Sistem ne moze da ucita linije!");
         }
     }
 
@@ -80,8 +78,7 @@ public class KontrolerPolazak {
             vozovi = Kontroler.getInstance().vratiMiSveVozove();
 
         } catch (Exception ex) {
-            Logger.getLogger(FormaLinija.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Sistem ne moze da ucita vozove!");
         }
         for (Voz voz : vozovi) {
             panelPolazak.getCmbVoz().addItem(voz);
@@ -195,9 +192,9 @@ public class KontrolerPolazak {
         String datumKrajnji = sdf.format(dolazakDatum);
 
         String naziv = l.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
-        polazak=new Polazak();
+        polazak = new Polazak();
         try {
-            polazak.setNaziv(naziv);            
+            polazak.setNaziv(naziv);
             polazak.setDatumPolaska(polazakDatum);
             polazak.setDatumDolaska(dolazakDatum);
             polazak.setLinija(l);
