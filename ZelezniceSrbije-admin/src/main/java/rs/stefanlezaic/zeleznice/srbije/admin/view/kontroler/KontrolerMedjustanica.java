@@ -12,10 +12,10 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija2;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabeleMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice;
@@ -37,11 +37,11 @@ public class KontrolerMedjustanica {
 
     private PanelMedjustanice panelMedjustanice;
     private MedjuStanica medjuStanica;
-    private FormaLinija2 forma;
+    private JFrame forma;
     private final ModelTabeleMedjustanica mtms = new ModelTabeleMedjustanica();
     private final Tabela tabela = new Tabela();
 
-    public KontrolerMedjustanica(PanelMedjustanice panelMedjustanice, FormaLinija2 forma) {
+    public KontrolerMedjustanica(PanelMedjustanice panelMedjustanice, JFrame forma) {
         this.panelMedjustanice = panelMedjustanice;
         this.forma = forma;
         urediTabeluMedjuStanica();
@@ -235,7 +235,7 @@ public class KontrolerMedjustanica {
         panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setResizable(false);
 
         panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(0).setWidth(50);
-        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMinWidth(519);
-        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMaxWidth(519);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMinWidth(536);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMaxWidth(536);
     }
 }

@@ -9,21 +9,15 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view;
  *
  * @author Stefan
  */
-public class PanelPolazak extends javax.swing.JPanel {
+public class PanelTema extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelPolazak
+     * Creates new form PanelTema
      */
-    public PanelPolazak() {
+    public PanelTema() {
         initComponents();
     }
 
-    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak getPanelPolazak() {
-        return panelPolazak;
-    }
-
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,28 +27,19 @@ public class PanelPolazak extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPolazak = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak();
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelPolazak, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelPolazak, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak panelPolazak;
     // End of variables declaration//GEN-END:variables
 }

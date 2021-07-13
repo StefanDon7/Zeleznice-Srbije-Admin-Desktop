@@ -8,8 +8,8 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija2;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Mesto;
@@ -27,12 +27,12 @@ public class KontrolerStanica {
 
     private PanelStanica panelStanica;
     private Stanica stanica;
-    private FormaLinija2 forma;
+    private JFrame forma;
 
     public KontrolerStanica() {
     }
 
-    public KontrolerStanica(PanelStanica panelStanica, FormaLinija2 forma) {
+    public KontrolerStanica(PanelStanica panelStanica, JFrame forma) {
         this.panelStanica = panelStanica;
         this.forma = forma;
         popuniPolje();

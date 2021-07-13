@@ -20,13 +20,13 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
         initComponents();
     }
 
-    public PanelSviPolasci getPanelSviPolasci1() {
-        return panelSviPolasci1;
+    public PanelSviPolasci getPanelSviPolasci() {
+        return panelSviPolasci;
     }
 
-    public void setPanelSviPolasci1(PanelSviPolasci panelSviPolasci1) {
-        this.panelSviPolasci1 = panelSviPolasci1;
-    }
+    
+
+    
     
 
     /**
@@ -38,28 +38,22 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSviPolasci1 = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci();
+        panelSviPolasci = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelSviPolasci1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(panelSviPolasci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelSviPolasci1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(panelSviPolasci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci panelSviPolasci1;
+    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci panelSviPolasci;
     // End of variables declaration//GEN-END:variables
 }

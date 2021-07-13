@@ -14,9 +14,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija2;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak;
@@ -40,7 +40,7 @@ public class KontrolerPolazak {
 
     private PanelPolazak panelPolazak;
     private Polazak polazak;
-    private FormaLinija2 forma;
+    private JFrame forma;
     private ModelTabelePolaska mtp = new ModelTabelePolaska();
     private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private final Tabela tabela=new Tabela();
@@ -48,7 +48,7 @@ public class KontrolerPolazak {
     public KontrolerPolazak() {
     }
 
-    public KontrolerPolazak(PanelPolazak panelPolazak, FormaLinija2 forma) {
+    public KontrolerPolazak(PanelPolazak panelPolazak, JFrame forma) {
         this.panelPolazak = panelPolazak;
         this.forma = forma;
         ucitajLinije();
@@ -266,14 +266,14 @@ public class KontrolerPolazak {
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(3).setResizable(false);
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(4).setResizable(false);
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(0).setWidth(25);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(1).setMaxWidth(519);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(1).setMinWidth(519);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(2).setMaxWidth(120);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(2).setMinWidth(120);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(3).setMaxWidth(120);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(3).setMinWidth(120);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(4).setMaxWidth(70);
-        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(4).setMinWidth(70);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(1).setMaxWidth(540);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(1).setMinWidth(540);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(2).setMaxWidth(150);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(2).setMinWidth(150);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(3).setMaxWidth(150);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(3).setMinWidth(150);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(4).setMaxWidth(150);
+        panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(4).setMinWidth(150);
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(5).setMaxWidth(250);
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(5).setMinWidth(250);
     }

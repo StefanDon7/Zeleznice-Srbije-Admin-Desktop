@@ -3,27 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.stefanlezaic.zeleznice.srbije.admin.view;
+package rs.stefanlezaic.zeleznice.srbije.admin.view.component;
+
+import javax.swing.JLabel;
+import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
 
 /**
  *
  * @author Stefan
  */
-public class PanelPolazak extends javax.swing.JPanel {
+public class PanelSat extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelPolazak
-     */
-    public PanelPolazak() {
-        initComponents();
-    }
-
-    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak getPanelPolazak() {
-        return panelPolazak;
-    }
-
-
+ 
     
+    public PanelSat() {
+        initComponents();
+       
+    }
+
+    public JLabel getLblDatum() {
+        return lblDatum;
+    }
+
+    public JLabel getLblVreme() {
+        return lblVreme;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +39,8 @@ public class PanelPolazak extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPolazak = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak();
+        lblDatum = new javax.swing.JLabel();
+        lblVreme = new javax.swing.JLabel();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -41,20 +48,25 @@ public class PanelPolazak extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPolazak, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblVreme, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPolazak, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak panelPolazak;
+    private javax.swing.JLabel lblDatum;
+    private javax.swing.JLabel lblVreme;
     // End of variables declaration//GEN-END:variables
 }

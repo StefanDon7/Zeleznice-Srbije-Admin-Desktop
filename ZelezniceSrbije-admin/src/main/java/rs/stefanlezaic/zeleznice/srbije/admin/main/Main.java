@@ -8,7 +8,8 @@ package rs.stefanlezaic.zeleznice.srbije.admin.main;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija2;
+import javax.swing.WindowConstants;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavniFrame;
 
 /**
  *
@@ -24,11 +25,10 @@ public class Main {
                 UIManager.put("Button.background", new Color(155, 155, 155));
             }
         });
-//        FormaLinija formaLinija = new FormaLinija();
-//        formaLinija.setVisible(true);
-        FormaLinija2 fl = new FormaLinija2(null, true);
+        GlavniFrame fl = new GlavniFrame();
         fl.setLocationRelativeTo(null);
         fl.setVisible(true);
+        fl.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
 }

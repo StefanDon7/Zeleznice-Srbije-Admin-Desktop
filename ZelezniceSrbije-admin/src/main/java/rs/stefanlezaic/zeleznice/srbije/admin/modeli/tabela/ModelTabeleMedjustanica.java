@@ -7,7 +7,10 @@ package rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela;
 
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.MedjuStanica;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -64,7 +67,7 @@ public class ModelTabeleMedjustanica extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void obrisi(int red) {
+    public void obrisi(int red) throws ParametarsException {
         list.remove(red);
         for (MedjuStanica medjuStanica : list) {
             if (medjuStanica.getRedniBroj() > red + 1) {
@@ -81,7 +84,11 @@ public class ModelTabeleMedjustanica extends AbstractTableModel {
 
     public void izbrisiListu() {
         for (int i = list.size() - 1; i >= 0; i--) {
-            obrisi(i);
+            try {
+                obrisi(i);
+            } catch (ParametarsException ex) {
+                return;
+            }
         }
 
         fireTableDataChanged();

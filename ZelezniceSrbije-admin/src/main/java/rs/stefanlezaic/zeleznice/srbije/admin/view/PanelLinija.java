@@ -53,9 +53,9 @@ public class PanelLinija extends javax.swing.JPanel {
         panelStanica = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(panelLinija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-        add(panelMedjustanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 660, 560));
-        add(panelStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 460, -1));
+        add(panelLinija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 310));
+        add(panelMedjustanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 660, 560));
+        add(panelStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 480, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

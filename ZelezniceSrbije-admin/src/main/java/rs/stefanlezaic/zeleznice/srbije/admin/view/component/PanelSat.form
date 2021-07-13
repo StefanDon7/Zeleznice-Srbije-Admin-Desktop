@@ -16,9 +16,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPolazak" pref="1288" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblDatum" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblVreme" alignment="1" pref="128" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -27,14 +30,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPolazak" pref="588" max="32767" attributes="0"/>
+              <Component id="lblDatum" min="-2" pref="85" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblVreme" min="-2" pref="85" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak" name="panelPolazak">
+    <Component class="javax.swing.JLabel" name="lblDatum">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVreme">
     </Component>
   </SubComponents>
 </Form>

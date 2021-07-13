@@ -11,8 +11,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.FormaLinija2;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
@@ -31,12 +31,12 @@ public class KontrolerLinija {
 
     private PanelLinija panelLinija;
     private Linija linija;
-    private FormaLinija2 forma;
+    private JFrame forma;
 
     public KontrolerLinija() {
     }
 
-    public KontrolerLinija(PanelLinija panelLinija, FormaLinija2 forma) {
+    public KontrolerLinija(PanelLinija panelLinija, JFrame forma) {
         this.panelLinija = panelLinija;
         this.forma = forma;
         popuniPoljeStanice();
