@@ -28,13 +28,15 @@ public class KontrolerGlavneForme {
     private GlavnaForma glavnaForma;
     private Tema tema;
     private Sat sat;
-    private ImageIcon icon;
+    private KontrolerStanica kontrolerStanica;
+    private KontrolerLinija kontrolerLinija;
+    private KontrolerMedjustanica kontrolerMedjustanica;
+    private KontrolerPolazak kontrolerPolazak;
+    private KontrolerUpravljanjePolascima kontrolerUpravljanjePolascima;
 
     public KontrolerGlavneForme(GlavnaForma glavnaForma) {
         this.glavnaForma = glavnaForma;
         napraviOstaleKontrolore();
-        icon=new ImageIcon("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_train_48px.png");
-        glavnaForma.setIconImage(icon.getImage());
         pokreniSat();
         pokreniTemu();
         addListener();
@@ -182,11 +184,11 @@ public class KontrolerGlavneForme {
     }
 
     private void napraviOstaleKontrolore() {
-        KontrolerStanica kontrolerStanica = new KontrolerStanica(glavnaForma.getPanelLinija().getPanelStanica(), glavnaForma);
-        KontrolerLinija kontrolerLinija = new KontrolerLinija(glavnaForma.getPanelLinija().getPanelLinija(), glavnaForma);
-        KontrolerMedjustanica kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelLinija().getPanelMedjustanice(), glavnaForma);
-        KontrolerPolazak kontrolerPolazak = new KontrolerPolazak(glavnaForma.getPanelPolazak().getPanelPolazak(), glavnaForma);
-        KontrolerUpravljanjePolascima kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima().getPanelSviPolasci(), glavnaForma);
+        kontrolerStanica = new KontrolerStanica(glavnaForma.getPanelLinija().getPanelStanica(), glavnaForma);
+        kontrolerLinija = new KontrolerLinija(glavnaForma.getPanelLinija().getPanelLinija(), glavnaForma);
+        kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelLinija().getPanelMedjustanice(), glavnaForma);
+        kontrolerPolazak = new KontrolerPolazak(glavnaForma.getPanelPolazak().getPanelPolazak(), glavnaForma);
+        kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima().getPanelSviPolasci(), glavnaForma);
     }
 
     private void otvoriPanelLinija() {
