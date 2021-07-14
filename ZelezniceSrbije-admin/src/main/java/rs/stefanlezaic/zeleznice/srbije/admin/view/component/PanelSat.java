@@ -41,31 +41,31 @@ public class PanelSat extends javax.swing.JPanel {
 
         lblDatum = new javax.swing.JLabel();
         lblVreme = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblVreme, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDatum.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
+        lblDatum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDatum.setToolTipText("");
+        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 240, 60));
+
+        lblVreme.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
+        lblVreme.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(lblVreme, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 70, 240, 60));
+
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 240, 60));
+
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 70, 240, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblDatum;
     private javax.swing.JLabel lblVreme;
     // End of variables declaration//GEN-END:variables

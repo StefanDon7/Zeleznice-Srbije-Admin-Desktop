@@ -14,6 +14,7 @@ import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelPolazak;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSat;
+import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelTema;
 
 
 /**
@@ -34,15 +35,7 @@ public class GlavnaForma extends javax.swing.JFrame {
     public PanelSat getPanelSat1() {
         return panelSat1;
     }
-
-    public JLabel getLblDarkMode() {
-        return lblDarkMode;
-    }
-
-    public JLabel getLblWhiteMode() {
-        return lblWhiteMode;
-    }
-
+    
     public PanelLinija getPanelLinija() {
         return panelLinija;
     }
@@ -79,14 +72,18 @@ public class GlavnaForma extends javax.swing.JFrame {
         return jPanelUpravljanjePolascima;
     }
 
+    public PanelTema getPanelTema() {
+        return panelTema;
+    }
+    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panelBar = new javax.swing.JPanel();
+        panelTema = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelTema();
         panelSat1 = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSat();
-        lblDarkMode = new javax.swing.JLabel();
-        lblWhiteMode = new javax.swing.JLabel();
         jPanelUpravljanjePolascima = new javax.swing.JPanel();
         panelUpravljanjePolascima = new rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima();
         jPanelPolazak = new javax.swing.JPanel();
@@ -101,40 +98,9 @@ public class GlavnaForma extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelSat1.setFont(new java.awt.Font("Nirmala UI", 3, 14)); // NOI18N
-
-        lblDarkMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblDarkMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/darkMode.png"))); // NOI18N
-        lblDarkMode.setText("Tamno");
-
-        lblWhiteMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblWhiteMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/whiteMode.png"))); // NOI18N
-        lblWhiteMode.setText("Svetlo");
-
-        javax.swing.GroupLayout panelBarLayout = new javax.swing.GroupLayout(panelBar);
-        panelBar.setLayout(panelBarLayout);
-        panelBarLayout.setHorizontalGroup(
-            panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBarLayout.createSequentialGroup()
-                .addGroup(panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDarkMode, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWhiteMode, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelSat1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelBarLayout.setVerticalGroup(
-            panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBarLayout.createSequentialGroup()
-                .addGroup(panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDarkMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWhiteMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelSat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(336, Short.MAX_VALUE))
-        );
+        panelBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBar.add(panelTema, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 130, 250, 80));
+        panelBar.add(panelSat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 250, 135));
 
         jPanelUpravljanjePolascima.setPreferredSize(new java.awt.Dimension(1300, 600));
 
@@ -149,9 +115,8 @@ public class GlavnaForma extends javax.swing.JFrame {
         jPanelUpravljanjePolascimaLayout.setVerticalGroup(
             jPanelUpravljanjePolascimaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUpravljanjePolascimaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelUpravljanjePolascima, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 4, Short.MAX_VALUE)
+                .addComponent(panelUpravljanjePolascima, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanelPolazakLayout = new javax.swing.GroupLayout(jPanelPolazak);
@@ -185,23 +150,27 @@ public class GlavnaForma extends javax.swing.JFrame {
         );
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.SE_RESIZE_CURSOR));
         jSeparator1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
 
         meniLinija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/meni_linija_80px.png"))); // NOI18N
         meniLinija.setText("Linija");
         meniLinija.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
+        meniLinija.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBar.add(meniLinija);
 
         meniPolazak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/meni_oblak_voz_100.png"))); // NOI18N
         meniPolazak.setText("Polazak");
         meniPolazak.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
+        meniPolazak.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        meniPolazak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         menuBar.add(meniPolazak);
 
         meniUpravljanjePolascima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/meni_lista_svi_polasci_100px.png"))); // NOI18N
         meniUpravljanjePolascima.setText("Upravljanje polascima");
         meniUpravljanjePolascima.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
+        meniUpravljanjePolascima.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuBar.add(meniUpravljanjePolascima);
 
         setJMenuBar(menuBar);
@@ -210,35 +179,32 @@ public class GlavnaForma extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1490, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanelLinija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelPolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelUpravljanjePolascima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addComponent(panelBar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelLinija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelPolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelUpravljanjePolascima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBar, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 4, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanelLinija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelPolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelUpravljanjePolascima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(panelBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 4, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelLinija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelPolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelUpravljanjePolascima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                            .addComponent(panelBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,8 +216,6 @@ public class GlavnaForma extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelPolazak;
     private javax.swing.JPanel jPanelUpravljanjePolascima;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblDarkMode;
-    private javax.swing.JLabel lblWhiteMode;
     private javax.swing.JMenu meniLinija;
     private javax.swing.JMenu meniPolazak;
     private javax.swing.JMenu meniUpravljanjePolascima;
@@ -260,6 +224,7 @@ public class GlavnaForma extends javax.swing.JFrame {
     private rs.stefanlezaic.zeleznice.srbije.admin.view.PanelLinija panelLinija;
     private rs.stefanlezaic.zeleznice.srbije.admin.view.PanelPolazak panelPolazak;
     private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSat panelSat1;
+    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelTema panelTema;
     private rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima panelUpravljanjePolascima;
     // End of variables declaration//GEN-END:variables
 
@@ -276,10 +241,10 @@ public class GlavnaForma extends javax.swing.JFrame {
     }
 
     public void lblTamnaTemaActionListener(MouseListener mouseListener) {
-        lblDarkMode.addMouseListener(mouseListener);
+       panelTema.getLblDarkMode().addMouseListener(mouseListener);
     }
 
     public void lblSvetlaTemaActionListener(MouseListener mouseListener) {
-        lblWhiteMode.addMouseListener(mouseListener);
+        panelTema.getLblWhiteMode().addMouseListener(mouseListener);
     }
 }

@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerLinija;
@@ -27,10 +28,13 @@ public class KontrolerGlavneForme {
     private GlavnaForma glavnaForma;
     private Tema tema;
     private Sat sat;
+    private ImageIcon icon;
 
     public KontrolerGlavneForme(GlavnaForma glavnaForma) {
         this.glavnaForma = glavnaForma;
         napraviOstaleKontrolore();
+        icon=new ImageIcon("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_train_48px.png");
+        glavnaForma.setIconImage(icon.getImage());
         pokreniSat();
         pokreniTemu();
         addListener();
@@ -55,23 +59,11 @@ public class KontrolerGlavneForme {
         glavnaForma.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         glavnaForma.setVisible(true);
         glavnaForma.pack();
-        glavnaForma.setMinimumSize(new Dimension(1500, 800));
+        glavnaForma.setMinimumSize(new Dimension(1315, 800));
     }
 
     public void zatvoriGlavnuFormu() {
         glavnaForma.setVisible(false);
-    }
-
-    private void ukljuciTamnuTemu() {
-        glavnaForma.getLblDarkMode().setVisible(false);
-        glavnaForma.getLblWhiteMode().setVisible(true);
-        tema.blackTheme();
-    }
-
-    private void ukljuciSvetluTemu() {
-        glavnaForma.getLblDarkMode().setVisible(true);
-        glavnaForma.getLblWhiteMode().setVisible(false);
-        tema.whiteTheme();
     }
 
     private void addListener() {
@@ -145,7 +137,8 @@ public class KontrolerGlavneForme {
         glavnaForma.lblTamnaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ukljuciTamnuTemu();
+                glavnaForma.getPanelTema().ukljuciTamnuTemu();
+
             }
 
             @Override
@@ -167,7 +160,7 @@ public class KontrolerGlavneForme {
         glavnaForma.lblSvetlaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ukljuciSvetluTemu();
+                glavnaForma.getPanelTema().ukljuciSvetluTemu();
             }
 
             @Override
@@ -220,8 +213,8 @@ public class KontrolerGlavneForme {
     }
 
     private void pokreniTemu() {
-        tema = new Tema(glavnaForma);
-        ukljuciTamnuTemu();
+        glavnaForma.getPanelTema().dodeliContainer(glavnaForma);
+        glavnaForma.getPanelTema().ukljuciTamnuTemu();
     }
 
 }

@@ -262,6 +262,7 @@ public class PanelPolazak extends javax.swing.JPanel {
         btnObrisiPolazak.setText("Izbaci polazak");
 
         spinerSati.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
+        spinerSati.setBorder(null);
         spinerSati.setFocusable(false);
         spinerSati.setOpaque(false);
 
@@ -272,8 +273,6 @@ public class PanelPolazak extends javax.swing.JPanel {
         lblZaNarednih.setForeground(new java.awt.Color(255, 255, 255));
         lblZaNarednih.setText("Za narednih:");
 
-        cboxPovratna.setBackground(new java.awt.Color(102, 102, 102));
-        cboxPovratna.setForeground(new java.awt.Color(255, 255, 255));
         cboxPovratna.setText("Povratna?");
 
         btnObrisiListu.setBackground(new java.awt.Color(153, 153, 153));
