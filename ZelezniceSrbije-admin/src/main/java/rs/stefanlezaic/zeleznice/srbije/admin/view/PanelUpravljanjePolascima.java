@@ -5,7 +5,13 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view;
 
-import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -14,20 +20,73 @@ import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci;
 public class PanelUpravljanjePolascima extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelUpravljanjePolascima
+     * Creates new form PanelSviPolasci
      */
     public PanelUpravljanjePolascima() {
         initComponents();
     }
 
-    public PanelSviPolasci getPanelSviPolasci() {
-        return panelSviPolasci;
+    public JButton getBtnObrisiPolazakIzTabeleSviPolasci() {
+        return btnObrisiPolazakIzTabeleSviPolasci;
     }
 
-    
+    public void setBtnObrisiPolazakIzTabeleSviPolasci(JButton btnObrisiPolazakIzTabeleSviPolasci) {
+        this.btnObrisiPolazakIzTabeleSviPolasci = btnObrisiPolazakIzTabeleSviPolasci;
+    }
 
+    public JButton getBtnUpdejtuj() {
+        return btnUpdejtuj;
+    }
+
+    public void setBtnUpdejtuj(JButton btnUpdejtuj) {
+        this.btnUpdejtuj = btnUpdejtuj;
+    }
+
+    public JComboBox<String> getCmbSortiraj() {
+        return cmbSortiraj;
+    }
+
+    public void setCmbSortiraj(JComboBox<String> cmbSortiraj) {
+        this.cmbSortiraj = cmbSortiraj;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JTable getTabelaSviPolasci() {
+        return tabelaSviPolasci;
+    }
+
+    public void setTabelaSviPolasci(JTable tabelaSviPolasci) {
+        this.tabelaSviPolasci = tabelaSviPolasci;
+    }
+
+    public JButton getBtnOsveziListuSviPolasci() {
+        return btnOsveziListuSviPolasci;
+    }
     
-    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,22 +97,104 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSviPolasci = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaSviPolasci = new javax.swing.JTable();
+        btnOsveziListuSviPolasci = new javax.swing.JButton();
+        btnObrisiPolazakIzTabeleSviPolasci = new javax.swing.JButton();
+        btnUpdejtuj = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cmbSortiraj = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelSviPolasci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelSviPolasci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
+        tabelaSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaSviPolasci.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabelaSviPolasci.setFocusable(false);
+        tabelaSviPolasci.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tabelaSviPolasci.setRowHeight(25);
+        tabelaSviPolasci.setShowVerticalLines(false);
+        tabelaSviPolasci.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(tabelaSviPolasci);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1280, 460));
+
+        btnOsveziListuSviPolasci.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_refresh_64px_1.png"))); // NOI18N
+        btnOsveziListuSviPolasci.setText("Osvezi listu");
+        add(btnOsveziListuSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 220, 60));
+
+        btnObrisiPolazakIzTabeleSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
+        btnObrisiPolazakIzTabeleSviPolasci.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnObrisiPolazakIzTabeleSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
+        btnObrisiPolazakIzTabeleSviPolasci.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"))); // NOI18N
+        btnObrisiPolazakIzTabeleSviPolasci.setText("Obrisi polazak");
+        add(btnObrisiPolazakIzTabeleSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 300, 60));
+
+        btnUpdejtuj.setBackground(new java.awt.Color(153, 153, 153));
+        btnUpdejtuj.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnUpdejtuj.setForeground(new java.awt.Color(0, 0, 0));
+        btnUpdejtuj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_refresh_64px_1.png"))); // NOI18N
+        btnUpdejtuj.setText("Izmeni polazak");
+        add(btnUpdejtuj, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 530, 300, 60));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px_1.png"))); // NOI18N
+        jLabel4.setText("TABELA SVIH POLAZAKA");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 40));
+
+        cmbSortiraj.setBackground(new java.awt.Color(153, 153, 153));
+        cmbSortiraj.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbSortiraj.setForeground(new java.awt.Color(0, 0, 0));
+        cmbSortiraj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "po datumu u opadajucem", "po datumu u rastucem ", "po liniji " }));
+        add(cmbSortiraj, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, 220, 40));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_sort_32px_1.png"))); // NOI18N
+        jLabel5.setText("Sortiraj:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci panelSviPolasci;
+    private javax.swing.JButton btnObrisiPolazakIzTabeleSviPolasci;
+    private javax.swing.JButton btnOsveziListuSviPolasci;
+    private javax.swing.JButton btnUpdejtuj;
+    private javax.swing.JComboBox<String> cmbSortiraj;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tabelaSviPolasci;
     // End of variables declaration//GEN-END:variables
+
+    public void btnObrisiPolazakIzTabeleSviPolasciActionListener(ActionListener actionListener) {
+        btnObrisiPolazakIzTabeleSviPolasci.addActionListener(actionListener);
+    }
+
+    public void btnUpdejtujActionListener(ActionListener actionListener) {
+        btnUpdejtuj.addActionListener(actionListener);
+    }
+
+    public void btnOsveziListuSviPolasciActionListener(ActionListener actionListener) {
+        btnOsveziListuSviPolasci.addActionListener(actionListener);
+    }
+
+    public void cmbSortirajItemListener(ItemListener itemListener) {
+        cmbSortiraj.addItemListener(itemListener);
+    }
+
+    
+
 }

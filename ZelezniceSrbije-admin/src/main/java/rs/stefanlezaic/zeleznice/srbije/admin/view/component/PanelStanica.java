@@ -40,18 +40,27 @@ public class PanelStanica extends javax.swing.JPanel {
         btnUnesiStanicu = new javax.swing.JButton();
         lblMesto = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lblNazivFrejma.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         lblNazivFrejma.setForeground(new java.awt.Color(255, 255, 255));
         lblNazivFrejma.setText("Unos stanice");
+        add(lblNazivFrejma, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 50));
 
+        lblNazivStanice.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNazivStanice.setForeground(new java.awt.Color(255, 255, 255));
+        lblNazivStanice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
         lblNazivStanice.setText("Naziv stanice:");
+        lblNazivStanice.setToolTipText("");
+        add(lblNazivStanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 160, 40));
 
         txtNazivStanice.setBackground(new java.awt.Color(102, 102, 102));
         txtNazivStanice.setForeground(new java.awt.Color(0, 0, 0));
+        add(txtNazivStanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 300, 40));
 
         cmbMestaZaStanice.setBackground(new java.awt.Color(153, 153, 153));
         cmbMestaZaStanice.setForeground(new java.awt.Color(0, 0, 0));
+        add(cmbMestaZaStanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 300, 40));
 
         btnUnesiStanicu.setBackground(new java.awt.Color(153, 153, 153));
         btnUnesiStanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -63,47 +72,14 @@ public class PanelStanica extends javax.swing.JPanel {
                 btnUnesiStanicuActionPerformed(evt);
             }
         });
+        add(btnUnesiStanicu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 300, 60));
 
+        lblMesto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblMesto.setForeground(new java.awt.Color(255, 255, 255));
-        lblMesto.setText("Mesto:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnUnesiStanicu, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNazivFrejma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblMesto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(15, 15, 15)
-                            .addComponent(cmbMestaZaStanice, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(15, 15, 15)
-                            .addComponent(txtNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNazivFrejma, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNazivStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMesto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMestaZaStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(btnUnesiStanicu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lblMesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_flag_filled_32px.png"))); // NOI18N
+        lblMesto.setText("Mesto stanice:");
+        lblMesto.setToolTipText("");
+        add(lblMesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 160, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUnesiStanicuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnesiStanicuActionPerformed

@@ -84,48 +84,50 @@ public class PanelMedjustanice extends javax.swing.JPanel {
 
         lblNazivFrejma.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         lblNazivFrejma.setForeground(new java.awt.Color(255, 255, 255));
-        lblNazivFrejma.setText("Unos medjustanica");
-        add(lblNazivFrejma, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 350, 40));
+        lblNazivFrejma.setText("Unos međustanica");
+        add(lblNazivFrejma, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 50));
 
+        lblNaziv3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNaziv3.setForeground(new java.awt.Color(255, 255, 255));
         lblNaziv3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_tracks_32px.png"))); // NOI18N
         lblNaziv3.setText("Linija:");
-        add(lblNaziv3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 75, 90, 30));
+        add(lblNaziv3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 90, 40));
 
         cmbLinije.setBackground(new java.awt.Color(153, 153, 153));
         cmbLinije.setForeground(new java.awt.Color(0, 0, 0));
         cmbLinije.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbLinije, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 75, 530, 30));
+        add(cmbLinije, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 530, 40));
 
+        lblNaziv2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNaziv2.setForeground(new java.awt.Color(255, 255, 255));
         lblNaziv2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_flag_filled_32px.png"))); // NOI18N
-        lblNaziv2.setText("Medjustanica:");
-        add(lblNaziv2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 130, 40));
+        lblNaziv2.setText("Međustanica:");
+        add(lblNaziv2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 140, 40));
 
         cmbMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
         cmbMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
         cmbMedjustanica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbMedjustanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 115, 370, 30));
+        add(cmbMedjustanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 370, 40));
 
         btnObrisiMedjustanicu.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiMedjustanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnObrisiMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
         btnObrisiMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_minus_64px.png"))); // NOI18N
-        btnObrisiMedjustanicu.setText("Obrisi");
-        add(btnObrisiMedjustanicu, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 155, 190, 40));
+        btnObrisiMedjustanicu.setText("Obriši");
+        add(btnObrisiMedjustanicu, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 200, 60));
 
         btnDodajMedjustanicu.setBackground(new java.awt.Color(153, 153, 153));
         btnDodajMedjustanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnDodajMedjustanicu.setForeground(new java.awt.Color(0, 0, 0));
         btnDodajMedjustanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_plus_64px.png"))); // NOI18N
         btnDodajMedjustanicu.setText("Dodaj ");
-        add(btnDodajMedjustanicu, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 155, 200, 40));
+        add(btnDodajMedjustanicu, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 200, 60));
 
         lblNazivLinijeKodTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblNazivLinijeKodTabele.setForeground(new java.awt.Color(255, 255, 255));
         lblNazivLinijeKodTabele.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px.png"))); // NOI18N
-        lblNazivLinijeKodTabele.setText("Lista stanica:");
-        add(lblNazivLinijeKodTabele, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 155, 210, 40));
+        lblNazivLinijeKodTabele.setText("Lista međustanica:");
+        add(lblNazivLinijeKodTabele, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 210, 50));
 
         jScrollPane1.setBackground(new java.awt.Color(187, 187, 187));
 
@@ -146,21 +148,21 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         tabelaMedjustanica.setRowHeight(25);
         jScrollPane1.setViewportView(tabelaMedjustanica);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 205, 620, 290));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 630, 310));
 
         btnObrisiLiniju.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnObrisiLiniju.setForeground(new java.awt.Color(0, 0, 0));
         btnObrisiLiniju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"))); // NOI18N
-        btnObrisiLiniju.setText("OBRISI LINIJU");
-        add(btnObrisiLiniju, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 502, 280, 50));
+        btnObrisiLiniju.setText("Obriši liniju");
+        add(btnObrisiLiniju, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 280, 60));
 
         btnIzmeniRedosledMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
         btnIzmeniRedosledMedjustanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnIzmeniRedosledMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
         btnIzmeniRedosledMedjustanica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_save_64px.png"))); // NOI18N
         btnIzmeniRedosledMedjustanica.setText("Izmeni redosled");
-        add(btnIzmeniRedosledMedjustanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 502, 320, 50));
+        add(btnIzmeniRedosledMedjustanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, 320, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 

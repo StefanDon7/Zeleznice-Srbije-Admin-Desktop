@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
-import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSviPolasci;
+import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
@@ -33,7 +33,7 @@ import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
  */
 public class KontrolerUpravljanjePolascima {
 
-    private PanelSviPolasci panelSviPolasci;
+    private PanelUpravljanjePolascima panelSviPolasci;
     private JFrame forma;
     private final ModelTabelePolaska mtsp = new ModelTabelePolaska();
     private final Tabela tabela = new Tabela();
@@ -41,7 +41,7 @@ public class KontrolerUpravljanjePolascima {
     public KontrolerUpravljanjePolascima() {
     }
 
-    public KontrolerUpravljanjePolascima(PanelSviPolasci panelSviPolasci, JFrame forma) {
+    public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelSviPolasci, JFrame forma) {
         this.panelSviPolasci = panelSviPolasci;
         this.forma = forma;
         addListener();

@@ -5,6 +5,16 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view;
 
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
+import javax.swing.JTable;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum;
+
 /**
  *
  * @author Stefan
@@ -12,17 +22,106 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view;
 public class PanelPolazak extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelPolazak
+     * Creates new form PanelPolazk
      */
     public PanelPolazak() {
         initComponents();
     }
 
-    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak getPanelPolazak() {
-        return panelPolazak;
+    public JButton getBtnDodajPolazak() {
+        return btnDodajPolazak;
     }
 
+    public JButton getBtnObrisiListu() {
+        return btnObrisiListu;
+    }
 
+    public JButton getBtnObrisiPolazak() {
+        return btnObrisiPolazak;
+    }
+
+    public JButton getBtnZapamtiPolaske() {
+        return btnZapamtiPolaske;
+    }
+
+    public JCheckBox getCboxPovratna() {
+        return cboxPovratna;
+    }
+
+    public JComboBox<String> getCmbBrojDanaZaPolazak() {
+        return cmbBrojDanaZaPolazak;
+    }
+
+    public JComboBox getCmbLinijaPolazak() {
+        return cmbLinijaPolazak;
+    }
+
+    public JComboBox getCmbVoz() {
+        return cmbVoz;
+    }
+
+    public JLabel getLblDatum() {
+        return lblDatum;
+    }
+
+    public JLabel getLblDatum2() {
+        return lblDatum2;
+    }
+
+    public JLabel getLblDatumDolaska() {
+        return lblDatumDolaska;
+    }
+
+    public JLabel getLblLinija() {
+        return lblLinija;
+    }
+
+    public JLabel getLblListaPolazaka() {
+        return lblListaPolazaka;
+    }
+
+    public JLabel getLblNaziv() {
+        return lblNaziv;
+    }
+
+    public JLabel getLblNazivPolaska() {
+        return lblNazivPolaska;
+    }
+
+    public JLabel getLblVoz() {
+        return lblVoz;
+    }
+
+    public JLabel getLblVreme() {
+        return lblVreme;
+    }
+
+    public JLabel getLblZaNarednih() {
+        return lblZaNarednih;
+    }
+
+    public JLabel getLblpocetna() {
+        return lblpocetna;
+    }
+
+    public PanelDatum getPanelDatum() {
+        return panelDatum;
+    }
+
+    public JSpinner getSpinerMinuti() {
+        return spinerMinuti;
+    }
+
+    public JSpinner getSpinerSati() {
+        return spinerSati;
+    }
+
+    public JTable getTabelaPolazaka() {
+        return tabelaPolazaka;
+    }
+
+   
+       
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,28 +132,235 @@ public class PanelPolazak extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPolazak = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak();
+        lblNaziv = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaPolazaka = new javax.swing.JTable();
+        lblDatum = new javax.swing.JLabel();
+        lblVoz = new javax.swing.JLabel();
+        lblpocetna = new javax.swing.JLabel();
+        lblDatumDolaska = new javax.swing.JLabel();
+        cmbVoz = new javax.swing.JComboBox();
+        lblVreme = new javax.swing.JLabel();
+        lblDatum2 = new javax.swing.JLabel();
+        spinerMinuti = new javax.swing.JSpinner();
+        lblNazivPolaska = new javax.swing.JLabel();
+        cmbLinijaPolazak = new javax.swing.JComboBox();
+        lblListaPolazaka = new javax.swing.JLabel();
+        btnDodajPolazak = new javax.swing.JButton();
+        btnZapamtiPolaske = new javax.swing.JButton();
+        lblLinija = new javax.swing.JLabel();
+        btnObrisiPolazak = new javax.swing.JButton();
+        spinerSati = new javax.swing.JSpinner();
+        cmbBrojDanaZaPolazak = new javax.swing.JComboBox<>();
+        lblZaNarednih = new javax.swing.JLabel();
+        cboxPovratna = new javax.swing.JCheckBox();
+        btnObrisiListu = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        panelDatum = new rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelPolazak, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelPolazak, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNaziv.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblNaziv.setForeground(new java.awt.Color(255, 255, 255));
+        lblNaziv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_itinerary_32px.png"))); // NOI18N
+        lblNaziv.setText("Naziv:");
+        add(lblNaziv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 150, 40));
+
+        tabelaPolazaka.setBackground(new java.awt.Color(153, 153, 153));
+        tabelaPolazaka.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabelaPolazaka.setFocusable(false);
+        tabelaPolazaka.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tabelaPolazaka.setRowHeight(25);
+        tabelaPolazaka.getTableHeader().setResizingAllowed(false);
+        tabelaPolazaka.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(tabelaPolazaka);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 1280, 220));
+
+        lblDatum.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDatum.setForeground(new java.awt.Color(255, 255, 255));
+        lblDatum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_schedule_32px.png"))); // NOI18N
+        lblDatum.setText("Datum polaska:");
+        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 150, 40));
+
+        lblVoz.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblVoz.setForeground(new java.awt.Color(255, 255, 255));
+        lblVoz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_train_32px.png"))); // NOI18N
+        lblVoz.setText("Voz:");
+        add(lblVoz, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, 40));
+
+        lblpocetna.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblpocetna.setForeground(new java.awt.Color(255, 255, 255));
+        lblpocetna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_tracks_32px.png"))); // NOI18N
+        lblpocetna.setText("Linija:");
+        add(lblpocetna, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 150, 40));
+
+        lblDatumDolaska.setForeground(new java.awt.Color(255, 255, 255));
+        add(lblDatumDolaska, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 150, 40));
+
+        cmbVoz.setBackground(new java.awt.Color(153, 153, 153));
+        cmbVoz.setForeground(new java.awt.Color(0, 0, 0));
+        cmbVoz.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cmbVoz, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 140, 40));
+
+        lblVreme.setForeground(new java.awt.Color(255, 255, 255));
+        lblVreme.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_sand_watch_32px.png"))); // NOI18N
+        lblVreme.setText("Vreme:");
+        add(lblVreme, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 90, 40));
+
+        lblDatum2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDatum2.setForeground(new java.awt.Color(255, 255, 255));
+        lblDatum2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_schedule_32px.png"))); // NOI18N
+        lblDatum2.setText("Datum dolaska: ");
+        add(lblDatum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 150, 40));
+
+        spinerMinuti.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+        spinerMinuti.setToolTipText("");
+        spinerMinuti.setBorder(null);
+        spinerMinuti.setFocusable(false);
+        spinerMinuti.setOpaque(false);
+        add(spinerMinuti, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, 70, 40));
+        spinerMinuti.setBackground(new Color(112, 122, 122));
+        spinerMinuti.setForeground(Color.BLACK);
+
+        lblNazivPolaska.setForeground(new java.awt.Color(255, 255, 255));
+        add(lblNazivPolaska, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 840, 40));
+
+        cmbLinijaPolazak.setBackground(new java.awt.Color(153, 153, 153));
+        cmbLinijaPolazak.setForeground(new java.awt.Color(0, 0, 0));
+        cmbLinijaPolazak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbLinijaPolazak.setSelectedIndex(-1);
+        cmbLinijaPolazak.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbLinijaPolazakItemStateChanged(evt);
+            }
+        });
+        add(cmbLinijaPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 640, 40));
+
+        lblListaPolazaka.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblListaPolazaka.setForeground(new java.awt.Color(255, 255, 255));
+        lblListaPolazaka.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px.png"))); // NOI18N
+        lblListaPolazaka.setText("Lista polazaka:");
+        add(lblListaPolazaka, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 300, 50));
+
+        btnDodajPolazak.setBackground(new java.awt.Color(153, 153, 153));
+        btnDodajPolazak.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnDodajPolazak.setForeground(new java.awt.Color(0, 0, 0));
+        btnDodajPolazak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_plus_64px.png"))); // NOI18N
+        btnDodajPolazak.setText("Dodaj polazak");
+        add(btnDodajPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 320, 300, 60));
+
+        btnZapamtiPolaske.setBackground(new java.awt.Color(153, 153, 153));
+        btnZapamtiPolaske.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnZapamtiPolaske.setForeground(new java.awt.Color(0, 0, 0));
+        btnZapamtiPolaske.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_save_64px.png"))); // NOI18N
+        btnZapamtiPolaske.setText("Zapamti polaske");
+        add(btnZapamtiPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 620, 300, 60));
+
+        lblLinija.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblLinija.setForeground(new java.awt.Color(255, 255, 255));
+        lblLinija.setText("Unos polazaka putnickog voza");
+        add(lblLinija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 530, 50));
+
+        btnObrisiPolazak.setBackground(new java.awt.Color(153, 153, 153));
+        btnObrisiPolazak.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnObrisiPolazak.setForeground(new java.awt.Color(0, 0, 0));
+        btnObrisiPolazak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_minus_64px.png"))); // NOI18N
+        btnObrisiPolazak.setText("Izbaci polazak");
+        add(btnObrisiPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, 300, 60));
+
+        spinerSati.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
+        spinerSati.setBorder(null);
+        spinerSati.setFocusable(false);
+        spinerSati.setOpaque(false);
+        add(spinerSati, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 70, 40));
+
+        cmbBrojDanaZaPolazak.setBackground(new java.awt.Color(153, 153, 153));
+        cmbBrojDanaZaPolazak.setForeground(new java.awt.Color(0, 0, 0));
+        cmbBrojDanaZaPolazak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 dan", "7 dana", "10 dana", "15 dana" }));
+        add(cmbBrojDanaZaPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 100, 40));
+
+        lblZaNarednih.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblZaNarednih.setForeground(new java.awt.Color(255, 255, 255));
+        lblZaNarednih.setText("Za narednih:");
+        add(lblZaNarednih, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, 90, 40));
+
+        cboxPovratna.setText("Povratna?");
+        add(cboxPovratna, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 120, 90, 40));
+
+        btnObrisiListu.setBackground(new java.awt.Color(153, 153, 153));
+        btnObrisiListu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnObrisiListu.setForeground(new java.awt.Color(0, 0, 0));
+        btnObrisiListu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_trash_can_64px.png"))); // NOI18N
+        btnObrisiListu.setText("Obrisi listu");
+        add(btnObrisiListu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 300, 60));
+
+        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 840, 10));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 150, 10));
+        add(panelDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, 60));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbLinijaPolazakItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLinijaPolazakItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbLinijaPolazakItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak panelPolazak;
+    private javax.swing.JButton btnDodajPolazak;
+    private javax.swing.JButton btnObrisiListu;
+    private javax.swing.JButton btnObrisiPolazak;
+    private javax.swing.JButton btnZapamtiPolaske;
+    private javax.swing.JCheckBox cboxPovratna;
+    private javax.swing.JComboBox<String> cmbBrojDanaZaPolazak;
+    private javax.swing.JComboBox cmbLinijaPolazak;
+    private javax.swing.JComboBox cmbVoz;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel lblDatum;
+    private javax.swing.JLabel lblDatum2;
+    private javax.swing.JLabel lblDatumDolaska;
+    private javax.swing.JLabel lblLinija;
+    private javax.swing.JLabel lblListaPolazaka;
+    private javax.swing.JLabel lblNaziv;
+    private javax.swing.JLabel lblNazivPolaska;
+    private javax.swing.JLabel lblVoz;
+    private javax.swing.JLabel lblVreme;
+    private javax.swing.JLabel lblZaNarednih;
+    private javax.swing.JLabel lblpocetna;
+    private rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum panelDatum;
+    private javax.swing.JSpinner spinerMinuti;
+    private javax.swing.JSpinner spinerSati;
+    private javax.swing.JTable tabelaPolazaka;
     // End of variables declaration//GEN-END:variables
+
+    public void btnDodajPolazakActionListener(ActionListener actionListener) {
+        btnDodajPolazak.addActionListener(actionListener);
+    }
+
+    public void btnObrisiPolazakActionListener(ActionListener actionListener) {
+         btnObrisiPolazak.addActionListener(actionListener);
+    }
+
+    public void btnZapamtiPolaskeActionListener(ActionListener actionListener) {
+        btnZapamtiPolaske.addActionListener(actionListener);
+    }
+
+    public void btnObrisiListukActionListener(ActionListener actionListener) {
+        btnObrisiListu.addActionListener(actionListener);
+    }
 }

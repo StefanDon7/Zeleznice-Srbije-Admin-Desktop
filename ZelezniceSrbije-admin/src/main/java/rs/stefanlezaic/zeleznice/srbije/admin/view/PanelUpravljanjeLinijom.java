@@ -5,6 +5,7 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view;
 
+import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica;
 
@@ -12,21 +13,19 @@ import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica;
  *
  * @author Stefan
  */
-public class PanelLinija extends javax.swing.JPanel {
+public class PanelUpravljanjeLinijom extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelLinija
      */
-    public PanelLinija() {
+    public PanelUpravljanjeLinijom() {
         initComponents();
     }
 
-    public rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija getPanelLinija() {
+    public PanelLinija getPanelLinija() {
         return panelLinija;
     }
-
     
-
     public PanelMedjustanice getPanelMedjustanice() {
         return panelMedjustanice;
     }
@@ -53,9 +52,9 @@ public class PanelLinija extends javax.swing.JPanel {
         panelStanica = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(panelLinija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 310));
-        add(panelMedjustanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 660, 560));
-        add(panelStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 480, -1));
+        add(panelLinija, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 490, 390));
+        add(panelMedjustanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 650, 630));
+        add(panelStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

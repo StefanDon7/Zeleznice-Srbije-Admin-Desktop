@@ -5,7 +5,9 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.WindowConstants;
@@ -60,7 +62,7 @@ public class KontrolerGlavneForme {
         glavnaForma.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         glavnaForma.setVisible(true);
         glavnaForma.pack();
-        glavnaForma.setMinimumSize(new Dimension(1315, 800));
+        glavnaForma.setMinimumSize(new Dimension(1600, 840));
     }
 
     public void zatvoriGlavnuFormu() {
@@ -138,16 +140,17 @@ public class KontrolerGlavneForme {
         glavnaForma.lblTamnaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                glavnaForma.getPanelTema().ukljuciTamnuTemu();
-
+                glavnaForma.getPanelBar().getPanelTema().ukljuciTamnuTemu();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
+                System.out.println("pritisnuo");
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                System.out.println("pustio");
             }
 
             @Override
@@ -161,7 +164,7 @@ public class KontrolerGlavneForme {
         glavnaForma.lblSvetlaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                glavnaForma.getPanelTema().ukljuciSvetluTemu();
+                glavnaForma.getPanelBar().getPanelTema().ukljuciSvetluTemu();
             }
 
             @Override
@@ -178,44 +181,45 @@ public class KontrolerGlavneForme {
 
             @Override
             public void mouseExited(MouseEvent e) {
+
             }
         });
     }
 
     private void napraviOstaleKontrolore() {
-        kontrolerStanica = new KontrolerStanica(glavnaForma.getPanelLinija().getPanelStanica(), glavnaForma);
-        kontrolerLinija = new KontrolerLinija(glavnaForma.getPanelLinija().getPanelLinija(), glavnaForma);
-        kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelLinija().getPanelMedjustanice(), glavnaForma);
-        kontrolerPolazak = new KontrolerPolazak(glavnaForma.getPanelPolazak().getPanelPolazak(), glavnaForma);
-        kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima().getPanelSviPolasci(), glavnaForma);
+        kontrolerStanica = new KontrolerStanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelStanica(), glavnaForma);
+        kontrolerLinija = new KontrolerLinija(glavnaForma.getPanelUpravljanjeLinijom().getPanelLinija(), glavnaForma);
+        kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelMedjustanice(), glavnaForma);
+        kontrolerPolazak = new KontrolerPolazak(glavnaForma.getPanelPolazak(), glavnaForma);
+        kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima(), glavnaForma);
     }
 
     private void otvoriPanelLinija() {
-        glavnaForma.getjPanelLinija().setVisible(true);
-        glavnaForma.getjPanelPolazak().setVisible(false);
-        glavnaForma.getjPanelUpravljanjePolascima().setVisible(false);
+        glavnaForma.getPanelUpravljanjeLinijom().setVisible(true);
+        glavnaForma.getPanelPolazak().setVisible(false);
+        glavnaForma.getPanelUpravljanjePolascima().setVisible(false);
     }
 
     private void otvoriPanelPolazak() {
-        glavnaForma.getjPanelLinija().setVisible(false);
-        glavnaForma.getjPanelPolazak().setVisible(true);
-        glavnaForma.getjPanelUpravljanjePolascima().setVisible(false);
+        glavnaForma.getPanelUpravljanjeLinijom().setVisible(false);
+        glavnaForma.getPanelPolazak().setVisible(true);
+        glavnaForma.getPanelUpravljanjePolascima().setVisible(false);
     }
 
     private void otvoriPanelUpravljanjePolascima() {
-        glavnaForma.getjPanelLinija().setVisible(false);
-        glavnaForma.getjPanelPolazak().setVisible(false);
-        glavnaForma.getjPanelUpravljanjePolascima().setVisible(true);
+        glavnaForma.getPanelUpravljanjeLinijom().setVisible(false);
+        glavnaForma.getPanelPolazak().setVisible(false);
+        glavnaForma.getPanelUpravljanjePolascima().setVisible(true);
     }
 
     private void pokreniSat() {
-        sat = new Sat(glavnaForma.getPanelSat1().getLblVreme(), glavnaForma.getPanelSat1().getLblDatum());
+        sat = new Sat(glavnaForma.getPanelBar().getPanelSat().getLblVreme(), glavnaForma.getPanelBar().getPanelSat().getLblDatum());
         sat.pokreniSat();
     }
 
     private void pokreniTemu() {
-        glavnaForma.getPanelTema().dodeliContainer(glavnaForma);
-        glavnaForma.getPanelTema().ukljuciTamnuTemu();
+        glavnaForma.getPanelBar().getPanelTema().dodeliContainer(glavnaForma);
+        glavnaForma.getPanelBar().getPanelTema().ukljuciTamnuTemu();
     }
 
 }

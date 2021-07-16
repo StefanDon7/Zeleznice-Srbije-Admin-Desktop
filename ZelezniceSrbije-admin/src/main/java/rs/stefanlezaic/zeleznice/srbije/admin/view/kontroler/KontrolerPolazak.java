@@ -18,7 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
-import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelPolazak;
+import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelPolazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Voz;
