@@ -159,12 +159,10 @@ public class KontrolerGlavneForme {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                System.out.println("pritisnuo");
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                System.out.println("pustio");
             }
 
             @Override
@@ -239,8 +237,10 @@ public class KontrolerGlavneForme {
     private void ucitajSveIkonice() {
         glavnaForma.getMeniLinija().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/linija.png")));
+        
         glavnaForma.getMeniPolazak().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/polazak.png")));
+       
         glavnaForma.getMeniUpravljanjePolascima().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/lista.png")));
         

@@ -341,7 +341,7 @@ public class PanelPolazak extends javax.swing.JPanel {
 
         spinerMinuti.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
         spinerMinuti.setToolTipText("");
-        spinerMinuti.setBorder(null);
+        spinerMinuti.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         spinerMinuti.setFocusable(false);
         spinerMinuti.setOpaque(false);
         add(spinerMinuti, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, 70, 40));
@@ -391,7 +391,7 @@ public class PanelPolazak extends javax.swing.JPanel {
         add(btnObrisiPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, 300, 60));
 
         spinerSati.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
-        spinerSati.setBorder(null);
+        spinerSati.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         spinerSati.setFocusable(false);
         spinerSati.setOpaque(false);
         add(spinerSati, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 70, 40));
