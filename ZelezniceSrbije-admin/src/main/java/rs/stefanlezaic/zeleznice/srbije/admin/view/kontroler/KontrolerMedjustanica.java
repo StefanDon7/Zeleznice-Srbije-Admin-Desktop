@@ -10,8 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -46,6 +45,7 @@ public class KontrolerMedjustanica {
         urediTabeluMedjuStanica();
         popuniPoljeStanice();
         popuniPoljeLinije();
+        ucitajSveIkonice();
         addListener();
         tabela.urediTabelu(panelMedjustanice.getTabelaMedjustanica());
     }
@@ -199,7 +199,7 @@ public class KontrolerMedjustanica {
 
     private void popuniPoljeStanice() {
         panelMedjustanice.getCmbMedjustanica().removeAllItems();
-        ArrayList<Stanica> list = null;
+        ArrayList<Stanica> list = new ArrayList<>();
         try {
             list = Kontroler.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
@@ -212,7 +212,7 @@ public class KontrolerMedjustanica {
 
     private void popuniPoljeLinije() {
         panelMedjustanice.getCmbLinije().removeAllItems();
-        ArrayList<Linija> list = null;
+        ArrayList<Linija> list = new ArrayList<>();
         try {
             list = Kontroler.getInstance().vratiMiSveLinije();
             for (Linija linija : list) {
@@ -232,5 +232,29 @@ public class KontrolerMedjustanica {
         panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(0).setWidth(50);
         panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMinWidth(536);
         panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMaxWidth(536);
+    }
+
+    private void ucitajSveIkonice() {
+        panelMedjustanice.getLblLinija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz.png")));
+
+        panelMedjustanice.getLblMedjustanica().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/zastava.png")));
+
+        panelMedjustanice.getLblListaMedjustanica().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
+
+        panelMedjustanice.getBtnDodajMedjustanicu().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
+
+        panelMedjustanice.getBtnObrisiMedjustanicu().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/minus.png")));
+        
+        panelMedjustanice.getBtnObrisiLiniju().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
+        
+        panelMedjustanice.getBtnIzmeniRedosledMedjustanica().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
+
     }
 }

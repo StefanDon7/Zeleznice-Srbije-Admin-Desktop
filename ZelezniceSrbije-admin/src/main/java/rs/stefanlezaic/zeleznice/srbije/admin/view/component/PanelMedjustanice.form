@@ -34,16 +34,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNaziv3">
+    <Component class="javax.swing.JLabel" name="lblLinija">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_tracks_32px.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Linija:"/>
       </Properties>
@@ -79,16 +76,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNaziv2">
+    <Component class="javax.swing.JLabel" name="lblMedjustanica">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_flag_filled_32px.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Me&#x111;ustanica:"/>
       </Properties>
@@ -135,9 +129,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_minus_64px.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Obri&#x161;i"/>
       </Properties>
       <Constraints>
@@ -157,9 +148,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_plus_64px.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Dodaj "/>
       </Properties>
       <Constraints>
@@ -168,16 +156,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNazivLinijeKodTabele">
+    <Component class="javax.swing.JLabel" name="lblListaMedjustanica">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_list_32px.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Lista me&#x111;ustanica:"/>
       </Properties>
@@ -237,9 +222,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_delete_64px.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Obri&#x161;i liniju"/>
       </Properties>
       <Constraints>
@@ -258,9 +240,6 @@
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_save_64px.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Izmeni redosled"/>
       </Properties>

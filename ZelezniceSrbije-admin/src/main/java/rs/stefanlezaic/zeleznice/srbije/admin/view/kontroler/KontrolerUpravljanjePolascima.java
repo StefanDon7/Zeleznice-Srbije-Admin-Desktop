@@ -12,8 +12,7 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -44,6 +43,7 @@ public class KontrolerUpravljanjePolascima {
     public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelSviPolasci, JFrame forma) {
         this.panelSviPolasci = panelSviPolasci;
         this.forma = forma;
+        ucitajSveIkonice();
         addListener();
         urediTabeluSviPolasci();
         ucitajSvePolaske();
@@ -203,8 +203,24 @@ public class KontrolerUpravljanjePolascima {
             Kontroler.getInstance().setSviPolasci(Kontroler.getInstance().vratiListuPolazaka());
         } catch (Exception ex) {
             System.out.println("Sistem ne moze da ucita polaske!");
-
         }
+    }
+
+    private void ucitajSveIkonice() {
+        panelSviPolasci.getLblLista().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
+
+        panelSviPolasci.getLblSort().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/sort.png")));
+
+        panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
+
+        panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
+
+        panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh.png")));
     }
 
 }

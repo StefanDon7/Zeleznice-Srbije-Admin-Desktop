@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
@@ -36,6 +37,7 @@ public class KontrolerStanica {
         this.panelStanica = panelStanica;
         this.forma = forma;
         popuniPolje();
+        ucitajIkonice();
         addListener();
 
     }
@@ -90,6 +92,17 @@ public class KontrolerStanica {
         for (Mesto mesto : listaMesta) {
             panelStanica.getCmbMestaZaStanice().addItem(mesto);
         }
+    }
+
+    private void ucitajIkonice() {
+        panelStanica.getLblMesto().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacija.png")));
+
+        panelStanica.getLblNazivStanice().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/zastava.png")));
+
+       panelStanica.getBtnUnesiStanicu().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
     }
 
 }

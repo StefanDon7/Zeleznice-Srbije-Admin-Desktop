@@ -49,7 +49,6 @@ public class PanelStanica extends javax.swing.JPanel {
 
         lblNazivStanice.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNazivStanice.setForeground(new java.awt.Color(255, 255, 255));
-        lblNazivStanice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
         lblNazivStanice.setText("Naziv stanice:");
         lblNazivStanice.setToolTipText("");
         add(lblNazivStanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 160, 40));
@@ -65,7 +64,6 @@ public class PanelStanica extends javax.swing.JPanel {
         btnUnesiStanicu.setBackground(new java.awt.Color(153, 153, 153));
         btnUnesiStanicu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnUnesiStanicu.setForeground(new java.awt.Color(0, 0, 0));
-        btnUnesiStanicu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_add_64px_2.png"))); // NOI18N
         btnUnesiStanicu.setText("Unesi stanicu");
         btnUnesiStanicu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +74,6 @@ public class PanelStanica extends javax.swing.JPanel {
 
         lblMesto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblMesto.setForeground(new java.awt.Color(255, 255, 255));
-        lblMesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_flag_filled_32px.png"))); // NOI18N
         lblMesto.setText("Mesto stanice:");
         lblMesto.setToolTipText("");
         add(lblMesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 160, 40));
@@ -97,6 +94,19 @@ public class PanelStanica extends javax.swing.JPanel {
     public JTextField getTxtNazivStanice() {
         return txtNazivStanice;
     }
+
+    public JLabel getLblMesto() {
+        return lblMesto;
+    }
+
+    public JLabel getLblNazivFrejma() {
+        return lblNazivFrejma;
+    }
+
+    public JLabel getLblNazivStanice() {
+        return lblNazivStanice;
+    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

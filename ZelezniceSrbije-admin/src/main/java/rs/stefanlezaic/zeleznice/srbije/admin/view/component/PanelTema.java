@@ -64,7 +64,6 @@ public class PanelTema extends javax.swing.JPanel {
 
         lblDarkMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDarkMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDarkMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/darkMode.png"))); // NOI18N
         lblDarkMode.setText("Tamna tema");
         lblDarkMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
         lblDarkMode.setDisabledIcon(null);
@@ -73,7 +72,6 @@ public class PanelTema extends javax.swing.JPanel {
 
         lblWhiteMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblWhiteMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWhiteMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/whiteMode.png"))); // NOI18N
         lblWhiteMode.setText("Svetla tema");
         lblWhiteMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
         lblWhiteMode.setDisabledIcon(null);

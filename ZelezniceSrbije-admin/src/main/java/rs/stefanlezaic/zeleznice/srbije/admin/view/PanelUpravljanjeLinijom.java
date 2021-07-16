@@ -53,7 +53,7 @@ public class PanelUpravljanjeLinijom extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(panelLinija, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 490, 390));
-        add(panelMedjustanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 650, 630));
+        add(panelMedjustanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 650, 630));
         add(panelStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

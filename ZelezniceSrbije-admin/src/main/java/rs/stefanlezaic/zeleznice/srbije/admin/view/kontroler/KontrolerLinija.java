@@ -9,8 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija;
@@ -40,6 +39,7 @@ public class KontrolerLinija {
         this.forma = forma;
         popuniPoljeStanice();
         popuniPoljeTipLinije();
+        ucitajSveIkonice();
         addListener();
     }
 
@@ -62,9 +62,7 @@ public class KontrolerLinija {
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
-        } catch (ParametarsException ex) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
-        } catch (ParseException ex) {
+        } catch (ParametarsException | ParseException ex) {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
         }
     }
@@ -75,7 +73,7 @@ public class KontrolerLinija {
         try {
             kilometraza = Double.parseDouble(panelLinija.getTxtKilometraza().getText());
             minutaza = Integer.parseInt(panelLinija.getTxtMinutaza().getText().trim());
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             throw new java.text.ParseException("U poljima kilometraza i minutaza moraju biti brojevi.", 0);
         }
         Stanica stanicaPocetna = (Stanica) panelLinija.getCmbPocetna().getSelectedItem();
@@ -100,11 +98,11 @@ public class KontrolerLinija {
     private void popuniPoljeStanice() {
         panelLinija.getCmbPocetna().removeAllItems();
         panelLinija.getCmbKrajnja().removeAllItems();
-        ArrayList<Stanica> list = null;
+        ArrayList<Stanica> list = new ArrayList<>();
         try {
             list = Kontroler.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
-            
+
         }
         for (Stanica stanica : list) {
             panelLinija.getCmbPocetna().addItem(stanica);
@@ -114,15 +112,33 @@ public class KontrolerLinija {
 
     private void popuniPoljeTipLinije() {
         panelLinija.getCmbTip().removeAllItems();
-        ArrayList<TipLinije> list = null;
+        ArrayList<TipLinije> list = new ArrayList<>();
         try {
             list = Kontroler.getInstance().vratiMiSveTipoveLinije();
         } catch (Exception ex) {
-           
+
         }
         for (TipLinije tipLinije : list) {
             panelLinija.getCmbTip().addItem(tipLinije);
         }
+    }
+
+    private void ucitajSveIkonice() {
+        panelLinija.getLblPocetna().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacija.png")));
+
+        panelLinija.getLblKranja().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacija.png")));
+
+        panelLinija.getLblTip().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz2.png")));
+
+        panelLinija.getLblKm().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lenjir.png")));
+
+        panelLinija.getLblMin().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/pescaniSat.png")));
+        
     }
 
 }

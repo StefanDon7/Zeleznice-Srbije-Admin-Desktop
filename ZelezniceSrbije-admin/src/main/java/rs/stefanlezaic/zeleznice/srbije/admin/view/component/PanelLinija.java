@@ -28,7 +28,7 @@ public class PanelLinija extends javax.swing.JPanel {
     private void initComponents() {
 
         lblNazivFrejma1 = new javax.swing.JLabel();
-        lblpocetna = new javax.swing.JLabel();
+        lblPocetna = new javax.swing.JLabel();
         cmbPocetna = new javax.swing.JComboBox();
         lblKranja = new javax.swing.JLabel();
         cmbKrajnja = new javax.swing.JComboBox();
@@ -49,11 +49,10 @@ public class PanelLinija extends javax.swing.JPanel {
         lblNazivFrejma1.setText("Unos linije voza");
         add(lblNazivFrejma1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 50));
 
-        lblpocetna.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblpocetna.setForeground(new java.awt.Color(255, 255, 255));
-        lblpocetna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
-        lblpocetna.setText("Početna stanica:");
-        add(lblpocetna, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 160, 40));
+        lblPocetna.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblPocetna.setForeground(new java.awt.Color(255, 255, 255));
+        lblPocetna.setText("Početna stanica:");
+        add(lblPocetna, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 160, 40));
 
         cmbPocetna.setBackground(new java.awt.Color(102, 102, 102));
         cmbPocetna.setForeground(new java.awt.Color(0, 0, 0));
@@ -62,7 +61,6 @@ public class PanelLinija extends javax.swing.JPanel {
 
         lblKranja.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblKranja.setForeground(new java.awt.Color(255, 255, 255));
-        lblKranja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_marker_32px.png"))); // NOI18N
         lblKranja.setText("Krajnja stanica:");
         add(lblKranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 150, 40));
 
@@ -73,7 +71,6 @@ public class PanelLinija extends javax.swing.JPanel {
 
         lblTip.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblTip.setForeground(new java.awt.Color(255, 255, 255));
-        lblTip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_city_railway_station_32px.png"))); // NOI18N
         lblTip.setText("Tip linije:");
         lblTip.setPreferredSize(new java.awt.Dimension(50, 15));
         lblTip.setRequestFocusEnabled(false);
@@ -86,7 +83,6 @@ public class PanelLinija extends javax.swing.JPanel {
 
         lblKm.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblKm.setForeground(new java.awt.Color(255, 255, 255));
-        lblKm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_length_32px_1.png"))); // NOI18N
         lblKm.setText("Kilometraza:");
         add(lblKm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, 40));
 
@@ -102,7 +98,6 @@ public class PanelLinija extends javax.swing.JPanel {
 
         lblMin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblMin.setForeground(new java.awt.Color(255, 255, 255));
-        lblMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_stopwatch_32px.png"))); // NOI18N
         lblMin.setText("Minutaza:");
         add(lblMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 40));
 
@@ -119,7 +114,6 @@ public class PanelLinija extends javax.swing.JPanel {
         btnUnesiLiniju.setBackground(new java.awt.Color(153, 153, 153));
         btnUnesiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnUnesiLiniju.setForeground(new java.awt.Color(0, 0, 0));
-        btnUnesiLiniju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/server/resources/icons/icons8_add_64px_2.png"))); // NOI18N
         btnUnesiLiniju.setText("Unesi liniju");
         btnUnesiLiniju.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,12 +215,12 @@ public class PanelLinija extends javax.swing.JPanel {
         this.lblTip = lblTip;
     }
 
-    public JLabel getLblpocetna() {
-        return lblpocetna;
+    public JLabel getLblPocetna() {
+        return lblPocetna;
     }
 
     public void setLblpocetna(JLabel lblpocetna) {
-        this.lblpocetna = lblpocetna;
+        this.lblPocetna = lblpocetna;
     }
 
     public JTextField getTxtKilometraza() {
@@ -257,8 +251,8 @@ public class PanelLinija extends javax.swing.JPanel {
     private javax.swing.JLabel lblKranja;
     private javax.swing.JLabel lblMin;
     private javax.swing.JLabel lblNazivFrejma1;
+    private javax.swing.JLabel lblPocetna;
     private javax.swing.JLabel lblTip;
-    private javax.swing.JLabel lblpocetna;
     private javax.swing.JTextField txtKilometraza;
     private javax.swing.JTextField txtMinutaza;
     // End of variables declaration//GEN-END:variables
@@ -266,4 +260,6 @@ public class PanelLinija extends javax.swing.JPanel {
     public void btnUnesiLiniju(ActionListener actionListener) {
         btnUnesiLiniju.addActionListener(actionListener);
     }
+
+    
 }
