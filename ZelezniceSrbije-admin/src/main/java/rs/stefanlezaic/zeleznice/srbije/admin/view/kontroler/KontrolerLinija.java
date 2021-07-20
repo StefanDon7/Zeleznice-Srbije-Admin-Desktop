@@ -39,7 +39,7 @@ public class KontrolerLinija {
         this.forma = forma;
         popuniPoljeStanice();
         popuniPoljeTipLinije();
-        ucitajSveIkonice();
+        ucitajIkoniceZaDugmice();
         addListener();
     }
 
@@ -102,7 +102,7 @@ public class KontrolerLinija {
         try {
             list = Kontroler.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
-
+            ex.toString();
         }
         for (Stanica stanica : list) {
             panelLinija.getCmbPocetna().addItem(stanica);
@@ -116,14 +116,20 @@ public class KontrolerLinija {
         try {
             list = Kontroler.getInstance().vratiMiSveTipoveLinije();
         } catch (Exception ex) {
-
+            ex.toString();
         }
         for (TipLinije tipLinije : list) {
             panelLinija.getCmbTip().addItem(tipLinije);
         }
     }
 
-    private void ucitajSveIkonice() {
+    private void ucitajIkoniceZaDugmice() {
+        panelLinija.getBtnUnesiLiniju().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
+
+    }
+
+    public void ucitajSveIkonicTamnaTema() {
         panelLinija.getLblPocetna().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacija.png")));
 
@@ -138,7 +144,23 @@ public class KontrolerLinija {
 
         panelLinija.getLblMin().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/pescaniSat.png")));
-        
+    }
+
+    public void ucitajSveIkoniceSvetlaTema() {
+        panelLinija.getLblPocetna().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lokacija.png")));
+
+        panelLinija.getLblKranja().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lokacija.png")));
+
+        panelLinija.getLblTip().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/voz2.png")));
+
+        panelLinija.getLblKm().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lenjir.png")));
+
+        panelLinija.getLblMin().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/pescaniSat.png")));
     }
 
 }

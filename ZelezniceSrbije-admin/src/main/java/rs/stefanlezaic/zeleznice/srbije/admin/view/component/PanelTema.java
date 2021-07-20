@@ -15,28 +15,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
  */
 public class PanelTema extends javax.swing.JPanel {
 
-    Container container;
-    Tema tema;
-
     public PanelTema() {
         initComponents();
-    }
-
-    public void dodeliContainer(Container container) {
-        this.container = container;
-        tema = new Tema(container);
-    }
-
-    public void ukljuciTamnuTemu() {
-        lblWhiteMode.setVisible(true);
-        lblDarkMode.setVisible(false);
-        tema.blackTheme();
-    }
-
-    public void ukljuciSvetluTemu() {
-        lblWhiteMode.setVisible(false);
-        lblDarkMode.setVisible(true);
-        tema.whiteTheme();
     }
 
     public JLabel getLblDarkMode() {

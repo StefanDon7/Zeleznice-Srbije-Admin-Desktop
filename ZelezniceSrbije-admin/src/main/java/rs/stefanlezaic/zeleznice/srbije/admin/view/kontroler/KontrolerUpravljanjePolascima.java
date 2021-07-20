@@ -43,7 +43,7 @@ public class KontrolerUpravljanjePolascima {
     public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelSviPolasci, JFrame forma) {
         this.panelSviPolasci = panelSviPolasci;
         this.forma = forma;
-        ucitajSveIkonice();
+        ucitajIkoniceZaDugmice();
         addListener();
         urediTabeluSviPolasci();
         ucitajSvePolaske();
@@ -110,33 +110,24 @@ public class KontrolerUpravljanjePolascima {
     }
 
     private void updejtuj() {
-        ArrayList<Polazak> sviPolasci = mtsp.getList();
-        ArrayList<Polazak> polasciZaMenjanje = new ArrayList<>();
-        for (Polazak polazak : sviPolasci) {
-            if (polazak.getNapomena() == null || !polazak.getNapomena().isEmpty()) {
-                polasciZaMenjanje.add(polazak);
+        int row = panelSviPolasci.getTabelaSviPolasci().getSelectedRow();
+        if (row != -1) {
+            Polazak polazak = mtsp.getList().get(row);
+            ArrayList<Polazak> polasciZaMenjanje = new ArrayList<>();
+            try {
+                System.out.println(polasciZaMenjanje);
+                Kontroler.getInstance().izmeniPolazak(polazak);
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesna izmena polaska!"));
+            } catch (Exception ex) {
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
+        } else {
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Izaberite polazak!"));
         }
-        if (polasciZaMenjanje.isEmpty()) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Nema polazaka za izmenu!"));
-            return;
-        }
-        try {
-            Kontroler.getInstance().updejtujMiPolaske(polasciZaMenjanje);
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("USPESNA IZMENA"));
-        } catch (Exception ex) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
-        }
+
     }
 
     private void osveziListu() {
-//        ArrayList<Polazak> polasci = null;
-//        try {
-//            polasci = Kontroler.getInstance().vratiListuPolazaka();
-//        } catch (Exception ex) {
-//            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
-//        }
-//        dodajPolaske(polasci);
         ucitajSvePolaske();
         dodajPolaske(Kontroler.getInstance().getSviPolasci());
     }
@@ -206,21 +197,30 @@ public class KontrolerUpravljanjePolascima {
         }
     }
 
-    private void ucitajSveIkonice() {
+    private void ucitajIkoniceZaDugmice() {
+        panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
+        panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
+        panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh.png")));
+    }
+
+    public void ucitajSveIkonicTamnaTema() {
         panelSviPolasci.getLblLista().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
 
         panelSviPolasci.getLblSort().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/sort.png")));
 
-        panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
+    }
 
-        panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
+    public void ucitajSveIkoniceSvetlaTema() {
+        panelSviPolasci.getLblLista().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lista.png")));
 
-        panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh.png")));
+        panelSviPolasci.getLblSort().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/sort.png")));
     }
 
 }

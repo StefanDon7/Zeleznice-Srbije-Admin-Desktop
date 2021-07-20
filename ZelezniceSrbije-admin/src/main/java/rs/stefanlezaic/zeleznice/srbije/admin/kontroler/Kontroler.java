@@ -201,10 +201,10 @@ public class Kontroler {
         return listaMedjustanica;
     }
 
-    public void updejtujMiPolaske(ArrayList<Polazak> polasciZaMenjanje) throws Exception {
+    public void izmeniPolazak(Polazak polazak) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.IZMENI_POLASKE);
-        kz.setParametar(polasciZaMenjanje);
+        kz.setParametar(polazak);
         KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
         ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
         if (so.getStatus() == ResponseStatus.ERROR) {
@@ -352,5 +352,18 @@ public class Kontroler {
             }
         }
         return null;
+    }
+
+    public Polazak vratiPolazak(Polazak p) throws Exception {
+        kz = new KlijentskiZahtev();
+        kz.setParametar(p);
+        kz.setOperacija(Konstante.VRATI_POLAZAK);
+        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
+        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
+        if (so.getStatus() == ResponseStatus.ERROR) {
+            Exception ex = (Exception) so.getError();
+            throw ex;
+        }
+        return (Polazak) so.getOdgovor();
     }
 }

@@ -164,19 +164,19 @@ public class PanelMedjustanice extends javax.swing.JPanel {
         tabelaMedjustanica.setRowHeight(25);
         jScrollPane1.setViewportView(tabelaMedjustanica);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 630, 310));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 630, 350));
 
         btnObrisiLiniju.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiLiniju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnObrisiLiniju.setForeground(new java.awt.Color(0, 0, 0));
         btnObrisiLiniju.setText("Obriši liniju");
-        add(btnObrisiLiniju, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 280, 60));
+        add(btnObrisiLiniju, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 280, 60));
 
         btnIzmeniRedosledMedjustanica.setBackground(new java.awt.Color(153, 153, 153));
         btnIzmeniRedosledMedjustanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnIzmeniRedosledMedjustanica.setForeground(new java.awt.Color(0, 0, 0));
         btnIzmeniRedosledMedjustanica.setText("Izmeni redosled");
-        add(btnIzmeniRedosledMedjustanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, 320, 60));
+        add(btnIzmeniRedosledMedjustanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 600, 320, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -37,9 +37,10 @@ public class KontrolerGlavneForme {
     public KontrolerGlavneForme(GlavnaForma glavnaForma) {
         this.glavnaForma = glavnaForma;
         napraviOstaleKontrolore();
+        this.tema = new Tema(glavnaForma);
+        ukljuciTamnuTemu();
         pokreniSat();
         ucitajSveIkonice();
-        pokreniTemu();
         addListener();
         otvoriPanelLinija();
     }
@@ -154,7 +155,7 @@ public class KontrolerGlavneForme {
         glavnaForma.lblTamnaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                glavnaForma.getPanelBar().getPanelTema().ukljuciTamnuTemu();
+                ukljuciTamnuTemu();
             }
 
             @Override
@@ -176,7 +177,7 @@ public class KontrolerGlavneForme {
         glavnaForma.lblSvetlaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                glavnaForma.getPanelBar().getPanelTema().ukljuciSvetluTemu();
+                ukljuciSvetluTemu();
             }
 
             @Override
@@ -196,6 +197,20 @@ public class KontrolerGlavneForme {
 
             }
         });
+    }
+
+    public void ukljuciTamnuTemu() {
+        glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().setVisible(true);
+        glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().setVisible(false);
+        tema.blackTheme();
+        promeniIkoniceZaTamnuTemu();
+    }
+
+    public void ukljuciSvetluTemu() {
+        glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().setVisible(false);
+        glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().setVisible(true);
+        tema.whiteTheme();
+        promeniIkoniceZaSvetluTemu();
     }
 
     private void napraviOstaleKontrolore() {
@@ -229,26 +244,37 @@ public class KontrolerGlavneForme {
         sat.pokreniSat();
     }
 
-    private void pokreniTemu() {
-        glavnaForma.getPanelBar().getPanelTema().dodeliContainer(glavnaForma);
-        glavnaForma.getPanelBar().getPanelTema().ukljuciTamnuTemu();
-    }
-
     private void ucitajSveIkonice() {
         glavnaForma.getMeniLinija().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/linija.png")));
-        
+
         glavnaForma.getMeniPolazak().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/polazak.png")));
-       
+
         glavnaForma.getMeniUpravljanjePolascima().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/lista.png")));
-        
+
         glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/temaCrna.png")));
-        
+
         glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/temaBela.png")));
+    }
+
+    private void promeniIkoniceZaTamnuTemu() {
+        kontrolerUpravljanjePolascima.ucitajSveIkonicTamnaTema();
+        kontrolerLinija.ucitajSveIkonicTamnaTema();
+        kontrolerMedjustanica.ucitajSveIkonicTamnaTema();
+        kontrolerPolazak.ucitajSveIkonicTamnaTema();
+        kontrolerStanica.ucitajSveIkonicTamnaTema();
+    }
+
+    private void promeniIkoniceZaSvetluTemu() {
+        kontrolerUpravljanjePolascima.ucitajSveIkoniceSvetlaTema();
+        kontrolerLinija.ucitajSveIkoniceSvetlaTema();
+        kontrolerMedjustanica.ucitajSveIkoniceSvetlaTema();
+        kontrolerPolazak.ucitajSveIkoniceSvetlaTema();
+        kontrolerStanica.ucitajSveIkoniceSvetlaTema();
     }
 
 }

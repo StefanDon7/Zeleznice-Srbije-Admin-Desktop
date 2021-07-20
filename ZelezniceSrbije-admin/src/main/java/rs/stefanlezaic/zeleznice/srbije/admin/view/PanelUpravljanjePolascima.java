@@ -81,6 +81,9 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
         cmbSortiraj = new javax.swing.JComboBox<>();
         lblSort = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(1590, 690));
+        setMinimumSize(new java.awt.Dimension(1590, 690));
+        setPreferredSize(new java.awt.Dimension(1590, 690));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabelaSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
@@ -103,22 +106,23 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
         tabelaSviPolasci.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(tabelaSviPolasci);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1280, 460));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1280, 550));
 
+        btnOsveziListuSviPolasci.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnOsveziListuSviPolasci.setText("Osvezi listu");
-        add(btnOsveziListuSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 220, 60));
+        add(btnOsveziListuSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 220, 60));
 
         btnObrisiPolazakIzTabeleSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiPolazakIzTabeleSviPolasci.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnObrisiPolazakIzTabeleSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
         btnObrisiPolazakIzTabeleSviPolasci.setText("Obrisi polazak");
-        add(btnObrisiPolazakIzTabeleSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 300, 60));
+        add(btnObrisiPolazakIzTabeleSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 300, 60));
 
         btnUpdejtuj.setBackground(new java.awt.Color(153, 153, 153));
         btnUpdejtuj.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnUpdejtuj.setForeground(new java.awt.Color(0, 0, 0));
         btnUpdejtuj.setText("Izmeni polazak");
-        add(btnUpdejtuj, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 530, 300, 60));
+        add(btnUpdejtuj, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 620, 300, 60));
 
         lblLista.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         lblLista.setForeground(new java.awt.Color(255, 255, 255));

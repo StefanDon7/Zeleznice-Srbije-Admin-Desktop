@@ -10,6 +10,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Rezervacija;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 
@@ -47,8 +49,16 @@ public class ModelTabelePolaska extends AbstractTableModel {
                 return sdf.format(p.getDatumPolaska());
             case 3:
                 return sdf.format(p.getDatumDolaska());
-            case 4:
-                return 0 + "/" + p.getVoz().getBrojSedista();
+            case 4: {
+                int broj = 0;
+                try {
+                    Polazak polazak = Kontroler.getInstance().vratiPolazak(p);
+                    broj=Kontroler.getInstance().vratiBrojRezervacija(new Rezervacija(null, polazak, new Date()));
+                    return broj + "/" + p.getVoz().getBrojSedista();
+                } catch (Exception ex) {
+                    return 0 + "/" + p.getVoz().getBrojSedista();
+                }
+            }
             case 5:
                 return p.getNapomena();
             default:

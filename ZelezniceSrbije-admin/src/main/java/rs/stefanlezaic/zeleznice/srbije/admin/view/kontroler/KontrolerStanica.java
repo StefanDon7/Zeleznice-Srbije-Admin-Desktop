@@ -37,7 +37,7 @@ public class KontrolerStanica {
         this.panelStanica = panelStanica;
         this.forma = forma;
         popuniPolje();
-        ucitajIkonice();
+        ucitajIkoniceZaDugmice();
         addListener();
 
     }
@@ -94,15 +94,25 @@ public class KontrolerStanica {
         }
     }
 
-    private void ucitajIkonice() {
+    private void ucitajIkoniceZaDugmice() {
+        panelStanica.getBtnUnesiStanicu().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
+    }
+
+    public void ucitajSveIkonicTamnaTema() {
         panelStanica.getLblMesto().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacija.png")));
 
         panelStanica.getLblNazivStanice().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/zastava.png")));
+    }
 
-       panelStanica.getBtnUnesiStanicu().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
+    public void ucitajSveIkoniceSvetlaTema() {
+        panelStanica.getLblMesto().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lokacija.png")));
+
+        panelStanica.getLblNazivStanice().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/zastava.png")));
     }
 
 }

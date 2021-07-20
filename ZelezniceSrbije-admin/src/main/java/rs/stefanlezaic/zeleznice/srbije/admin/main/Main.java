@@ -25,7 +25,7 @@ public class Main {
                 UIManager.put("Button.background", new Color(155, 155, 155));
             }
         });
-        KontrolerGlavneForme kontrolerGlavneForme=new KontrolerGlavneForme(new GlavnaForma());
+        KontrolerGlavneForme kontrolerGlavneForme = new KontrolerGlavneForme(new GlavnaForma());
         kontrolerGlavneForme.otvoriGlavnuFormu();
 
     }

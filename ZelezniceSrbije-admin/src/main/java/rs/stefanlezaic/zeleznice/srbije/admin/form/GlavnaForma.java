@@ -37,14 +37,15 @@ public class GlavnaForma extends javax.swing.JFrame {
         meniUpravljanjePolascima = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1590, 790));
+        setMinimumSize(new java.awt.Dimension(1600, 790));
+        setPreferredSize(new java.awt.Dimension(1600, 790));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 3));
         jSeparator1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 10, 3, 670));
-        getContentPane().add(panelUpravljanjeLinijom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 680));
+        getContentPane().add(panelUpravljanjeLinijom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 690));
 
         panelPolazak.setMinimumSize(new java.awt.Dimension(1290, 690));
         panelPolazak.setPreferredSize(new java.awt.Dimension(1290, 690));
