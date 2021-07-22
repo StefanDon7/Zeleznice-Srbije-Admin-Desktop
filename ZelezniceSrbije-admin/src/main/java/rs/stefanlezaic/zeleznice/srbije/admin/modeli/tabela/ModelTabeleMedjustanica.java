@@ -7,8 +7,6 @@ package rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela;
 
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.MedjuStanica;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
@@ -19,8 +17,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 public class ModelTabeleMedjustanica extends AbstractTableModel {
 
     private ArrayList<MedjuStanica> list = new ArrayList<>();
-    String[] kolone = {"Rr.Broj", "Medjustanica"};
-    private final Class[] columnsType = new Class[]{Integer.class, MedjuStanica.class};
+    String[] kolone = {"Rr.Broj", "Medjustanica","Okrug"};
+    private final Class[] columnsType = new Class[]{Integer.class, MedjuStanica.class,String.class};
 
     @Override
 
@@ -41,6 +39,8 @@ public class ModelTabeleMedjustanica extends AbstractTableModel {
                 return m.getRedniBroj();
             case 1:
                 return m.getStanica().getNaziv();
+            case 2:
+                return m.getStanica().getMesto().getNaziv();
             default:
                 return " ";
         }
@@ -52,6 +52,8 @@ public class ModelTabeleMedjustanica extends AbstractTableModel {
             case 0:
                 return kolone[column];
             case 1:
+                return kolone[column];
+            case 2:
                 return kolone[column];
             default:
                 return " ";

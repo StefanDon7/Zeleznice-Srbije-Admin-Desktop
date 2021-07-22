@@ -14,7 +14,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelPolazak;
@@ -118,7 +120,7 @@ public class KontrolerPolazak {
 
         for (int i = 0; i <= brojDana; i++) {
             Polazak polazak = napraviPolazak(l, v, i);
-            if(polazak==null){
+            if (polazak == null) {
                 return;
             }
             panelPolazak.getLblNazivPolaska().setText(polazak.getNaziv());
@@ -272,6 +274,11 @@ public class KontrolerPolazak {
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(4).setMinWidth(150);
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(5).setMaxWidth(250);
         panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(5).setMinWidth(250);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < panelPolazak.getTabelaPolazaka().getColumnCount(); i++) {
+            panelPolazak.getTabelaPolazaka().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     private void ucitajIkoniceZaDugmice() {
@@ -290,15 +297,15 @@ public class KontrolerPolazak {
     }
 
     public void ucitajSveIkonicTamnaTema() {
-         panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
+        panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz.png")));
-        
+
         panelPolazak.getLblDatum().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/datumISat.png")));
-        
+
         panelPolazak.getLblVoz().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz2.png")));
-        
+
         panelPolazak.getLblDatum2().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/datumISat.png")));
 
@@ -307,22 +314,22 @@ public class KontrolerPolazak {
 
         panelPolazak.getLblVreme().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/pescaniSat.png")));
-        
-         panelPolazak.getLblLista().setIcon(new ImageIcon(getClass().
+
+        panelPolazak.getLblLista().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
 
     }
 
     public void ucitajSveIkoniceSvetlaTema() {
-         panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
+        panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/voz.png")));
-        
+
         panelPolazak.getLblDatum().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/datumISat.png")));
-        
+
         panelPolazak.getLblVoz().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/voz2.png")));
-        
+
         panelPolazak.getLblDatum2().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/datumISat.png")));
 
@@ -331,8 +338,8 @@ public class KontrolerPolazak {
 
         panelPolazak.getLblVreme().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/pescaniSat.png")));
-        
-         panelPolazak.getLblLista().setIcon(new ImageIcon(getClass().
+
+        panelPolazak.getLblLista().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lista.png")));
 
     }

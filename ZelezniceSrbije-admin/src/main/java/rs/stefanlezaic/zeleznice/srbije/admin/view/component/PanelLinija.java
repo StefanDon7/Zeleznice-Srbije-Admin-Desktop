@@ -87,7 +87,7 @@ public class PanelLinija extends javax.swing.JPanel {
         add(lblKm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, 40));
 
         txtKilometraza.setBackground(new java.awt.Color(102, 102, 102));
-        txtKilometraza.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtKilometraza.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtKilometraza.setForeground(new java.awt.Color(0, 0, 0));
         add(txtKilometraza, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 120, 40));
 
@@ -102,7 +102,7 @@ public class PanelLinija extends javax.swing.JPanel {
         add(lblMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 40));
 
         txtMinutaza.setBackground(new java.awt.Color(102, 102, 102));
-        txtMinutaza.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtMinutaza.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtMinutaza.setForeground(new java.awt.Color(0, 0, 0));
         add(txtMinutaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 120, 40));
 

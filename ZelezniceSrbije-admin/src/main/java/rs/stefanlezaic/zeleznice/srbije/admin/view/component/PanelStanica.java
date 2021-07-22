@@ -54,6 +54,7 @@ public class PanelStanica extends javax.swing.JPanel {
         add(lblNazivStanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 160, 40));
 
         txtNazivStanice.setBackground(new java.awt.Color(102, 102, 102));
+        txtNazivStanice.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtNazivStanice.setForeground(new java.awt.Color(0, 0, 0));
         add(txtNazivStanice, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 300, 40));
 

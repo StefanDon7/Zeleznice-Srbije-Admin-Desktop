@@ -12,8 +12,10 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabeleMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice;
@@ -230,8 +232,16 @@ public class KontrolerMedjustanica {
         panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setResizable(false);
 
         panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(0).setWidth(50);
-        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMinWidth(536);
-        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMaxWidth(536);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMinWidth(300);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setMaxWidth(300);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(2).setMinWidth(300);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(2).setMaxWidth(300);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+        panelMedjustanice.getTabelaMedjustanica().getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+
     }
 
     private void ucitajIkoniceZaDugmice() {

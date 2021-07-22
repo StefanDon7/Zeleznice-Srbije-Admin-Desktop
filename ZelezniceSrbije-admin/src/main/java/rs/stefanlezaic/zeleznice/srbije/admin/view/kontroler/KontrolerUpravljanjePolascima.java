@@ -14,8 +14,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
@@ -187,6 +189,11 @@ public class KontrolerUpravljanjePolascima {
         panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(4).setMinWidth(115);
         panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(5).setMaxWidth(250);
         panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(5).setMinWidth(250);
+         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < panelSviPolasci.getTabelaSviPolasci().getColumnCount(); i++) {
+            panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     private void ucitajSvePolaske() {
