@@ -5,10 +5,10 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,6 +22,8 @@ import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
@@ -38,6 +40,7 @@ public class KontrolerUpravljanjePolascima {
     private JFrame forma;
     private final ModelTabelePolaska mtsp = new ModelTabelePolaska();
     private final Tabela tabela = new Tabela();
+    private final SoundEffect soundEffect = new SoundEffect();
 
     public KontrolerUpravljanjePolascima() {
     }
@@ -54,27 +57,92 @@ public class KontrolerUpravljanjePolascima {
     }
 
     private void addListener() {
-        panelSviPolasci.btnObrisiPolazakIzTabeleSviPolasciActionListener(new ActionListener() {
+        panelSviPolasci.btnObrisiPolazakIzTabeleSviMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 obrisiPolazakIzTabeleSviPolasci();
             }
 
-        });
-        panelSviPolasci.btnUpdejtujActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
+            }
+        });
+
+        panelSviPolasci.btnUpdejtujMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 updejtuj();
             }
 
-        });
-        panelSviPolasci.btnOsveziListuSviPolasciActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
+            }
+        });
+
+        panelSviPolasci.btnOsveziListuSviPolasciMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 osveziListu();
             }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh.png")));
+            }
         });
+
         panelSviPolasci.cmbSortirajItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -189,7 +257,7 @@ public class KontrolerUpravljanjePolascima {
         panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(4).setMinWidth(115);
         panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(5).setMaxWidth(250);
         panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(5).setMinWidth(250);
-         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < panelSviPolasci.getTabelaSviPolasci().getColumnCount(); i++) {
             panelSviPolasci.getTabelaSviPolasci().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);

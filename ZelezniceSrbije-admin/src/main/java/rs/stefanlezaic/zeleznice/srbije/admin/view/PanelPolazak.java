@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -238,11 +239,6 @@ public class PanelPolazak extends javax.swing.JPanel {
         this.tabelaPolazaka = tabelaPolazaka;
     }
 
-    
-
-   
-       
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -457,19 +453,19 @@ public class PanelPolazak extends javax.swing.JPanel {
     private javax.swing.JTable tabelaPolazaka;
     // End of variables declaration//GEN-END:variables
 
-    public void btnDodajPolazakActionListener(ActionListener actionListener) {
-        btnDodajPolazak.addActionListener(actionListener);
+    public void btnDodajPolazakMouseListener(MouseListener mouseListener) {
+        btnDodajPolazak.addMouseListener(mouseListener);
     }
 
-    public void btnObrisiPolazakActionListener(ActionListener actionListener) {
-         btnObrisiPolazak.addActionListener(actionListener);
+    public void btnObrisiPolazakMouseListener(MouseListener mouseListener) {
+        btnObrisiPolazak.addMouseListener(mouseListener);
     }
 
-    public void btnZapamtiPolaskeActionListener(ActionListener actionListener) {
-        btnZapamtiPolaske.addActionListener(actionListener);
+    public void btnZapamtiPolaskeMouseListener(MouseListener mouseListener) {
+        btnZapamtiPolaske.addMouseListener(mouseListener);
     }
 
-    public void btnObrisiListukActionListener(ActionListener actionListener) {
-        btnObrisiListu.addActionListener(actionListener);
+    public void btnObrisiListukMouseListener(MouseListener mouseListener) {
+        btnObrisiListu.addMouseListener(mouseListener);
     }
 }

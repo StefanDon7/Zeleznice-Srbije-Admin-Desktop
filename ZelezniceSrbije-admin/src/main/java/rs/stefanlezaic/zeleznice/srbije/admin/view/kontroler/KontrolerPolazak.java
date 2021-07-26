@@ -7,6 +7,8 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,6 +27,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Voz;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
@@ -43,6 +47,7 @@ public class KontrolerPolazak {
     private ModelTabelePolaska mtp = new ModelTabelePolaska();
     private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private final Tabela tabela = new Tabela();
+    private final SoundEffect soundEffect = new SoundEffect();
 
     public KontrolerPolazak(PanelPolazak panelPolazak, JFrame forma) {
         this.panelPolazak = panelPolazak;
@@ -85,28 +90,119 @@ public class KontrolerPolazak {
     }
 
     private void addListener() {
-        panelPolazak.btnDodajPolazakActionListener(new ActionListener() {
+        panelPolazak.btnDodajPolazakMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 dodajPolazak();
             }
-        });
-        panelPolazak.btnObrisiPolazakActionListener(new ActionListener() {
+
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelPolazak.getBtnDodajPolazak().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelPolazak.getBtnDodajPolazak().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
+            }
+        });
+
+        panelPolazak.btnObrisiPolazakMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 obrisiPolazak();
             }
-        });
-        panelPolazak.btnZapamtiPolaskeActionListener(new ActionListener() {
+
             @Override
-            public void actionPerformed(ActionEvent e) {
-                zapamtiPolaske();
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelPolazak.getBtnObrisiPolazak().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/minus1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelPolazak.getBtnObrisiPolazak().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/minus.png")));
             }
         });
-        panelPolazak.btnObrisiListukActionListener(new ActionListener() {
+
+        panelPolazak.btnZapamtiPolaskeMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
+                zapamtiPolaske();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelPolazak.getBtnZapamtiPolaske().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelPolazak.getBtnZapamtiPolaske().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
+            }
+        });
+
+        panelPolazak.btnObrisiListukMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 obrisiPolaske();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelPolazak.getBtnObrisiListu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/trash1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelPolazak.getBtnObrisiListu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/trash.png")));
             }
         });
     }

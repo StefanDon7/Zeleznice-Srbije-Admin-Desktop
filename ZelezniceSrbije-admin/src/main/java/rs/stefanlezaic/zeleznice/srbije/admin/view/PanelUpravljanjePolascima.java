@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -57,11 +58,6 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
     public JTable getTabelaSviPolasci() {
         return tabelaSviPolasci;
     }
-
-   
-    
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,22 +149,21 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
     private javax.swing.JTable tabelaSviPolasci;
     // End of variables declaration//GEN-END:variables
 
-    public void btnObrisiPolazakIzTabeleSviPolasciActionListener(ActionListener actionListener) {
-        btnObrisiPolazakIzTabeleSviPolasci.addActionListener(actionListener);
-    }
-
-    public void btnUpdejtujActionListener(ActionListener actionListener) {
-        btnUpdejtuj.addActionListener(actionListener);
-    }
-
-    public void btnOsveziListuSviPolasciActionListener(ActionListener actionListener) {
-        btnOsveziListuSviPolasci.addActionListener(actionListener);
-    }
 
     public void cmbSortirajItemListener(ItemListener itemListener) {
         cmbSortiraj.addItemListener(itemListener);
     }
 
-    
+    public void btnObrisiPolazakIzTabeleSviMouseListener(MouseListener mouseListener) {
+        btnObrisiPolazakIzTabeleSviPolasci.addMouseListener(mouseListener);
+    }
+
+    public void btnUpdejtujMouseListener(MouseListener mouseListener) {
+        btnUpdejtuj.addMouseListener(mouseListener);
+    }
+
+    public void btnOsveziListuSviPolasciMouseListener(MouseListener mouseListener) {
+        btnOsveziListuSviPolasci.addMouseListener(mouseListener);
+    }
 
 }

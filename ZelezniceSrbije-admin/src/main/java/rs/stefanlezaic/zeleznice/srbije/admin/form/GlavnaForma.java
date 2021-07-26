@@ -58,6 +58,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         meniLinija.setText("Linija");
         meniLinija.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
         meniLinija.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        meniLinija.setPreferredSize(new java.awt.Dimension(250, 80));
         menuBar.add(meniLinija);
 
         meniPolazak.setBorder(null);
@@ -66,6 +67,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         meniPolazak.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
         meniPolazak.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         meniPolazak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        meniPolazak.setPreferredSize(new java.awt.Dimension(250, 80));
         menuBar.add(meniPolazak);
 
         meniUpravljanjePolascima.setBorder(null);
@@ -73,6 +75,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         meniUpravljanjePolascima.setText("Upravljanje polascima");
         meniUpravljanjePolascima.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
         meniUpravljanjePolascima.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        meniUpravljanjePolascima.setPreferredSize(new java.awt.Dimension(370, 80));
         menuBar.add(meniUpravljanjePolascima);
 
         setJMenuBar(menuBar);

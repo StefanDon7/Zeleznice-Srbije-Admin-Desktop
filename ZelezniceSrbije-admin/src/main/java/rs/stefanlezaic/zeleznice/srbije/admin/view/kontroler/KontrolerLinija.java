@@ -5,8 +5,8 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -17,6 +17,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.TipLinije;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
@@ -30,6 +32,7 @@ public class KontrolerLinija {
     private PanelLinija panelLinija;
     private Linija linija;
     private JFrame forma;
+    private final SoundEffect soundEffect = new SoundEffect();
 
     public KontrolerLinija() {
     }
@@ -44,10 +47,34 @@ public class KontrolerLinija {
     }
 
     private void addListener() {
-        panelLinija.btnUnesiLiniju(new ActionListener() {
+        panelLinija.btnUnesiLinijuMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 unesiLiniju();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelLinija.getBtnUnesiLiniju().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelLinija.getBtnUnesiLiniju().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
             }
         });
     }

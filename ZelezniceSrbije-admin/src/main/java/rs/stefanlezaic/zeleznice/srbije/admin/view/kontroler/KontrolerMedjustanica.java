@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -23,6 +25,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.MedjuStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
@@ -40,6 +44,7 @@ public class KontrolerMedjustanica {
     private JFrame forma;
     private final ModelTabeleMedjustanica mtms = new ModelTabeleMedjustanica();
     private final Tabela tabela = new Tabela();
+    private final SoundEffect soundEffect = new SoundEffect();
 
     public KontrolerMedjustanica(PanelMedjustanice panelMedjustanice, JFrame forma) {
         this.panelMedjustanice = panelMedjustanice;
@@ -53,29 +58,119 @@ public class KontrolerMedjustanica {
     }
 
     private void addListener() {
-        panelMedjustanice.btnDodajMedjustanicu(new ActionListener() {
+        panelMedjustanice.btnDodajMedjustanicuMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 dodajMedjustanicu();
             }
-        });
-        panelMedjustanice.btnIzmeniRedosledMedjustanica(new ActionListener() {
+
             @Override
-            public void actionPerformed(ActionEvent e) {
-                izmeniRedosled();
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelMedjustanice.getBtnDodajMedjustanicu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelMedjustanice.getBtnDodajMedjustanicu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
             }
         });
-        panelMedjustanice.btnObrisiMedjustanicu(new ActionListener() {
+
+        panelMedjustanice.btnIzmeniRedosledMedjustanicaMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
+                izmeniRedosled();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelMedjustanice.getBtnIzmeniRedosledMedjustanica().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelMedjustanice.getBtnIzmeniRedosledMedjustanica().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
+            }
+        });
+
+        panelMedjustanice.btnObrisiMedjustanicuMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 obrisiMedjustanicu();
             }
 
-        });
-        panelMedjustanice.btnObrisiLiniju(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelMedjustanice.getBtnObrisiMedjustanicu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/minus1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelMedjustanice.getBtnObrisiMedjustanicu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/minus.png")));
+            }
+        });
+
+        panelMedjustanice.btnObrisiLinijuMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
                 obrisiLiniju();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelMedjustanice.getBtnObrisiLiniju().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelMedjustanice.getBtnObrisiLiniju().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
             }
         });
         panelMedjustanice.cmbLinije(new ItemListener() {

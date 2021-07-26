@@ -5,7 +5,7 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.component;
 
-import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -119,7 +119,7 @@ public class PanelStanica extends javax.swing.JPanel {
     private javax.swing.JTextField txtNazivStanice;
     // End of variables declaration//GEN-END:variables
 
-    public void btnUnesiStanicu(ActionListener actionListener) {
-        btnUnesiStanicu.addActionListener(actionListener);
+    public void btnUnesiStanicuMouseListener(MouseListener mouseListener) {
+        btnUnesiStanicu.addMouseListener(mouseListener);
     }
 }

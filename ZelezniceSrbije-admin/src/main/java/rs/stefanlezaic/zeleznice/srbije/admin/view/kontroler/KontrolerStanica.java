@@ -5,8 +5,8 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,6 +16,8 @@ import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Mesto;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
@@ -29,6 +31,7 @@ public class KontrolerStanica {
     private PanelStanica panelStanica;
     private Stanica stanica;
     private JFrame forma;
+    private final SoundEffect soundEffect = new SoundEffect();
 
     public KontrolerStanica() {
     }
@@ -43,10 +46,34 @@ public class KontrolerStanica {
     }
 
     private void addListener() {
-        panelStanica.btnUnesiStanicu(new ActionListener() {
+
+        panelStanica.btnUnesiStanicuMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.KLIK);
                 unesiStanicu();
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+                panelStanica.getBtnUnesiStanicu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add1.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panelStanica.getBtnUnesiStanicu().setIcon(new ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
             }
         });
     }

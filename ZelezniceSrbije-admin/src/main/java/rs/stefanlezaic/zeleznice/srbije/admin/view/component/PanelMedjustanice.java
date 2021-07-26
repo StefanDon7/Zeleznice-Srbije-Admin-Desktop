@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view.component;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -77,8 +78,7 @@ public class PanelMedjustanice extends javax.swing.JPanel {
     public JLabel getLblNazivFrejma() {
         return lblNazivFrejma;
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -195,24 +195,25 @@ public class PanelMedjustanice extends javax.swing.JPanel {
     private javax.swing.JTable tabelaMedjustanica;
     // End of variables declaration//GEN-END:variables
 
-    public void btnDodajMedjustanicu(ActionListener actionListener) {
-        btnDodajMedjustanicu.addActionListener(actionListener);
-    }
-
-    public void btnIzmeniRedosledMedjustanica(ActionListener actionListener) {
-        btnIzmeniRedosledMedjustanica.addActionListener(actionListener);
-    }
-
-    public void btnObrisiMedjustanicu(ActionListener actionListener) {
-        btnObrisiMedjustanicu.addActionListener(actionListener);
-    }
-
-    public void btnObrisiLiniju(ActionListener actionListener) {
-        btnObrisiLiniju.addActionListener(actionListener);
-    }
-    
+   
     public void cmbLinije(ItemListener itemListener) {
         cmbLinije.addItemListener(itemListener);
     }
-   
+
+    public void btnDodajMedjustanicuMouseListener(MouseListener mouseListener) {
+        btnDodajMedjustanicu.addMouseListener(mouseListener);
+    }
+
+    public void btnIzmeniRedosledMedjustanicaMouseListener(MouseListener mouseListener) {
+        btnIzmeniRedosledMedjustanica.addMouseListener(mouseListener);
+    }
+
+    public void btnObrisiMedjustanicuMouseListener(MouseListener mouseListener) {
+        btnObrisiMedjustanicu.addMouseListener(mouseListener);
+    }
+
+    public void btnObrisiLinijuMouseListener(MouseListener mouseListener) {
+        btnObrisiLiniju.addMouseListener(mouseListener);
+    }
+
 }
