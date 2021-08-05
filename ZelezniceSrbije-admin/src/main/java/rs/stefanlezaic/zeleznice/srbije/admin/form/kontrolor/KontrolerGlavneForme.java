@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
+import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerMedjustanica;
@@ -66,7 +67,7 @@ public class KontrolerGlavneForme {
         glavnaForma.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         glavnaForma.setVisible(true);
         glavnaForma.pack();
-        glavnaForma.setMinimumSize(new Dimension(1600, 840));
+        glavnaForma.setMinimumSize(new Dimension(1330, 810));
     }
 
     public void zatvoriGlavnuFormu() {
@@ -74,93 +75,25 @@ public class KontrolerGlavneForme {
     }
 
     private void addListener() {
-        glavnaForma.meniLinijaActionListener(new java.awt.event.MouseListener() {
+        glavnaForma.meniLinijaActionListener(new AbstractMenu(glavnaForma.getMeniLinija(), "linija", "linija1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
+            public void execute() {
                 otvoriPanelLinija();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
-                glavnaForma.getMeniLinija().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/linija1.png"))); // NOI18N
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                glavnaForma.getMeniLinija().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/linija.png"))); // NOI18N
-            }
         });
-        glavnaForma.meniPolazakActionListener(new MouseListener() {
+        glavnaForma.meniPolazakActionListener(new AbstractMenu(glavnaForma.getMeniPolazak(), "polazak", "polazak1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
+            public void execute() {
                 otvoriPanelPolazak();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
-                glavnaForma.getMeniPolazak().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/polazak1.png"))); // NOI18N
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                glavnaForma.getMeniPolazak().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/polazak.png"))); // NOI18N
-            }
         });
-        glavnaForma.meniUpravljanjePolascimaActionListener(new MouseListener() {
+        glavnaForma.meniUpravljanjePolascimaActionListener(new AbstractMenu(glavnaForma.getMeniUpravljanjePolascima(), "lista", "lista1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
+            public void execute() {
                 otvoriPanelUpravljanjePolascima();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
-                glavnaForma.getMeniUpravljanjePolascima().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/lista1.png"))); // NOI18N
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                glavnaForma.getMeniUpravljanjePolascima().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/lista.png"))); // NOI18N
-            }
         });
+       
         glavnaForma.lblTamnaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {

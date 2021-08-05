@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
@@ -57,89 +58,22 @@ public class KontrolerUpravljanjePolascima {
     }
 
     private void addListener() {
-        panelSviPolasci.btnObrisiPolazakIzTabeleSviMouseListener(new MouseListener() {
+        panelSviPolasci.btnObrisiPolazakIzTabeleSviMouseListener(new AbstractButton(panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci(), "delete", "delete1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
+            public void execute() {
                 obrisiPolazakIzTabeleSviPolasci();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
-            }
         });
-
-        panelSviPolasci.btnUpdejtujMouseListener(new MouseListener() {
+        panelSviPolasci.btnUpdejtujMouseListener(new AbstractButton(panelSviPolasci.getBtnUpdejtuj(), "save", "save1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
+            public void execute() {
                 updejtuj();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
-                panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
-            }
         });
-
-        panelSviPolasci.btnOsveziListuSviPolasciMouseListener(new MouseListener() {
+        panelSviPolasci.btnOsveziListuSviPolasciMouseListener(new AbstractButton(panelSviPolasci.getBtnOsveziListuSviPolasci(), "refresh", "refresh1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
+            public void execute() {
                 osveziListu();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.INTERFEJS);
-                panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh.png")));
             }
         });
 
