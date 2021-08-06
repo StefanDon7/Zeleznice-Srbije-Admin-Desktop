@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija;
@@ -29,17 +31,21 @@ public class KontrolerLinija {
     private PanelLinija panelLinija;
     private Linija linija;
     private JFrame forma;
+    private KontrolerGlavneForme kontrolerGlavneForme;
 
-    public KontrolerLinija() {
-    }
 
-    public KontrolerLinija(PanelLinija panelLinija, JFrame forma) {
+
+    public KontrolerLinija(PanelLinija panelLinija, GlavnaForma glavnaForma, KontrolerGlavneForme kontrolerGlavneForme) {
         this.panelLinija = panelLinija;
         this.forma = forma;
-        popuniPoljeStanice();
+        this.kontrolerGlavneForme=kontrolerGlavneForme;
         popuniPoljeTipLinije();
         ucitajIkoniceZaDugmice();
         addListener();
+    }
+
+    public PanelLinija getPanelLinija() {
+        return panelLinija;
     }
 
     private void addListener() {
@@ -58,6 +64,7 @@ public class KontrolerLinija {
                 Kontroler.getInstance().unesiLiniju(linija);
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno sacuvana linija!"));
                 ocistiPolja();
+                kontrolerGlavneForme.ucitajSveLinije();
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
@@ -92,21 +99,6 @@ public class KontrolerLinija {
     private void ocistiPolja() {
         panelLinija.getTxtKilometraza().setText("");
         panelLinija.getTxtMinutaza().setText("");
-    }
-
-    private void popuniPoljeStanice() {
-        panelLinija.getCmbPocetna().removeAllItems();
-        panelLinija.getCmbKrajnja().removeAllItems();
-        ArrayList<Stanica> list = new ArrayList<>();
-        try {
-            list = Kontroler.getInstance().vratiMiSveStanice();
-        } catch (Exception ex) {
-            ex.toString();
-        }
-        for (Stanica stanica : list) {
-            panelLinija.getCmbPocetna().addItem(stanica);
-            panelLinija.getCmbKrajnja().addItem(stanica);
-        }
     }
 
     private void popuniPoljeTipLinije() {

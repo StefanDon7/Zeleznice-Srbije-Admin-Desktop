@@ -5,8 +5,6 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
@@ -27,7 +27,6 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Voz;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
 import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
@@ -46,12 +45,10 @@ public class KontrolerPolazak {
     private ModelTabelePolaska mtp = new ModelTabelePolaska();
     private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private final Tabela tabela = new Tabela();
-    private final SoundEffect soundEffect = new SoundEffect();
 
     public KontrolerPolazak(PanelPolazak panelPolazak, JFrame forma) {
         this.panelPolazak = panelPolazak;
         this.forma = forma;
-        ucitajLinije();
         ucitajVozove();
         ucitajIkoniceZaDugmice();
         addListener();
@@ -61,17 +58,12 @@ public class KontrolerPolazak {
         tabela.urediTabelu(panelPolazak.getTabelaPolazaka());
     }
 
-    private void ucitajLinije() {
-        panelPolazak.getCmbLinijaPolazak().removeAllItems();
-        ArrayList<Linija> list = new ArrayList<>();
-        try {
-            list = Kontroler.getInstance().vratiMiSveLinije();
-            for (Linija linija : list) {
-                panelPolazak.getCmbLinijaPolazak().addItem(linija);
-            }
-        } catch (Exception ex) {
-            System.out.println("Sistem ne moze da ucita linije!");
-        }
+    public KontrolerPolazak(PanelPolazak panelPolazak, GlavnaForma glavnaForma, KontrolerGlavneForme aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public PanelPolazak getPanelPolazak() {
+        return panelPolazak;
     }
 
     private void ucitajVozove() {

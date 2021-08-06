@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabeleMedjustanica;
@@ -37,6 +39,7 @@ public class KontrolerMedjustanica {
     private PanelMedjustanice panelMedjustanice;
     private MedjuStanica medjuStanica;
     private JFrame forma;
+    private KontrolerGlavneForme kontrolerGlavneForme;
     private final ModelTabeleMedjustanica mtms = new ModelTabeleMedjustanica();
     private final Tabela tabela = new Tabela();
 
@@ -44,12 +47,27 @@ public class KontrolerMedjustanica {
         this.panelMedjustanice = panelMedjustanice;
         this.forma = forma;
         urediTabeluMedjuStanica();
-        popuniPoljeStanice();
         popuniPoljeLinije();
         ucitajIkoniceZaDugmice();
         addListener();
         tabela.urediTabelu(panelMedjustanice.getTabelaMedjustanica());
         promeniLiniju();
+    }
+
+    public KontrolerMedjustanica(PanelMedjustanice panelMedjustanice, GlavnaForma glavnaForma, KontrolerGlavneForme kontrolerGlavneForme) {
+        this.panelMedjustanice = panelMedjustanice;
+        this.forma = forma;
+        this.kontrolerGlavneForme=kontrolerGlavneForme;
+        urediTabeluMedjuStanica();
+        popuniPoljeLinije();
+        ucitajIkoniceZaDugmice();
+        addListener();
+        tabela.urediTabelu(panelMedjustanice.getTabelaMedjustanica());
+        promeniLiniju();
+    }
+
+    public PanelMedjustanice getPanelMedjustanice() {
+        return panelMedjustanice;
     }
 
     private void addListener() {
@@ -178,6 +196,7 @@ public class KontrolerMedjustanica {
         if (n == 0) {
             try {
                 Kontroler.getInstance().obrisiLiniju(l);
+                kontrolerGlavneForme.ucitajSveLinije();
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste obrisali liniju: "));
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
@@ -199,19 +218,6 @@ public class KontrolerMedjustanica {
             System.out.println("Sistem ne moze da promeni linije!");
         }
         mtms.setList(lista);
-    }
-
-    private void popuniPoljeStanice() {
-        panelMedjustanice.getCmbMedjustanica().removeAllItems();
-        ArrayList<Stanica> list = new ArrayList<>();
-        try {
-            list = Kontroler.getInstance().vratiMiSveStanice();
-        } catch (Exception ex) {
-            System.out.println("Sistem ne moze da vrati stanice!");
-        }
-        for (Stanica stanica : list) {
-            panelMedjustanice.getCmbMedjustanica().addItem(stanica);
-        }
     }
 
     private void popuniPoljeLinije() {

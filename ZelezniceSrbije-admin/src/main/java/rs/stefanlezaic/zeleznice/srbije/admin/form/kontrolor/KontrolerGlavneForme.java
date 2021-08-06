@@ -6,17 +6,22 @@
 package rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerPolazak;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerStanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerUpravljanjePolascima;
+import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
+import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
 import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
 import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
@@ -42,11 +47,15 @@ public class KontrolerGlavneForme {
         this.glavnaForma = glavnaForma;
         napraviOstaleKontrolore();
         this.tema = new Tema(glavnaForma);
+        glavnaForma.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/srbija.png")));
         ukljuciTamnuTemu();
         pokreniSat();
         ucitajSveIkonice();
         addListener();
+        ucitajSveStanice();
+        ucitajSveLinije();
         otvoriPanelLinija();
+
     }
 
     public GlavnaForma getGlavnaForma() {
@@ -63,11 +72,10 @@ public class KontrolerGlavneForme {
 
     public void otvoriGlavnuFormu() {
         glavnaForma.setLocationRelativeTo(null);
-        glavnaForma.setVisible(true);
         glavnaForma.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         glavnaForma.setVisible(true);
         glavnaForma.pack();
-        glavnaForma.setMinimumSize(new Dimension(1330, 810));
+        glavnaForma.setMinimumSize(new Dimension(1330, 820));
     }
 
     public void zatvoriGlavnuFormu() {
@@ -93,7 +101,7 @@ public class KontrolerGlavneForme {
                 otvoriPanelUpravljanjePolascima();
             }
         });
-       
+
         glavnaForma.lblTamnaTemaActionListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -169,9 +177,9 @@ public class KontrolerGlavneForme {
     }
 
     private void napraviOstaleKontrolore() {
-        kontrolerStanica = new KontrolerStanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelStanica(), glavnaForma);
-        kontrolerLinija = new KontrolerLinija(glavnaForma.getPanelUpravljanjeLinijom().getPanelLinija(), glavnaForma);
-        kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelMedjustanice(), glavnaForma);
+        kontrolerStanica = new KontrolerStanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelStanica(), glavnaForma, this);
+        kontrolerLinija = new KontrolerLinija(glavnaForma.getPanelUpravljanjeLinijom().getPanelLinija(), glavnaForma, this);
+        kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelMedjustanice(), glavnaForma, this);
         kontrolerPolazak = new KontrolerPolazak(glavnaForma.getPanelPolazak(), glavnaForma);
         kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima(), glavnaForma);
     }
@@ -230,6 +238,38 @@ public class KontrolerGlavneForme {
         kontrolerMedjustanica.ucitajSveIkoniceSvetlaTema();
         kontrolerPolazak.ucitajSveIkoniceSvetlaTema();
         kontrolerStanica.ucitajSveIkoniceSvetlaTema();
+    }
+
+    public void ucitajSveStanice() {
+        kontrolerLinija.getPanelLinija().getCmbPocetna().removeAllItems();
+        kontrolerLinija.getPanelLinija().getCmbKrajnja().removeAllItems();
+        kontrolerMedjustanica.getPanelMedjustanice().getCmbMedjustanica().removeAllItems();
+        ArrayList<Stanica> list = new ArrayList<>();
+        try {
+            list = Kontroler.getInstance().vratiMiSveStanice();
+        } catch (Exception ex) {
+            ex.toString();
+        }
+        for (Stanica stanica : list) {
+            kontrolerLinija.getPanelLinija().getCmbPocetna().addItem(stanica);
+            kontrolerLinija.getPanelLinija().getCmbKrajnja().addItem(stanica);
+            kontrolerMedjustanica.getPanelMedjustanice().getCmbMedjustanica().addItem(stanica);
+        }
+    }
+
+    public void ucitajSveLinije() {
+        kontrolerPolazak.getPanelPolazak().getCmbLinijaPolazak().removeAllItems();
+        kontrolerMedjustanica.getPanelMedjustanice().getCmbLinije().removeAllItems();
+        ArrayList<Linija> list = new ArrayList<>();
+        try {
+            list = Kontroler.getInstance().vratiMiSveLinije();
+            for (Linija linija : list) {
+                kontrolerPolazak.getPanelPolazak().getCmbLinijaPolazak().addItem(linija);
+                kontrolerMedjustanica.getPanelMedjustanice().getCmbLinije().addItem(linija);
+            }
+        } catch (Exception ex) {
+            System.out.println("Sistem ne moze da vrati linije!");
+        }
     }
 
 }

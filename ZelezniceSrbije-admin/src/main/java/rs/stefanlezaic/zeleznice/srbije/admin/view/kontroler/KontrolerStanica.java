@@ -5,18 +5,18 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
-
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Mesto;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
@@ -30,17 +30,19 @@ public class KontrolerStanica {
     private PanelStanica panelStanica;
     private Stanica stanica;
     private JFrame forma;
+    private KontrolerGlavneForme kontrolerGlavneForme;
 
-    public KontrolerStanica() {
-    }
-
-    public KontrolerStanica(PanelStanica panelStanica, JFrame forma) {
+    public KontrolerStanica(PanelStanica panelStanica, GlavnaForma glavnaForma, KontrolerGlavneForme kontrolerGlavneForme) {
         this.panelStanica = panelStanica;
         this.forma = forma;
+        this.kontrolerGlavneForme=kontrolerGlavneForme;
         popuniPolje();
         ucitajIkoniceZaDugmice();
         addListener();
+    }
 
+    public PanelStanica getPanelStanica() {
+        return panelStanica;
     }
 
     private void addListener() {
@@ -58,8 +60,8 @@ public class KontrolerStanica {
             try {
                 Kontroler.getInstance().unesiNovuStanicu(stanica);
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli stanicu!"));
-
                 ocistiPolja();
+                kontrolerGlavneForme.ucitajSveStanice();
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
@@ -69,7 +71,7 @@ public class KontrolerStanica {
     }
 
     private Stanica pokupiPodatke() throws ParametarsException {
-        String nazivStanice = panelStanica.getTxtNazivStanice().getText().trim();
+        String nazivStanice = panelStanica.getTxtNazivStanice().getText().trim().toUpperCase();
         Mesto mesto = (Mesto) panelStanica.getCmbMestaZaStanice().getSelectedItem();
         stanica = new Stanica();
         stanica.setMesto(mesto);

@@ -7,8 +7,6 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,13 +16,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
@@ -41,10 +39,7 @@ public class KontrolerUpravljanjePolascima {
     private JFrame forma;
     private final ModelTabelePolaska mtsp = new ModelTabelePolaska();
     private final Tabela tabela = new Tabela();
-    private final SoundEffect soundEffect = new SoundEffect();
 
-    public KontrolerUpravljanjePolascima() {
-    }
 
     public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelSviPolasci, JFrame forma) {
         this.panelSviPolasci = panelSviPolasci;
@@ -55,6 +50,10 @@ public class KontrolerUpravljanjePolascima {
         ucitajSvePolaske();
         dodajPolaske(Kontroler.getInstance().getSviPolasci());
         tabela.urediTabelu(panelSviPolasci.getTabelaSviPolasci());
+    }
+
+    public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelUpravljanjePolascima, GlavnaForma glavnaForma, KontrolerGlavneForme aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void addListener() {
