@@ -58,10 +58,6 @@ public class KontrolerPolazak {
         tabela.urediTabelu(panelPolazak.getTabelaPolazaka());
     }
 
-    public KontrolerPolazak(PanelPolazak panelPolazak, GlavnaForma glavnaForma, KontrolerGlavneForme aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public PanelPolazak getPanelPolazak() {
         return panelPolazak;
     }
@@ -151,6 +147,8 @@ public class KontrolerPolazak {
         int red = panelPolazak.getTabelaPolazaka().getSelectedRow();
         if (red != -1) {
             mtp.obrisi(red);
+        } else {
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Obeležite polazak koji želite da obrišete!"));
         }
     }
 
@@ -170,6 +168,9 @@ public class KontrolerPolazak {
     }
 
     private void obrisiPolaske() {
+        if (mtp.getList().isEmpty()) {
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Lista je prazna!"));
+        }
         mtp.obrisiListu();
     }
 
