@@ -6,7 +6,8 @@
 package rs.stefanlezaic.zeleznice.srbije.admin.view;
 
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSat;
-import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelTema;
+import rs.stefanlezaic.zeleznice.srbije.lib.theme.PanelTema;
+
 
 /**
  *
@@ -31,16 +32,16 @@ public class PanelBar extends javax.swing.JPanel {
     private void initComponents() {
 
         panelSat = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSat();
-        panelTema = new rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelTema();
+        panelTema = new rs.stefanlezaic.zeleznice.srbije.lib.theme.PanelTema();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(panelSat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        add(panelTema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
+        add(panelSat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, -1));
+        add(panelTema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 260, 80));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelSat panelSat;
-    private rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelTema panelTema;
+    private rs.stefanlezaic.zeleznice.srbije.lib.theme.PanelTema panelTema;
     // End of variables declaration//GEN-END:variables
 }

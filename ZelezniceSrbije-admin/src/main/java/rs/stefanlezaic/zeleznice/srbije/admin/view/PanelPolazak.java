@@ -328,7 +328,7 @@ public class PanelPolazak extends javax.swing.JPanel {
 
         lblVreme.setForeground(new java.awt.Color(255, 255, 255));
         lblVreme.setText("Vreme:");
-        add(lblVreme, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 90, 40));
+        add(lblVreme, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 90, 40));
 
         lblDatum2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblDatum2.setForeground(new java.awt.Color(255, 255, 255));
@@ -340,7 +340,7 @@ public class PanelPolazak extends javax.swing.JPanel {
         spinerMinuti.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         spinerMinuti.setFocusable(false);
         spinerMinuti.setOpaque(false);
-        add(spinerMinuti, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, 70, 40));
+        add(spinerMinuti, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 70, 40));
         spinerMinuti.setBackground(new Color(112, 122, 122));
         spinerMinuti.setForeground(Color.BLACK);
 
@@ -390,20 +390,20 @@ public class PanelPolazak extends javax.swing.JPanel {
         spinerSati.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         spinerSati.setFocusable(false);
         spinerSati.setOpaque(false);
-        add(spinerSati, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 70, 40));
+        add(spinerSati, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 70, 40));
 
         cmbBrojDanaZaPolazak.setBackground(new java.awt.Color(153, 153, 153));
         cmbBrojDanaZaPolazak.setForeground(new java.awt.Color(0, 0, 0));
         cmbBrojDanaZaPolazak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 dan", "7 dana", "10 dana", "15 dana" }));
-        add(cmbBrojDanaZaPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 100, 40));
+        add(cmbBrojDanaZaPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 120, 100, 40));
 
         lblZaNarednih.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblZaNarednih.setForeground(new java.awt.Color(255, 255, 255));
         lblZaNarednih.setText("Za narednih:");
-        add(lblZaNarednih, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, 90, 40));
+        add(lblZaNarednih, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, 90, 40));
 
         cboxPovratna.setText("Povratna?");
-        add(cboxPovratna, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 120, 90, 40));
+        add(cboxPovratna, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 120, 90, 40));
 
         btnObrisiListu.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiListu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
