@@ -8,7 +8,6 @@ package rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
@@ -22,7 +21,6 @@ import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerUpravljanj
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.KontrolerTema;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
 
@@ -41,16 +39,15 @@ public class KontrolerGlavneForme {
     private KontrolerPolazak kontrolerPolazak;
     private KontrolerUpravljanjePolascima kontrolerUpravljanjePolascima;
     private KontrolerTema kontrolerTema;
-    private final SoundEffect soundEffect = new SoundEffect();
 
     public KontrolerGlavneForme(GlavnaForma glavnaForma) {
         this.glavnaForma = glavnaForma;
-        napraviOstaleKontrolore();
         this.tema = new Tema(glavnaForma);
-        glavnaForma.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/srbija.png")));
-        pokreniSat();
-        ucitajSveIkonice();
+        napraviOstaleKontrolore();
         promeniIkoniceZaTamnuTemu();
+        glavnaForma.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/srbija.png")));
+        glavnaForma.setTitle("Železnice Srbije");
+        pokreniSat();
         addListener();
         ucitajSveStanice();
         ucitajSveLinije();
@@ -110,7 +107,7 @@ public class KontrolerGlavneForme {
         kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelMedjustanice(), glavnaForma, this);
         kontrolerPolazak = new KontrolerPolazak(glavnaForma.getPanelPolazak(), glavnaForma);
         kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima(), glavnaForma);
-        kontrolerTema=new KontrolerTemaAdmin(glavnaForma.getPanelBar().getPanelTema(), glavnaForma) {
+        kontrolerTema = new KontrolerTemaAdmin(glavnaForma.getPanelBar().getPanelTema(), glavnaForma) {
             @Override
             public void dodajZaSvetlu() {
                 promeniIkoniceZaSvetluTemu();
@@ -146,18 +143,6 @@ public class KontrolerGlavneForme {
         sat.pokreniSat();
     }
 
-    private void ucitajSveIkonice() {
-        glavnaForma.getMeniLinija().
-                setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/linija.png")));
-
-        glavnaForma.getMeniPolazak().
-                setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/polazak.png")));
-
-        glavnaForma.getMeniUpravljanjePolascima().
-                setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/menu/lista.png")));
-
-    }
-
     private void promeniIkoniceZaTamnuTemu() {
         kontrolerUpravljanjePolascima.ucitajSveIkonicTamnaTema();
         kontrolerLinija.ucitajSveIkonicTamnaTema();
@@ -178,25 +163,24 @@ public class KontrolerGlavneForme {
         kontrolerLinija.getPanelLinija().getCmbPocetna().removeAllItems();
         kontrolerLinija.getPanelLinija().getCmbKrajnja().removeAllItems();
         kontrolerMedjustanica.getPanelMedjustanice().getCmbMedjustanica().removeAllItems();
-        ArrayList<Stanica> list = new ArrayList<>();
         try {
-            list = Kontroler.getInstance().vratiMiSveStanice();
+            ArrayList<Stanica> list = Kontroler.getInstance().vratiMiSveStanice();
+            for (Stanica stanica : list) {
+                kontrolerLinija.getPanelLinija().getCmbPocetna().addItem(stanica);
+                kontrolerLinija.getPanelLinija().getCmbKrajnja().addItem(stanica);
+                kontrolerMedjustanica.getPanelMedjustanice().getCmbMedjustanica().addItem(stanica);
+            }
         } catch (Exception ex) {
-            ex.toString();
+            System.out.println("Sistem ne moze da vrati stanice!");
         }
-        for (Stanica stanica : list) {
-            kontrolerLinija.getPanelLinija().getCmbPocetna().addItem(stanica);
-            kontrolerLinija.getPanelLinija().getCmbKrajnja().addItem(stanica);
-            kontrolerMedjustanica.getPanelMedjustanice().getCmbMedjustanica().addItem(stanica);
-        }
+
     }
 
     public void ucitajSveLinije() {
         kontrolerPolazak.getPanelPolazak().getCmbLinijaPolazak().removeAllItems();
         kontrolerMedjustanica.getPanelMedjustanice().getCmbLinije().removeAllItems();
-        ArrayList<Linija> list = new ArrayList<>();
         try {
-            list = Kontroler.getInstance().vratiMiSveLinije();
+            ArrayList<Linija> list = Kontroler.getInstance().vratiMiSveLinije();
             for (Linija linija : list) {
                 kontrolerPolazak.getPanelPolazak().getCmbLinijaPolazak().addItem(linija);
                 kontrolerMedjustanica.getPanelMedjustanice().getCmbLinije().addItem(linija);

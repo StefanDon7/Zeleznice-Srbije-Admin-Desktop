@@ -16,8 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
@@ -38,22 +36,16 @@ public class KontrolerUpravljanjePolascima {
     private PanelUpravljanjePolascima panelSviPolasci;
     private JFrame forma;
     private final ModelTabelePolaska mtsp = new ModelTabelePolaska();
-    private final Tabela tabela = new Tabela();
 
 
     public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelSviPolasci, JFrame forma) {
         this.panelSviPolasci = panelSviPolasci;
         this.forma = forma;
-        ucitajIkoniceZaDugmice();
         addListener();
         urediTabeluSviPolasci();
         ucitajSvePolaske();
         dodajPolaske(Kontroler.getInstance().getSviPolasci());
-        tabela.urediTabelu(panelSviPolasci.getTabelaSviPolasci());
-    }
-
-    public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelUpravljanjePolascima, GlavnaForma glavnaForma, KontrolerGlavneForme aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Tabela.urediTabelu(panelSviPolasci.getTabelaSviPolasci());
     }
 
     private void addListener() {
@@ -127,7 +119,6 @@ public class KontrolerUpravljanjePolascima {
         } else {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Izaberite polazak!"));
         }
-
     }
 
     private void osveziListu() {
@@ -205,14 +196,6 @@ public class KontrolerUpravljanjePolascima {
         }
     }
 
-    private void ucitajIkoniceZaDugmice() {
-        panelSviPolasci.getBtnObrisiPolazakIzTabeleSviPolasci().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
-        panelSviPolasci.getBtnUpdejtuj().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
-        panelSviPolasci.getBtnOsveziListuSviPolasci().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/refresh.png")));
-    }
 
     public void ucitajSveIkonicTamnaTema() {
         panelSviPolasci.getLblLista().setIcon(new ImageIcon(getClass().

@@ -15,8 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
-import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
@@ -26,7 +24,6 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Voz;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
@@ -44,18 +41,16 @@ public class KontrolerPolazak {
     private JFrame forma;
     private ModelTabelePolaska mtp = new ModelTabelePolaska();
     private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-    private final Tabela tabela = new Tabela();
 
     public KontrolerPolazak(PanelPolazak panelPolazak, JFrame forma) {
         this.panelPolazak = panelPolazak;
         this.forma = forma;
         ucitajVozove();
-        ucitajIkoniceZaDugmice();
         addListener();
         panelPolazak.getPanelDatum().postavi(10, Vreme.Unapred);
         panelPolazak.getPanelDatum().postaviDanasnjiDatum();
         urediTabeluPolazaka();
-        tabela.urediTabelu(panelPolazak.getTabelaPolazaka());
+        Tabela.urediTabelu(panelPolazak.getTabelaPolazaka());
     }
 
     public PanelPolazak getPanelPolazak() {
@@ -278,20 +273,7 @@ public class KontrolerPolazak {
         }
     }
 
-    private void ucitajIkoniceZaDugmice() {
-        panelPolazak.getBtnDodajPolazak().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
 
-        panelPolazak.getBtnObrisiListu().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/trash.png")));
-
-        panelPolazak.getBtnObrisiPolazak().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/minus.png")));
-
-        panelPolazak.getBtnZapamtiPolaske().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
-
-    }
 
     public void ucitajSveIkonicTamnaTema() {
         panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().

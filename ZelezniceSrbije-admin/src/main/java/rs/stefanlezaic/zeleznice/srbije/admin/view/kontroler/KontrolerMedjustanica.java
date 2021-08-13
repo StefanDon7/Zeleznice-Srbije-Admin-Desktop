@@ -41,18 +41,7 @@ public class KontrolerMedjustanica {
     private JFrame forma;
     private KontrolerGlavneForme kontrolerGlavneForme;
     private final ModelTabeleMedjustanica mtms = new ModelTabeleMedjustanica();
-    private final Tabela tabela = new Tabela();
 
-    public KontrolerMedjustanica(PanelMedjustanice panelMedjustanice, JFrame forma) {
-        this.panelMedjustanice = panelMedjustanice;
-        this.forma = forma;
-        urediTabeluMedjuStanica();
-        popuniPoljeLinije();
-        ucitajIkoniceZaDugmice();
-        addListener();
-        tabela.urediTabelu(panelMedjustanice.getTabelaMedjustanica());
-        promeniLiniju();
-    }
 
     public KontrolerMedjustanica(PanelMedjustanice panelMedjustanice, GlavnaForma glavnaForma, KontrolerGlavneForme kontrolerGlavneForme) {
         this.panelMedjustanice = panelMedjustanice;
@@ -62,7 +51,7 @@ public class KontrolerMedjustanica {
         popuniPoljeLinije();
         ucitajIkoniceZaDugmice();
         addListener();
-        tabela.urediTabelu(panelMedjustanice.getTabelaMedjustanica());
+        Tabela.urediTabelu(panelMedjustanice.getTabelaMedjustanica());
         promeniLiniju();
     }
 

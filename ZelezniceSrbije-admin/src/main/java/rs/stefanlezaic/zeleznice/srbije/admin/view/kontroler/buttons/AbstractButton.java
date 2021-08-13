@@ -23,6 +23,8 @@ public abstract class AbstractButton extends AbstractMouseListener {
         this.button = button;
         this.icon = icon;
         this.icon1 = icon1;
+        button.setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/" + icon + ".png")));
     }
 
     @Override

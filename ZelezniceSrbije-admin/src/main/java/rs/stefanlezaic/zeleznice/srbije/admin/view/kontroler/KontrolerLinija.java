@@ -33,14 +33,11 @@ public class KontrolerLinija {
     private JFrame forma;
     private KontrolerGlavneForme kontrolerGlavneForme;
 
-
-
     public KontrolerLinija(PanelLinija panelLinija, GlavnaForma glavnaForma, KontrolerGlavneForme kontrolerGlavneForme) {
         this.panelLinija = panelLinija;
         this.forma = forma;
-        this.kontrolerGlavneForme=kontrolerGlavneForme;
+        this.kontrolerGlavneForme = kontrolerGlavneForme;
         popuniPoljeTipLinije();
-        ucitajIkoniceZaDugmice();
         addListener();
     }
 
@@ -63,24 +60,25 @@ public class KontrolerLinija {
             try {
                 Kontroler.getInstance().unesiLiniju(linija);
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno sacuvana linija!"));
-                ocistiPolja();
                 kontrolerGlavneForme.ucitajSveLinije();
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
         } catch (ParametarsException | ParseException ex) {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
+        } finally {
+            ocistiPolja();
         }
     }
 
     private Linija pokupiPodatke() throws ParametarsException, ParseException {
-        double kilometraza;
-        int minutaza;
+        double kilometraza = 0;
+        int minutaza = 0;
         try {
             kilometraza = Double.parseDouble(panelLinija.getTxtKilometraza().getText());
             minutaza = Integer.parseInt(panelLinija.getTxtMinutaza().getText().trim());
         } catch (NumberFormatException ex) {
-            throw new java.text.ParseException("U poljima kilometraza i minutaza moraju biti brojevi.", 0);
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError("U poljima kilometraza i minutaza moraju biti brojevi."));
         }
         Stanica stanicaPocetna = (Stanica) panelLinija.getCmbPocetna().getSelectedItem();
         Stanica stanicaKrajnja = (Stanica) panelLinija.getCmbKrajnja().getSelectedItem();
@@ -112,12 +110,6 @@ public class KontrolerLinija {
         for (TipLinije tipLinije : list) {
             panelLinija.getCmbTip().addItem(tipLinije);
         }
-    }
-
-    private void ucitajIkoniceZaDugmice() {
-        panelLinija.getBtnUnesiLiniju().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
-
     }
 
     public void ucitajSveIkonicTamnaTema() {

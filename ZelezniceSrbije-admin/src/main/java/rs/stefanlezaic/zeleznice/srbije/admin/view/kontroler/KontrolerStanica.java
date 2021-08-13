@@ -37,7 +37,6 @@ public class KontrolerStanica {
         this.forma = forma;
         this.kontrolerGlavneForme=kontrolerGlavneForme;
         popuniPolje();
-        ucitajIkoniceZaDugmice();
         addListener();
     }
 
@@ -97,10 +96,7 @@ public class KontrolerStanica {
         }
     }
 
-    private void ucitajIkoniceZaDugmice() {
-        panelStanica.getBtnUnesiStanicu().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
-    }
+
 
     public void ucitajSveIkonicTamnaTema() {
         panelStanica.getLblMesto().setIcon(new ImageIcon(getClass().
