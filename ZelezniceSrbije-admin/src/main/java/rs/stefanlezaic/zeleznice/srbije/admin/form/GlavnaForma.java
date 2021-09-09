@@ -51,7 +51,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         panelPolazak.setPreferredSize(new java.awt.Dimension(1290, 690));
         getContentPane().add(panelPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 690));
         getContentPane().add(panelUpravljanjePolascima, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 690));
-        getContentPane().add(panelBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 0, 260, 220));
+        getContentPane().add(panelBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 0, 260, 290));
 
         meniLinija.setBorder(null);
         meniLinija.setForeground(java.awt.Color.lightGray);

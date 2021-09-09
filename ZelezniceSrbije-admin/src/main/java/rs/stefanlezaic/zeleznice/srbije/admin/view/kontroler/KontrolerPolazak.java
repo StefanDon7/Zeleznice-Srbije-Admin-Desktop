@@ -34,7 +34,7 @@ import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
  *
  * @author Stefan
  */
-public class KontrolerPolazak {
+public class KontrolerPolazak implements KontrolerInterface{
 
     private PanelPolazak panelPolazak;
     private Polazak polazak;
@@ -190,7 +190,6 @@ public class KontrolerPolazak {
             polazak.setLinija(l);
             polazak.setVoz(v);
         } catch (ParametarsException ex) {
-            System.out.println("ovde je uslo!");
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention(ex.getMessage()));
             return null;
         }
@@ -273,34 +272,9 @@ public class KontrolerPolazak {
         }
     }
 
-
-
-    public void ucitajSveIkonicTamnaTema() {
-        panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz.png")));
-
-        panelPolazak.getLblDatum().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/datumISat.png")));
-
-        panelPolazak.getLblVoz().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz2.png")));
-
-        panelPolazak.getLblDatum2().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/datumISat.png")));
-
-        panelPolazak.getLblNazivPolaska().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacijaOdDo.png")));
-
-        panelPolazak.getLblVreme().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/pescaniSat.png")));
-
-        panelPolazak.getLblLista().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
-
-    }
-
-    public void ucitajSveIkoniceSvetlaTema() {
-        panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
+    @Override
+    public void ikoniceSvetlaTema() {
+          panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/voz.png")));
 
         panelPolazak.getLblDatum().setIcon(new ImageIcon(getClass().
@@ -320,7 +294,30 @@ public class KontrolerPolazak {
 
         panelPolazak.getLblLista().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lista.png")));
+    }
 
+    @Override
+    public void ikoniceTamnaTema() {
+         panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz.png")));
+
+        panelPolazak.getLblDatum().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/datumISat.png")));
+
+        panelPolazak.getLblVoz().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz2.png")));
+
+        panelPolazak.getLblDatum2().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/datumISat.png")));
+
+        panelPolazak.getLblNazivPolaska().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacijaOdDo.png")));
+
+        panelPolazak.getLblVreme().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/pescaniSat.png")));
+
+        panelPolazak.getLblLista().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
     }
 
 }

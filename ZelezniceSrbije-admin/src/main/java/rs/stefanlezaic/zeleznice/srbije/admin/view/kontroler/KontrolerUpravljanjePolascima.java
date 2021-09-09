@@ -31,21 +31,20 @@ import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
  *
  * @author Stefan
  */
-public class KontrolerUpravljanjePolascima {
+public class KontrolerUpravljanjePolascima implements KontrolerInterface {
 
     private PanelUpravljanjePolascima panelSviPolasci;
     private JFrame forma;
     private final ModelTabelePolaska mtsp = new ModelTabelePolaska();
-
 
     public KontrolerUpravljanjePolascima(PanelUpravljanjePolascima panelSviPolasci, JFrame forma) {
         this.panelSviPolasci = panelSviPolasci;
         this.forma = forma;
         addListener();
         urediTabeluSviPolasci();
+        Tabela.urediTabelu(panelSviPolasci.getTabelaSviPolasci());
         ucitajSvePolaske();
         dodajPolaske(Kontroler.getInstance().getSviPolasci());
-        Tabela.urediTabelu(panelSviPolasci.getTabelaSviPolasci());
     }
 
     private void addListener() {
@@ -195,23 +194,23 @@ public class KontrolerUpravljanjePolascima {
             System.out.println("Sistem ne moze da ucita polaske!");
         }
     }
-
-
-    public void ucitajSveIkonicTamnaTema() {
-        panelSviPolasci.getLblLista().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
-
-        panelSviPolasci.getLblSort().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/sort.png")));
-
-    }
-
-    public void ucitajSveIkoniceSvetlaTema() {
+    
+    @Override
+    public void ikoniceSvetlaTema() {
         panelSviPolasci.getLblLista().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lista.png")));
 
         panelSviPolasci.getLblSort().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/sort.png")));
+    }
+
+    @Override
+    public void ikoniceTamnaTema() {
+        panelSviPolasci.getLblLista().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
+
+        panelSviPolasci.getLblSort().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/sort.png")));
     }
 
 }

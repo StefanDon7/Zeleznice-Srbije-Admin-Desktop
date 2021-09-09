@@ -34,22 +34,21 @@ import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
  *
  * @author Stefan
  */
-public class KontrolerMedjustanica {
+public class KontrolerMedjustanica implements KontrolerInterface {
 
     private PanelMedjustanice panelMedjustanice;
     private MedjuStanica medjuStanica;
     private JFrame forma;
     private KontrolerGlavneForme kontrolerGlavneForme;
-    private final ModelTabeleMedjustanica mtms = new ModelTabeleMedjustanica();
 
+    private final ModelTabeleMedjustanica mtms = new ModelTabeleMedjustanica();
 
     public KontrolerMedjustanica(PanelMedjustanice panelMedjustanice, GlavnaForma glavnaForma, KontrolerGlavneForme kontrolerGlavneForme) {
         this.panelMedjustanice = panelMedjustanice;
         this.forma = forma;
-        this.kontrolerGlavneForme=kontrolerGlavneForme;
+        this.kontrolerGlavneForme = kontrolerGlavneForme;
         urediTabeluMedjuStanica();
         popuniPoljeLinije();
-        ucitajIkoniceZaDugmice();
         addListener();
         Tabela.urediTabelu(panelMedjustanice.getTabelaMedjustanica());
         promeniLiniju();
@@ -241,34 +240,8 @@ public class KontrolerMedjustanica {
 
     }
 
-    private void ucitajIkoniceZaDugmice() {
-        panelMedjustanice.getBtnDodajMedjustanicu().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/add.png")));
-
-        panelMedjustanice.getBtnObrisiMedjustanicu().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/minus.png")));
-
-        panelMedjustanice.getBtnObrisiLiniju().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/delete.png")));
-
-        panelMedjustanice.getBtnIzmeniRedosledMedjustanica().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/buttons/save.png")));
-
-    }
-
-    public void ucitajSveIkonicTamnaTema() {
-        panelMedjustanice.getLblLinija().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz.png")));
-
-        panelMedjustanice.getLblMedjustanica().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/zastava.png")));
-
-        panelMedjustanice.getLblListaMedjustanica().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
-
-    }
-
-    public void ucitajSveIkoniceSvetlaTema() {
+    @Override
+    public void ikoniceSvetlaTema() {
         panelMedjustanice.getLblLinija().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/voz.png")));
 
@@ -279,4 +252,17 @@ public class KontrolerMedjustanica {
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lista.png")));
 
     }
+
+    @Override
+    public void ikoniceTamnaTema() {
+        panelMedjustanice.getLblLinija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz.png")));
+
+        panelMedjustanice.getLblMedjustanica().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/zastava.png")));
+
+        panelMedjustanice.getLblListaMedjustanica().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lista.png")));
+    }
+
 }

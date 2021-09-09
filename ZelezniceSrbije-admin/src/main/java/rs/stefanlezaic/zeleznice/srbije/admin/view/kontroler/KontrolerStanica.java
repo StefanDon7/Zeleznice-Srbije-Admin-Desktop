@@ -25,7 +25,7 @@ import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
  *
  * @author Stefan
  */
-public class KontrolerStanica {
+public class KontrolerStanica implements KontrolerInterface{
 
     private PanelStanica panelStanica;
     private Stanica stanica;
@@ -36,7 +36,7 @@ public class KontrolerStanica {
         this.panelStanica = panelStanica;
         this.forma = forma;
         this.kontrolerGlavneForme=kontrolerGlavneForme;
-        popuniPolje();
+        popuniPoljeMesta();
         addListener();
     }
 
@@ -76,14 +76,13 @@ public class KontrolerStanica {
         stanica.setMesto(mesto);
         stanica.setNaziv(nazivStanice);
         return stanica;
-
     }
 
     private void ocistiPolja() {
         panelStanica.getTxtNazivStanice().setText("");
     }
 
-    private void popuniPolje() {
+    private void popuniPoljeMesta() {
         ArrayList<Mesto> listaMesta = null;
         try {
             listaMesta = Kontroler.getInstance().vratiListuMesta();
@@ -96,22 +95,23 @@ public class KontrolerStanica {
         }
     }
 
+ 
+    @Override
+    public void ikoniceSvetlaTema() {
+         panelStanica.getLblMesto().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lokacija.png")));
 
+        panelStanica.getLblNazivStanice().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/zastava.png")));
+    }
 
-    public void ucitajSveIkonicTamnaTema() {
+    @Override
+    public void ikoniceTamnaTema() {
         panelStanica.getLblMesto().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/lokacija.png")));
 
         panelStanica.getLblNazivStanice().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/zastava.png")));
-    }
-
-    public void ucitajSveIkoniceSvetlaTema() {
-        panelStanica.getLblMesto().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/lokacija.png")));
-
-        panelStanica.getLblNazivStanice().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/zastava.png")));
     }
 
 }

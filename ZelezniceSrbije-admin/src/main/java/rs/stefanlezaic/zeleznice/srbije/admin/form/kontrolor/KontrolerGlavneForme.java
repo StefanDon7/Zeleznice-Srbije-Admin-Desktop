@@ -5,9 +5,11 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor;
 
+import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerInterface;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.WindowConstants;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
@@ -21,7 +23,7 @@ import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerUpravljanj
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
-import rs.stefanlezaic.zeleznice.srbije.lib.theme.KontrolerTema;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.KontrolerSoundEffect;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
 
 /**
@@ -33,12 +35,12 @@ public class KontrolerGlavneForme {
     private GlavnaForma glavnaForma;
     private Tema tema;
     private Sat sat;
+    private List<KontrolerInterface> listaKontrolera;
     private KontrolerStanica kontrolerStanica;
     private KontrolerLinija kontrolerLinija;
     private KontrolerMedjustanica kontrolerMedjustanica;
     private KontrolerPolazak kontrolerPolazak;
     private KontrolerUpravljanjePolascima kontrolerUpravljanjePolascima;
-    private KontrolerTema kontrolerTema;
 
     public KontrolerGlavneForme(GlavnaForma glavnaForma) {
         this.glavnaForma = glavnaForma;
@@ -52,7 +54,6 @@ public class KontrolerGlavneForme {
         ucitajSveStanice();
         ucitajSveLinije();
         otvoriPanelLinija();
-
     }
 
     public GlavnaForma getGlavnaForma() {
@@ -99,15 +100,23 @@ public class KontrolerGlavneForme {
             }
         });
 
+
     }
 
     private void napraviOstaleKontrolore() {
+        listaKontrolera = new ArrayList<KontrolerInterface>();
         kontrolerStanica = new KontrolerStanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelStanica(), glavnaForma, this);
+        listaKontrolera.add((KontrolerInterface) kontrolerStanica);
         kontrolerLinija = new KontrolerLinija(glavnaForma.getPanelUpravljanjeLinijom().getPanelLinija(), glavnaForma, this);
+        listaKontrolera.add((KontrolerInterface) kontrolerLinija);
         kontrolerMedjustanica = new KontrolerMedjustanica(glavnaForma.getPanelUpravljanjeLinijom().getPanelMedjustanice(), glavnaForma, this);
+        listaKontrolera.add((KontrolerInterface) kontrolerMedjustanica);
         kontrolerPolazak = new KontrolerPolazak(glavnaForma.getPanelPolazak(), glavnaForma);
+        listaKontrolera.add((KontrolerInterface) kontrolerPolazak);
         kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima(), glavnaForma);
-        kontrolerTema = new KontrolerTemaAdmin(glavnaForma.getPanelBar().getPanelTema(), glavnaForma) {
+        listaKontrolera.add((KontrolerInterface) kontrolerUpravljanjePolascima);
+        new KontrolerSoundEffect(glavnaForma.getPanelBar().getPanelSound());
+        new KontrolerTemaAdmin(glavnaForma.getPanelBar().getPanelTema(), glavnaForma) {
             @Override
             public void dodajZaSvetlu() {
                 promeniIkoniceZaSvetluTemu();
@@ -144,19 +153,15 @@ public class KontrolerGlavneForme {
     }
 
     private void promeniIkoniceZaTamnuTemu() {
-        kontrolerUpravljanjePolascima.ucitajSveIkonicTamnaTema();
-        kontrolerLinija.ucitajSveIkonicTamnaTema();
-        kontrolerMedjustanica.ucitajSveIkonicTamnaTema();
-        kontrolerPolazak.ucitajSveIkonicTamnaTema();
-        kontrolerStanica.ucitajSveIkonicTamnaTema();
+        for (KontrolerInterface kontrolerInterface : listaKontrolera) {
+            kontrolerInterface.ikoniceTamnaTema();
+        }
     }
 
     private void promeniIkoniceZaSvetluTemu() {
-        kontrolerUpravljanjePolascima.ucitajSveIkoniceSvetlaTema();
-        kontrolerLinija.ucitajSveIkoniceSvetlaTema();
-        kontrolerMedjustanica.ucitajSveIkoniceSvetlaTema();
-        kontrolerPolazak.ucitajSveIkoniceSvetlaTema();
-        kontrolerStanica.ucitajSveIkoniceSvetlaTema();
+        for (KontrolerInterface kontrolerInterface : listaKontrolera) {
+            kontrolerInterface.ikoniceSvetlaTema();
+        }
     }
 
     public void ucitajSveStanice() {
