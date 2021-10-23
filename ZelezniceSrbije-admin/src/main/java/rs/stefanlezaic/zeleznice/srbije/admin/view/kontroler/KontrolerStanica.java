@@ -13,6 +13,7 @@ import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Mesto;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
@@ -57,7 +58,7 @@ public class KontrolerStanica implements KontrolerInterface{
         try {
             stanica = pokupiPodatke();
             try {
-                Kontroler.getInstance().unesiNovuStanicu(stanica);
+                KontrolerHTTP.getInstance().unesiNovuStanicu(stanica);
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli stanicu!"));
                 ocistiPolja();
                 kontrolerGlavneForme.ucitajSveStanice();
@@ -85,7 +86,7 @@ public class KontrolerStanica implements KontrolerInterface{
     private void popuniPoljeMesta() {
         ArrayList<Mesto> listaMesta = null;
         try {
-            listaMesta = Kontroler.getInstance().vratiListuMesta();
+            listaMesta = KontrolerHTTP.getInstance().vratiListuMesta();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(forma, ex.getMessage());
         }

@@ -40,7 +40,7 @@ public class ModelTabeleMedjustanica extends AbstractTableModel {
             case 1:
                 return m.getStanica().getNaziv();
             case 2:
-                return m.getStanica().getMesto().getNaziv();
+                return m.getStanica().getMesto().getNazivMesta();
             default:
                 return " ";
         }

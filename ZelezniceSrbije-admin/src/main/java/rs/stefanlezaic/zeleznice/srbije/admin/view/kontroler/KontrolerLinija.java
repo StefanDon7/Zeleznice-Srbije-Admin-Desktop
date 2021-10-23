@@ -13,6 +13,7 @@ import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
@@ -91,7 +92,7 @@ public class KontrolerLinija implements KontrolerInterface {
         linija.setStanicaPocetna(stanicaPocetna);
         linija.setStanicaKrajnja(stanicaKrajnja);
         linija.setTipLinije(tipLinije);
-        linija.setNaziv(naziv);
+        linija.setNazivLinije(naziv);
         return linija;
     }
 
@@ -104,7 +105,7 @@ public class KontrolerLinija implements KontrolerInterface {
         panelLinija.getCmbTip().removeAllItems();
         ArrayList<TipLinije> list = new ArrayList<>();
         try {
-            list = Kontroler.getInstance().vratiMiSveTipoveLinije();
+            list = KontrolerHTTP.getInstance().vratiMiSveTipoveLinije();
         } catch (Exception ex) {
             ex.toString();
         }

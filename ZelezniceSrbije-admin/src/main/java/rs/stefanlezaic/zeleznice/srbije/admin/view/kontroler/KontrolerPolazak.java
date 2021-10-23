@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelPolazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
@@ -34,7 +35,7 @@ import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
  *
  * @author Stefan
  */
-public class KontrolerPolazak implements KontrolerInterface{
+public class KontrolerPolazak implements KontrolerInterface {
 
     private PanelPolazak panelPolazak;
     private Polazak polazak;
@@ -61,7 +62,7 @@ public class KontrolerPolazak implements KontrolerInterface{
         panelPolazak.getCmbVoz().removeAllItems();
         ArrayList<Voz> vozovi = new ArrayList<>();
         try {
-            vozovi = Kontroler.getInstance().vratiMiSveVozove();
+            vozovi = KontrolerHTTP.getInstance().vratiMiSveVozove();
 
         } catch (Exception ex) {
             System.out.println("Sistem ne moze da ucita vozove!");
@@ -110,7 +111,7 @@ public class KontrolerPolazak implements KontrolerInterface{
             if (polazak == null) {
                 return;
             }
-            panelPolazak.getLblNazivPolaska().setText(polazak.getNaziv());
+            panelPolazak.getLblPoljeNazivPolaska().setText(polazak.getNaziv());
             panelPolazak.getLblPoljeDatum2().setText(sdf.format(polazak.getDatumDolaska()));
             mtp.dodajUTabelu(polazak);
 
@@ -153,13 +154,16 @@ public class KontrolerPolazak implements KontrolerInterface{
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Lista je prazna!"));
             return;
         }
-        try {
-            Kontroler.getInstance().unesiSvePolazke(list);
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli listu polazaka!"));
-            mtp.obrisiListu();
-        } catch (Exception ex) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
+        for (Polazak polazak : list) {
+            try {
+                KontrolerHTTP.getInstance().unesiSvePolaske(polazak);
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli listu polazaka!"));
+                mtp.obrisiListu();
+            } catch (Exception ex) {
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
+            }
         }
+
     }
 
     private void obrisiPolaske() {
@@ -181,7 +185,7 @@ public class KontrolerPolazak implements KontrolerInterface{
         String datumPocetni = sdf.format(polazakDatum);
         String datumKrajnji = sdf.format(dolazakDatum);
 
-        String naziv = l.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
+        String naziv = l.getNazivLinije() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
         polazak = new Polazak();
         try {
             polazak.setNaziv(naziv);
@@ -213,7 +217,7 @@ public class KontrolerPolazak implements KontrolerInterface{
         String datumPocetni = sdf.format(datumPolaska);
         String datumKrajnji = sdf.format(datumDolaska);
 
-        String naziv = linijaPovratna.getNaziv() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
+        String naziv = linijaPovratna.getNazivLinije() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
         Polazak polazakPovratni = new Polazak();
         try {
             polazakPovratni.setNaziv(naziv);
@@ -274,7 +278,7 @@ public class KontrolerPolazak implements KontrolerInterface{
 
     @Override
     public void ikoniceSvetlaTema() {
-          panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
+        panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label1/voz.png")));
 
         panelPolazak.getLblDatum().setIcon(new ImageIcon(getClass().
@@ -298,7 +302,7 @@ public class KontrolerPolazak implements KontrolerInterface{
 
     @Override
     public void ikoniceTamnaTema() {
-         panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
+        panelPolazak.getLblLinija().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/voz.png")));
 
         panelPolazak.getLblDatum().setIcon(new ImageIcon(getClass().

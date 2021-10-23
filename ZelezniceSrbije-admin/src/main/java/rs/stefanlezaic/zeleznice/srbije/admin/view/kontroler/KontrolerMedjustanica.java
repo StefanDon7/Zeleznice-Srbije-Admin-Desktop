@@ -18,6 +18,7 @@ import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabeleMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
@@ -127,13 +128,13 @@ public class KontrolerMedjustanica implements KontrolerInterface {
 
     private void promeniMedjustaniceZaLiniju() {
         mtms.izbrisiListu();
-        Linija l = (Linija) panelMedjustanice.getCmbLinije().getSelectedItem();
-        if (l == null) {
+        Linija linija = (Linija) panelMedjustanice.getCmbLinije().getSelectedItem();
+        if (linija == null) {
             return;
         }
         ArrayList<MedjuStanica> lista = null;
         try {
-            lista = Kontroler.getInstance().vratiMiSveMedjustaniceZaLiniju(new MedjuStanica(null, l, -1));
+            lista = KontrolerHTTP.getInstance().vratiMiMedjustaniceLiniju(linija);
         } catch (Exception ex) {
             System.out.println("Sistem ne moze da vrati promeni medjustanice!");
         }
@@ -173,7 +174,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
         Linija l = (Linija) panelMedjustanice.getCmbLinije().getSelectedItem();
         Object[] options = {"Da", "Ne"};
         int n = JOptionPane.showOptionDialog(forma,//parent container of JOptionPane
-                "Da li zaista zelite da obrisete liniju: " + l.getNaziv() + "?",
+                "Da li zaista zelite da obrisete liniju: " + l.getNazivLinije() + "?",
                 "PAZNJA",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
@@ -201,7 +202,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
         }
         ArrayList<MedjuStanica> lista = null;
         try {
-            lista = Kontroler.getInstance().vratiMiSveMedjustaniceZaLiniju(new MedjuStanica(null, linija, -1));
+            lista = KontrolerHTTP.getInstance().vratiMiMedjustaniceLiniju(linija);
         } catch (Exception ex) {
             System.out.println("Sistem ne moze da promeni linije!");
         }

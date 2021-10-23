@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
@@ -44,7 +45,7 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
         urediTabeluSviPolasci();
         Tabela.urediTabelu(panelSviPolasci.getTabelaSviPolasci());
         ucitajSvePolaske();
-        dodajPolaske(Kontroler.getInstance().getSviPolasci());
+        dodajPolaske(KontrolerHTTP.getInstance().getSviPolasci());
     }
 
     private void addListener() {
@@ -189,7 +190,7 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
 
     private void ucitajSvePolaske() {
         try {
-            Kontroler.getInstance().setSviPolasci(Kontroler.getInstance().vratiListuPolazaka());
+            KontrolerHTTP.getInstance().setSviPolasci(KontrolerHTTP.getInstance().vratiListuPolazaka());
         } catch (Exception ex) {
             System.out.println("Sistem ne moze da ucita polaske!");
         }

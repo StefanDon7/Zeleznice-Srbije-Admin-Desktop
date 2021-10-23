@@ -14,6 +14,7 @@ import javax.swing.WindowConstants;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerPolazak;
@@ -169,7 +170,7 @@ public class KontrolerGlavneForme {
         kontrolerLinija.getPanelLinija().getCmbKrajnja().removeAllItems();
         kontrolerMedjustanica.getPanelMedjustanice().getCmbMedjustanica().removeAllItems();
         try {
-            ArrayList<Stanica> list = Kontroler.getInstance().vratiMiSveStanice();
+            ArrayList<Stanica> list = KontrolerHTTP.getInstance().vratiMiSveStanice();
             for (Stanica stanica : list) {
                 kontrolerLinija.getPanelLinija().getCmbPocetna().addItem(stanica);
                 kontrolerLinija.getPanelLinija().getCmbKrajnja().addItem(stanica);
@@ -185,7 +186,7 @@ public class KontrolerGlavneForme {
         kontrolerPolazak.getPanelPolazak().getCmbLinijaPolazak().removeAllItems();
         kontrolerMedjustanica.getPanelMedjustanice().getCmbLinije().removeAllItems();
         try {
-            ArrayList<Linija> list = Kontroler.getInstance().vratiMiSveLinije();
+            ArrayList<Linija> list = KontrolerHTTP.getInstance().vratiMiSveLinije();
             for (Linija linija : list) {
                 kontrolerPolazak.getPanelPolazak().getCmbLinijaPolazak().addItem(linija);
                 kontrolerMedjustanica.getPanelMedjustanice().getCmbLinije().addItem(linija);

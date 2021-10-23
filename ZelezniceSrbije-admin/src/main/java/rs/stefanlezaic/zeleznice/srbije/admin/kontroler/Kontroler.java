@@ -42,19 +42,16 @@ public class Kontroler {
         }
         return instance;
     }
-
-    public Klijent UlogujSe(Klijent k) throws Exception {
-        kz = new KlijentskiZahtev();
-        kz.setParametar(k);
-        kz.setOperacija(Konstante.PRIJAVLJIVANJE);
-        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-        if (so.getStatus() == ResponseStatus.ERROR) {
-            Exception ex = (Exception) so.getError();
-            throw ex;
-        }
-        return (Klijent) so.getOdgovor();
+    
+     public ArrayList<Polazak> getSviPolasci() {
+        return sviPolasci;
     }
+
+    public void setSviPolasci(ArrayList<Polazak> sviPolasci) {
+        this.sviPolasci = sviPolasci;
+    }
+
+   
 
     public int vratiBrojRezervacija(Rezervacija r) throws Exception {
         int broj = 0;
@@ -121,6 +118,7 @@ public class Kontroler {
         return listaPolazaka;
     }
 
+    //
     public ArrayList<Mesto> vratiListuMesta() throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.VRATI_MESTA);
@@ -337,13 +335,7 @@ public class Kontroler {
         return listaRezervacija;
     }
 
-    public ArrayList<Polazak> getSviPolasci() {
-        return sviPolasci;
-    }
-
-    public void setSviPolasci(ArrayList<Polazak> sviPolasci) {
-        this.sviPolasci = sviPolasci;
-    }
+   
 
     public Linija vratiMiPovratnu(Linija l) {
         for (Linija linija : sveLinije) {

@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 
 /**
  *
@@ -44,7 +45,7 @@ public class ModelTabelePolaska extends AbstractTableModel {
             case 0:
                 return rowIndex + 1;
             case 1:
-                return p.getLinija().getNaziv();
+                return p.getLinija().getNazivLinije();
             case 2:
                 return sdf.format(p.getDatumPolaska());
             case 3:
@@ -52,8 +53,8 @@ public class ModelTabelePolaska extends AbstractTableModel {
             case 4: {
                 int broj = 0;
                 try {
-                    Polazak polazak = Kontroler.getInstance().vratiPolazak(p);
-                    broj=Kontroler.getInstance().vratiBrojRezervacija(new Rezervacija(null, polazak, new Date()));
+//                    Polazak polazak = Kontroler.getInstance().vratiPolazak(p);
+                    broj=KontrolerHTTP.getInstance().vratiBrojRezervacija(p);
                     return broj + "/" + p.getVoz().getBrojSedista();
                 } catch (Exception ex) {
                     return 0 + "/" + p.getVoz().getBrojSedista();
