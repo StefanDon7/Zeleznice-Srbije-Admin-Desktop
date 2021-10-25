@@ -115,7 +115,7 @@ public class KontrolerPolazak implements KontrolerInterface {
             panelPolazak.getLblPoljeDatum2().setText(sdf.format(polazak.getDatumDolaska()));
             mtp.dodajUTabelu(polazak);
 
-            Linija linijaPovratna = Kontroler.getInstance().vratiMiPovratnu(l);
+            Linija linijaPovratna = KontrolerHTTP.getInstance().vratiMiPovratnu(l);
             boolean povratna = panelPolazak.getCboxPovratna().isSelected();
             if (linijaPovratna != null && povratna) {
                 Polazak povratniPolazak = napraviPovratniPolazak(polazak, linijaPovratna);
@@ -156,13 +156,14 @@ public class KontrolerPolazak implements KontrolerInterface {
         }
         for (Polazak polazak : list) {
             try {
-                KontrolerHTTP.getInstance().unesiSvePolaske(polazak);
-                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli listu polazaka!"));
-                mtp.obrisiListu();
+                KontrolerHTTP.getInstance().unesiPolazak(polazak);
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
+                return;
             }
         }
+        new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli listu polazaka!"));
+        mtp.obrisiListu();
 
     }
 
@@ -180,12 +181,13 @@ public class KontrolerPolazak implements KontrolerInterface {
         int minutiLinije = l.getMinutaza() % 60;
 
         Date polazakDatum = napraviDatum(panelPolazak.getPanelDatum().getYear(), panelPolazak.getPanelDatum().getMount(), panelPolazak.getPanelDatum().getDay() + i, sati, minuti);
+        System.out.println(polazakDatum);
         Date dolazakDatum = napraviDatum(panelPolazak.getPanelDatum().getYear(), panelPolazak.getPanelDatum().getMount(), panelPolazak.getPanelDatum().getDay() + i, sati + satiLinije, minuti + minutiLinije);
-
+        System.out.println(dolazakDatum);
         String datumPocetni = sdf.format(polazakDatum);
         String datumKrajnji = sdf.format(dolazakDatum);
 
-        String naziv = l.getNazivLinije() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
+        String naziv = l.getNazivLinije() + " [" + datumPocetni + " - " + datumKrajnji + "]";
         polazak = new Polazak();
         try {
             polazak.setNaziv(naziv);
@@ -217,7 +219,7 @@ public class KontrolerPolazak implements KontrolerInterface {
         String datumPocetni = sdf.format(datumPolaska);
         String datumKrajnji = sdf.format(datumDolaska);
 
-        String naziv = linijaPovratna.getNazivLinije() + " [" + datumPocetni + " -> " + datumKrajnji + "]";
+        String naziv = linijaPovratna.getNazivLinije() + " [" + datumPocetni + " - " + datumKrajnji + "]";
         Polazak polazakPovratni = new Polazak();
         try {
             polazakPovratni.setNaziv(naziv);
@@ -246,7 +248,6 @@ public class KontrolerPolazak implements KontrolerInterface {
         System.out.println(dan + "." + mesec + "." + godina + " " + sati + ":" + minuti);
         Calendar datumCalendar = new GregorianCalendar(godina, mesec - 1, dan, sati, minuti);
         Date datum = datumCalendar.getTime();
-        System.out.println(datum);
         return datum;
     }
 

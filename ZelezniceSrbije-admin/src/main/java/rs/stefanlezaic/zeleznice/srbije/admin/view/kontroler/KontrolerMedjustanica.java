@@ -17,7 +17,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
-import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabeleMedjustanica;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelMedjustanice;
@@ -104,7 +103,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
             medjuStanica.setLinija(linija);
             medjuStanica.setRedniBroj(redniBroj);
             medjuStanica.setStanica(stanica);
-            Kontroler.getInstance().unesiMedjustanicu(medjuStanica);
+            KontrolerHTTP.getInstance().unesiMedjustanicu(medjuStanica);
             mtms.dodajUTabelu(medjuStanica);
         } catch (ParametarsException ex) {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
@@ -117,11 +116,13 @@ public class KontrolerMedjustanica implements KontrolerInterface {
         ArrayList<MedjuStanica> list = mtms.vratiListu();
         if (!list.isEmpty()) {
             try {
-                Kontroler.getInstance().izmeniSveMedjustanice(list);
-                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno sacuvano"));
+                for (MedjuStanica medjustanica : list) {
+                    KontrolerHTTP.getInstance().izmeniSveMedjustanice(medjustanica);
+                }
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno sacuvano"));
             promeniMedjustaniceZaLiniju();
         }
     }
@@ -157,7 +158,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
                     options[1]);//default button title
             if (n == 0) {
                 try {
-                    Kontroler.getInstance().obrisiMedjustanicu(m);
+                    KontrolerHTTP.getInstance().obrisiMedjustanicu(m);
                     new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste obrisali medjustanicu iz baze!"));
                     mtms.obrisi(red);
                     izmeniRedosled();
@@ -184,7 +185,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
 
         if (n == 0) {
             try {
-                Kontroler.getInstance().obrisiLiniju(l);
+                KontrolerHTTP.getInstance().obrisiLiniju(new Linija(l.getLinijaID()));
                 kontrolerGlavneForme.ucitajSveLinije();
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste obrisali liniju: "));
             } catch (Exception ex) {
@@ -213,7 +214,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
         panelMedjustanice.getCmbLinije().removeAllItems();
         ArrayList<Linija> list = new ArrayList<>();
         try {
-            list = Kontroler.getInstance().vratiMiSveLinije();
+            list = KontrolerHTTP.getInstance().vratiMiSveLinije();
             for (Linija linija : list) {
                 panelMedjustanice.getCmbLinije().addItem(linija);
             }

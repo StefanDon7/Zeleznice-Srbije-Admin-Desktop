@@ -53,7 +53,6 @@ public class ModelTabelePolaska extends AbstractTableModel {
             case 4: {
                 int broj = 0;
                 try {
-//                    Polazak polazak = Kontroler.getInstance().vratiPolazak(p);
                     broj=KontrolerHTTP.getInstance().vratiBrojRezervacija(p);
                     return broj + "/" + p.getVoz().getBrojSedista();
                 } catch (Exception ex) {

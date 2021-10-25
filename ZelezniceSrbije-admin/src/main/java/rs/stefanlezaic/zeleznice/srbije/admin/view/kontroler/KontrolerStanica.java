@@ -12,13 +12,13 @@ import javax.swing.JOptionPane;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
-import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Mesto;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
 
@@ -66,7 +66,7 @@ public class KontrolerStanica implements KontrolerInterface{
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
         } catch (ParametarsException ex) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention(ex.getMessage()));
         }
     }
 

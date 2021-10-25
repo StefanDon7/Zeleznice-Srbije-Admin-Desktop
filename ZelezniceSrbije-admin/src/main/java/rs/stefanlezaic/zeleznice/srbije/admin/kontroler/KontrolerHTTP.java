@@ -6,12 +6,12 @@
 package rs.stefanlezaic.zeleznice.srbije.admin.kontroler;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.MedjuStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
-import rs.stefanlezaic.zeleznice.srbije.lib.domen.Rezervacija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Stanica;
 import java.util.ArrayList;
 import okhttp3.MediaType;
@@ -24,10 +24,6 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Mesto;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.TipLinije;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Voz;
-import rs.stefanlezaic.zeleznice.srbije.lib.kons.Konstante;
-import rs.stefanlezaic.zeleznice.srbije.lib.kons.ResponseStatus;
-import rs.stefanlezaic.zeleznice.srbije.lib.transfer.KlijentskiZahtev;
-import rs.stefanlezaic.zeleznice.srbije.lib.transfer.ServerskiOdgovor;
 
 /**
  *
@@ -43,8 +39,10 @@ public class KontrolerHTTP {
 
     private KontrolerHTTP() {
         sviPolasci = new ArrayList<>();
+        sveLinije = new ArrayList<>();
         httpClient = new OkHttpClient();
-        gson = new Gson();
+        gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         gson.serializeNulls();
     }
 
@@ -78,7 +76,7 @@ public class KontrolerHTTP {
             Polazak polazak = gson.fromJson(jsonResponse.toString(), Polazak.class);
             broj = polazak.getPolazakID();
         } catch (Exception ex) {
-            throw new Exception("Neuspešan pokušaj registracije!");
+            throw new Exception("Sistem ne može da vrati broj rezervacija za polazak!");
         }
         System.out.println(broj);
         return broj;
@@ -102,7 +100,7 @@ public class KontrolerHTTP {
             lista = gson.fromJson(response.body().string(), tipListe);
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            throw new Exception("Neuspešan pokušaj vraćanja svih rezervacija!");
+            throw new Exception("Sistem ne može da vrati sve medjustanicu!");
         }
         System.out.println(lista);
         return lista;
@@ -124,7 +122,7 @@ public class KontrolerHTTP {
             lista = gson.fromJson(response.body().string(), tipListe);
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            throw new Exception("Neuspešan pokušaj vraćanja svih rezervacija!");
+            throw new Exception("Sistem ne može da vrati stanice!");
         }
         System.out.println(lista);
         return lista;
@@ -146,7 +144,7 @@ public class KontrolerHTTP {
             lista = gson.fromJson(response.body().string(), tipListe);
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            throw new Exception("Neuspešan pokušaj vraćanja svih rezervacija!");
+            throw new Exception("Sistem ne može da vrati mesta!");
         }
         System.out.println(lista);
         return lista;
@@ -168,7 +166,7 @@ public class KontrolerHTTP {
             lista = gson.fromJson(response.body().string(), tipListe);
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            throw new Exception("Neuspešan pokušaj vraćanja svih rezervacija!");
+            throw new Exception("Sistem ne može da vrati tipove linija!");
         }
         System.out.println(lista);
         return lista;
@@ -190,9 +188,9 @@ public class KontrolerHTTP {
             lista = gson.fromJson(response.body().string(), tipListe);
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            throw new Exception("Neuspešan pokušaj vraćanja svih rezervacija!");
+            throw new Exception("Sistem ne može da vrati linije!");
         }
-        System.out.println(lista);
+        sveLinije = lista;
         return lista;
     }
 
@@ -212,7 +210,7 @@ public class KontrolerHTTP {
             lista = gson.fromJson(response.body().string(), tipListe);
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            throw new Exception("Neuspešan pokušaj vraćanja svih rezervacija!");
+            throw new Exception("Sistem ne može da izmeni vrati tipove vozova!");
         }
         System.out.println(lista);
         return lista;
@@ -234,27 +232,13 @@ public class KontrolerHTTP {
             lista = gson.fromJson(response.body().string(), tipListe);
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            throw new Exception("Neuspešan pokušaj vraćanja svih rezervacija!");
+            throw new Exception("Sistem ne može da izmeni vrati listu polazaka!");
         }
         System.out.println(lista);
         return lista;
 
     }
 
-//    public ArrayList<MedjuStanica> vratiMiSveMedjustaniceZaLiniju(MedjuStanica medjuStanica) throws Exception {
-//        kz = new KlijentskiZahtev();
-//        kz.setOperacija(Konstante.VRATI_MEDJUSTANICE_LINIJE);
-//        kz.setParametar(medjuStanica);
-//        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-//        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-//        ArrayList<MedjuStanica> listaMedjustanica = (ArrayList<MedjuStanica>) so.getOdgovor();
-//        if (so.getStatus() == ResponseStatus.ERROR) {
-//            Exception ex = (Exception) so.getError();
-//            throw ex;
-//        }
-//        return listaMedjustanica;
-//    }
-//
     public void izmeniPolazak(Polazak polazak) throws Exception {
         String json = gson.toJson(polazak);
         RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
@@ -270,7 +254,7 @@ public class KontrolerHTTP {
             }
 
         } catch (Exception ex) {
-            throw new Exception("Neuspešan pokušaj rezervacije karata!");
+            throw new Exception("Sistem ne može da izmeni polazak!");
         }
     }
 
@@ -289,7 +273,7 @@ public class KontrolerHTTP {
             }
 
         } catch (Exception ex) {
-            throw new Exception("Neuspešan pokušaj rezervacije karata!");
+            throw new Exception("Sistem ne može da obriše polazak!");
         }
     }
 
@@ -308,11 +292,11 @@ public class KontrolerHTTP {
             }
 
         } catch (Exception ex) {
-            throw new Exception("Neuspešan pokušaj rezervacije karata!");
+            throw new Exception("Sistem ne može da unese stanicu!");
         }
     }
 
-    public void unesiSvePolaske(Polazak p) throws Exception {
+    public void unesiPolazak(Polazak p) throws Exception {
         String json = gson.toJson(p);
         RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
         System.out.println(json);
@@ -327,70 +311,100 @@ public class KontrolerHTTP {
             }
 
         } catch (Exception ex) {
-            throw new Exception("Neuspešan pokušaj rezervacije karata!");
+            throw new Exception("Sistem ne može da unese polazak!");
         }
     }
 
-//    public void izmeniSveMedjustanice(ArrayList<MedjuStanica> list) throws Exception {
-//        kz = new KlijentskiZahtev();
-//        kz.setOperacija(Konstante.IZMENI_SVE_MEDJUSTANICE);
-//        kz.setParametar(list);
-//        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-//        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-//        if (so.getStatus() == ResponseStatus.ERROR) {
-//            Exception ex = (Exception) so.getError();
-//            throw ex;
-//        }
-//    }
-//
-//    public void unesiLiniju(Linija l) throws Exception {
-//        kz = new KlijentskiZahtev();
-//        kz.setOperacija(Konstante.UNESI_LINIJU);
-//        kz.setParametar(l);
-//        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-//        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-//        if (so.getStatus() == ResponseStatus.ERROR) {
-//            Exception ex = (Exception) so.getError();
-//            throw ex;
-//        }
-//    }
-//
-//    public void obrisiMedjustanicu(MedjuStanica m) throws Exception {
-//        kz = new KlijentskiZahtev();
-//        kz.setOperacija(Konstante.OBRISI_MEDJUSTANICU);
-//        kz.setParametar(m);
-//        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-//        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-//        if (so.getStatus() == ResponseStatus.ERROR) {
-//            Exception ex = (Exception) so.getError();
-//            throw ex;
-//        }
-//    }
-//
-//    public void unesiMedjustanicu(MedjuStanica m) throws Exception {
-//        kz = new KlijentskiZahtev();
-//        kz.setOperacija(Konstante.UNESI_MEDJUSTANICU);
-//        kz.setParametar(m);
-//        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-//        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-//        if (so.getStatus() == ResponseStatus.ERROR) {
-//            Exception ex = (Exception) so.getError();
-//            throw ex;
-//        }
-//    }
-//
-//    public Polazak vratiPolazak(Polazak p) throws Exception {
-//        kz = new KlijentskiZahtev();
-//        kz.setParametar(p);
-//        kz.setOperacija(Konstante.VRATI_POLAZAK);
-//        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-//        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-//        if (so.getStatus() == ResponseStatus.ERROR) {
-//            Exception ex = (Exception) so.getError();
-//            throw ex;
-//        }
-//        return (Polazak) so.getOdgovor();
-//    }
+    public void izmeniSveMedjustanice(MedjuStanica medjustanica) throws Exception {
+        String json = gson.toJson(medjustanica);
+        RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
+        System.out.println(json);
+        Request request = new Request.Builder()
+                .url("http://localhost:8089/api/medjustanica/update")
+                .addHeader("Accept-Encoding", "gzip")
+                .put(body)
+                .build();
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+        } catch (Exception ex) {
+            throw new Exception("Sistem ne može da izmeni medjustanicu!");
+        }
+    }
+
+    public void unesiLiniju(Linija l) throws Exception {
+        String json = gson.toJson(l);
+        RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
+        System.out.println(json);
+        Request request = new Request.Builder()
+                .url("http://localhost:8089/api/linija/add")
+                .addHeader("Accept-Encoding", "gzip")
+                .post(body)
+                .build();
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+        } catch (Exception ex) {
+            throw new Exception("Sistem ne može da unese liniju!");
+        }
+    }
+
+    public void obrisiLiniju(Linija l) throws Exception {
+        String json = gson.toJson(l);
+        RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
+        System.out.println(json);
+        Request request = new Request.Builder()
+                .url("http://localhost:8089/api/linija/delete")
+                .addHeader("Accept-Encoding", "gzip")
+                .delete(body)
+                .build();
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+        } catch (Exception ex) {
+            throw new Exception("Sistem ne može da obriše liniju!");
+        }
+    }
+
+    public void obrisiMedjustanicu(MedjuStanica m) throws Exception {
+        String json = gson.toJson(m);
+        RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
+        System.out.println(json);
+        Request request = new Request.Builder()
+                .url("http://localhost:8089/api/medjustanica/delete")
+                .addHeader("Accept-Encoding", "gzip")
+                .delete(body)
+                .build();
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+        } catch (Exception ex) {
+            throw new Exception("Sistem ne može da obriše medjustanicu!!");
+        }
+    }
+
+    public void unesiMedjustanicu(MedjuStanica m) throws Exception {
+        String json = gson.toJson(m);
+        RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
+        System.out.println(json);
+        Request request = new Request.Builder()
+                .url("http://localhost:8089/api/medjustanica/add")
+                .addHeader("Accept-Encoding", "gzip")
+                .post(body)
+                .build();
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+        } catch (Exception ex) {
+            throw new Exception("Sistem ne može da unese medjustanicu!");
+        }
+    }
+
     public Linija vratiMiPovratnu(Linija l) {
         for (Linija linija : sveLinije) {
             if (linija.getTipLinije().getTipLinijeID() == l.getTipLinije().getTipLinijeID() && linija.getStanicaPocetna().getStanicaID() == l.getStanicaKrajnja().getStanicaID() && linija.getStanicaKrajnja().getStanicaID() == l.getStanicaPocetna().getStanicaID()) {
@@ -399,4 +413,5 @@ public class KontrolerHTTP {
         }
         return null;
     }
+
 }

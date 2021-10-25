@@ -7,12 +7,13 @@ package rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForme;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
-import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.component.PanelLinija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
@@ -33,7 +34,6 @@ public class KontrolerLinija implements KontrolerInterface {
     private Linija linija;
     private JFrame forma;
     private KontrolerGlavneForme kontrolerGlavneForme;
-    private AbstractButton btnUnesiLinijuMouseListener;
 
     public KontrolerLinija(PanelLinija panelLinija, GlavnaForma glavnaForma, KontrolerGlavneForme kontrolerGlavneForme) {
         this.panelLinija = panelLinija;
@@ -48,7 +48,7 @@ public class KontrolerLinija implements KontrolerInterface {
     }
 
     private void addListener() {
-        panelLinija.btnUnesiLinijuMouseListener(btnUnesiLinijuMouseListener = new AbstractButton(panelLinija.getBtnUnesiLiniju(), "add", "add1") {
+        panelLinija.btnUnesiLinijuMouseListener(new AbstractButton(panelLinija.getBtnUnesiLiniju(), "add", "add1") {
             @Override
             public void execute() {
                 unesiLiniju();
@@ -60,27 +60,27 @@ public class KontrolerLinija implements KontrolerInterface {
         try {
             linija = pokupiPodatke();
             try {
-                Kontroler.getInstance().unesiLiniju(linija);
+                KontrolerHTTP.getInstance().unesiLiniju(linija);
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno sacuvana linija!"));
                 kontrolerGlavneForme.ucitajSveLinije();
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
-        } catch (ParametarsException | ParseException ex) {
+        } catch (ParametarsException | ParseException | NumberFormatException ex) {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
         } finally {
             ocistiPolja();
         }
     }
 
-    private Linija pokupiPodatke() throws ParametarsException, ParseException {
+    private Linija pokupiPodatke() throws ParametarsException, ParseException, NumberFormatException {
         double kilometraza = 0;
         int minutaza = 0;
         try {
             kilometraza = Double.parseDouble(panelLinija.getTxtKilometraza().getText());
             minutaza = Integer.parseInt(panelLinija.getTxtMinutaza().getText().trim());
         } catch (NumberFormatException ex) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError("U poljima kilometraza i minutaza moraju biti brojevi."));
+            throw new NumberFormatException("U poljima kilometraza i minutaza moraju biti brojevi.");
         }
         Stanica stanicaPocetna = (Stanica) panelLinija.getCmbPocetna().getSelectedItem();
         Stanica stanicaKrajnja = (Stanica) panelLinija.getCmbKrajnja().getSelectedItem();
@@ -150,5 +150,4 @@ public class KontrolerLinija implements KontrolerInterface {
                 getResource("/rs/stefanlezaic/zeleznice/srbije/admin/resources/icons/label/pescaniSat.png")));
     }
 
- 
 }

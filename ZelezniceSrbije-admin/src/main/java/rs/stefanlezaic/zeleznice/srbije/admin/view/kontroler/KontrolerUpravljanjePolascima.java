@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
-import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelUpravljanjePolascima;
@@ -93,7 +92,7 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
                     options[1]);//default button title
             if (n == 0) {
                 try {
-                    Kontroler.getInstance().obrisiPolazak(p);
+                    KontrolerHTTP.getInstance().obrisiPolazak(new Polazak(p.getPolazakID()));
                     new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste obrisali polazak!"));
                     mtsp.obrisi(broj);
                     mtsp.fireTableDataChanged();
@@ -108,10 +107,10 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
         int row = panelSviPolasci.getTabelaSviPolasci().getSelectedRow();
         if (row != -1) {
             Polazak polazak = mtsp.getList().get(row);
-            ArrayList<Polazak> polasciZaMenjanje = new ArrayList<>();
             try {
-                System.out.println(polasciZaMenjanje);
-                Kontroler.getInstance().izmeniPolazak(polazak);
+                Polazak p =new Polazak(polazak.getPolazakID());
+                p.setNapomena(p.getNapomena());
+                KontrolerHTTP.getInstance().izmeniPolazak(p);
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesna izmena polaska!"));
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
@@ -123,7 +122,7 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
 
     private void osveziListu() {
         ucitajSvePolaske();
-        dodajPolaske(Kontroler.getInstance().getSviPolasci());
+        dodajPolaske(KontrolerHTTP.getInstance().getSviPolasci());
     }
 
     private void sortiraj() {
