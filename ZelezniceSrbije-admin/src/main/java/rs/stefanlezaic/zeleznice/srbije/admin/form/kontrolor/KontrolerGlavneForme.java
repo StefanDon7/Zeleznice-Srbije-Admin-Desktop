@@ -13,7 +13,6 @@ import java.util.List;
 import javax.swing.WindowConstants;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.admin.form.GlavnaForma;
-import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerLinija;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.KontrolerMedjustanica;
@@ -117,6 +116,8 @@ public class KontrolerGlavneForme {
         kontrolerUpravljanjePolascima = new KontrolerUpravljanjePolascima(glavnaForma.getPanelUpravljanjePolascima(), glavnaForma);
         listaKontrolera.add((KontrolerInterface) kontrolerUpravljanjePolascima);
         new KontrolerSoundEffect(glavnaForma.getPanelBar().getPanelSound());
+   
+        
         new KontrolerTemaAdmin(glavnaForma.getPanelBar().getPanelTema(), glavnaForma) {
             @Override
             public void dodajZaSvetlu() {

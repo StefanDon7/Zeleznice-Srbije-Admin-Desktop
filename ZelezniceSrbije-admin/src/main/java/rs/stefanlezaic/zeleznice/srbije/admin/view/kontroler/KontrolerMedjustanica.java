@@ -122,7 +122,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno sacuvano"));
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno sačuvano!"));
             promeniMedjustaniceZaLiniju();
         }
     }
@@ -137,7 +137,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
         try {
             lista = KontrolerHTTP.getInstance().vratiMiMedjustaniceLiniju(linija);
         } catch (Exception ex) {
-            System.out.println("Sistem ne moze da vrati promeni medjustanice!");
+            System.out.println("Sistem ne može da izmeni redosled međustanica!");
         }
         mtms.setList(lista);
     }
@@ -149,8 +149,8 @@ public class KontrolerMedjustanica implements KontrolerInterface {
 
             Object[] options = {"Da", "Ne"};
             int n = JOptionPane.showOptionDialog(forma,//parent container of JOptionPane
-                    "Da li zaista zelite da obrisete medjustanicu:" + m.getStanica().getNaziv() + "?",
-                    "PAZNJA",
+                    "Da li želite da obrišete međustanicu " + m.getStanica().getNaziv() + "?",
+                    "PAŽNJA",
                     JOptionPane.YES_NO_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,//do not use a custom Icon
@@ -159,7 +159,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
             if (n == 0) {
                 try {
                     KontrolerHTTP.getInstance().obrisiMedjustanicu(m);
-                    new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste obrisali medjustanicu iz baze!"));
+                    new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno ste obrisali međustanicu!"));
                     mtms.obrisi(red);
                     izmeniRedosled();
                 } catch (Exception ex) {
@@ -167,7 +167,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
                 }
             }
         } else {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Morate da izaberete medjustanicu koju zelite da obrisete!"));
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Obeležite međustanicu koju želite da obrišete!"));
         }
     }
 
@@ -175,8 +175,8 @@ public class KontrolerMedjustanica implements KontrolerInterface {
         Linija l = (Linija) panelMedjustanice.getCmbLinije().getSelectedItem();
         Object[] options = {"Da", "Ne"};
         int n = JOptionPane.showOptionDialog(forma,//parent container of JOptionPane
-                "Da li zaista zelite da obrisete liniju: " + l.getNazivLinije() + "?",
-                "PAZNJA",
+                "Da li želite da obrišete liniju: " + l.getNazivLinije() + "?",
+                "PAŽNJA",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,//do not use a custom Icon
@@ -187,7 +187,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
             try {
                 KontrolerHTTP.getInstance().obrisiLiniju(new Linija(l.getLinijaID()));
                 kontrolerGlavneForme.ucitajSveLinije();
-                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste obrisali liniju: "));
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno ste obrisali liniju!"));
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }
@@ -205,7 +205,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
         try {
             lista = KontrolerHTTP.getInstance().vratiMiMedjustaniceLiniju(linija);
         } catch (Exception ex) {
-            System.out.println("Sistem ne moze da promeni linije!");
+            System.out.println("Sistem ne može da promeni liniju!");
         }
         mtms.setList(lista);
     }
@@ -219,7 +219,7 @@ public class KontrolerMedjustanica implements KontrolerInterface {
                 panelMedjustanice.getCmbLinije().addItem(linija);
             }
         } catch (Exception ex) {
-            System.out.println("Sistem ne moze da vrati linije!");
+            System.out.println("Sistem ne može da vrati linije!");
         }
     }
 

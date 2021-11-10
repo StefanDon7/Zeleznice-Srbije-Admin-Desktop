@@ -351,11 +351,6 @@ public class PanelPolazak extends javax.swing.JPanel {
         cmbLinijaPolazak.setForeground(new java.awt.Color(0, 0, 0));
         cmbLinijaPolazak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbLinijaPolazak.setSelectedIndex(-1);
-        cmbLinijaPolazak.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbLinijaPolazakItemStateChanged(evt);
-            }
-        });
         add(cmbLinijaPolazak, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 640, 40));
 
         lblLista.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -372,12 +367,12 @@ public class PanelPolazak extends javax.swing.JPanel {
         btnZapamtiPolaske.setBackground(new java.awt.Color(153, 153, 153));
         btnZapamtiPolaske.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnZapamtiPolaske.setForeground(new java.awt.Color(0, 0, 0));
-        btnZapamtiPolaske.setText("Zapamti polaske");
+        btnZapamtiPolaske.setText("Sačuvaj ");
         add(btnZapamtiPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 620, 300, 60));
 
         lblNaslov.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         lblNaslov.setForeground(new java.awt.Color(255, 255, 255));
-        lblNaslov.setText("Unos polazaka putnickog voza");
+        lblNaslov.setText("Unos polazaka putničkog voza");
         add(lblNaslov, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 530, 50));
 
         btnObrisiPolazak.setBackground(new java.awt.Color(153, 153, 153));
@@ -399,7 +394,7 @@ public class PanelPolazak extends javax.swing.JPanel {
 
         lblZaNarednih.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblZaNarednih.setForeground(new java.awt.Color(255, 255, 255));
-        lblZaNarednih.setText("Za narednih:");
+        lblZaNarednih.setText("za sledećih");
         add(lblZaNarednih, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, 90, 40));
 
         cboxPovratna.setText("Povratna?");
@@ -408,7 +403,7 @@ public class PanelPolazak extends javax.swing.JPanel {
         btnObrisiListu.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiListu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnObrisiListu.setForeground(new java.awt.Color(0, 0, 0));
-        btnObrisiListu.setText("Obrisi listu");
+        btnObrisiListu.setText("Obriši listu");
         add(btnObrisiListu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 300, 60));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
@@ -418,10 +413,6 @@ public class PanelPolazak extends javax.swing.JPanel {
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 150, 10));
         add(panelDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, 60));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbLinijaPolazakItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLinijaPolazakItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbLinijaPolazakItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

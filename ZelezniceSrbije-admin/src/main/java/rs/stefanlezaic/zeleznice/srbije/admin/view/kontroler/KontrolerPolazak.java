@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.kontroler.buttons.AbstractButton;
-import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.admin.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.admin.modeli.tabela.ModelTabelePolaska;
 import rs.stefanlezaic.zeleznice.srbije.admin.view.PanelPolazak;
@@ -65,7 +64,7 @@ public class KontrolerPolazak implements KontrolerInterface {
             vozovi = KontrolerHTTP.getInstance().vratiMiSveVozove();
 
         } catch (Exception ex) {
-            System.out.println("Sistem ne moze da ucita vozove!");
+            System.out.println("Sistem ne može da ucita vozove!");
         }
         for (Voz voz : vozovi) {
             panelPolazak.getCmbVoz().addItem(voz);
@@ -162,7 +161,7 @@ public class KontrolerPolazak implements KontrolerInterface {
                 return;
             }
         }
-        new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli listu polazaka!"));
+        new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno ste sačuvali listu polazaka!"));
         mtp.obrisiListu();
 
     }

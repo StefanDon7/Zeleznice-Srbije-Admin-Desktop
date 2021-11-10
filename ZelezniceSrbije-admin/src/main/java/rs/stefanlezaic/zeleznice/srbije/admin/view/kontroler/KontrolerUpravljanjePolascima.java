@@ -78,12 +78,12 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
     private void obrisiPolazakIzTabeleSviPolasci() {
         int broj = panelSviPolasci.getTabelaSviPolasci().getSelectedRow();
         if (broj == -1) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Selektujte polazak koji zelite da obrisete!"));
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Obeležite polazak koji želite da obriđete!"));
         } else {
             Polazak p = mtsp.getList().get(broj);
             Object[] options = {"Da", "Ne"};
             int n = JOptionPane.showOptionDialog(forma,//parent container of JOptionPane
-                    "Da li zaista zelite da obrisete polazak:" + p.getNaziv() + "?",
+                    "Da li želite da obrišete polazak:" + p.getNaziv() + "?",
                     "PAZNJA",
                     JOptionPane.YES_NO_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
@@ -93,11 +93,11 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
             if (n == 0) {
                 try {
                     KontrolerHTTP.getInstance().obrisiPolazak(new Polazak(p.getPolazakID()));
-                    new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste obrisali polazak!"));
+                    new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno ste obrisali polazak!"));
                     mtsp.obrisi(broj);
                     mtsp.fireTableDataChanged();
                 } catch (Exception ex) {
-                    new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError("Ne mozete obrisati ovaj polazak!"));
+                    new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError("Ne možete obrisati ovaj polazak!"));
                 }
             }
         }
@@ -111,7 +111,7 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
                 Polazak p =new Polazak(polazak.getPolazakID());
                 p.setNapomena(p.getNapomena());
                 KontrolerHTTP.getInstance().izmeniPolazak(p);
-                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesna izmena polaska!"));
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešna ste izmenili polazak!"));
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
             }

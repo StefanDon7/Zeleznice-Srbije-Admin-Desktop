@@ -61,7 +61,7 @@ public class KontrolerLinija implements KontrolerInterface {
             linija = pokupiPodatke();
             try {
                 KontrolerHTTP.getInstance().unesiLiniju(linija);
-                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno sacuvana linija!"));
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno sačuvana linija!"));
                 kontrolerGlavneForme.ucitajSveLinije();
             } catch (Exception ex) {
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
@@ -80,7 +80,7 @@ public class KontrolerLinija implements KontrolerInterface {
             kilometraza = Double.parseDouble(panelLinija.getTxtKilometraza().getText());
             minutaza = Integer.parseInt(panelLinija.getTxtMinutaza().getText().trim());
         } catch (NumberFormatException ex) {
-            throw new NumberFormatException("U poljima kilometraza i minutaza moraju biti brojevi.");
+            throw new NumberFormatException("U poljima kilometraža i minutaza moraju biti brojevi.");
         }
         Stanica stanicaPocetna = (Stanica) panelLinija.getCmbPocetna().getSelectedItem();
         Stanica stanicaKrajnja = (Stanica) panelLinija.getCmbKrajnja().getSelectedItem();

@@ -59,7 +59,7 @@ public class KontrolerStanica implements KontrolerInterface{
             stanica = pokupiPodatke();
             try {
                 KontrolerHTTP.getInstance().unesiNovuStanicu(stanica);
-                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspesno ste uneli stanicu!"));
+                new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno sačuvana stanica!"));
                 ocistiPolja();
                 kontrolerGlavneForme.ucitajSveStanice();
             } catch (Exception ex) {

@@ -105,13 +105,13 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1280, 550));
 
         btnOsveziListuSviPolasci.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnOsveziListuSviPolasci.setText("Osvezi listu");
+        btnOsveziListuSviPolasci.setText("Osveži listu");
         add(btnOsveziListuSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 220, 60));
 
         btnObrisiPolazakIzTabeleSviPolasci.setBackground(new java.awt.Color(153, 153, 153));
         btnObrisiPolazakIzTabeleSviPolasci.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnObrisiPolazakIzTabeleSviPolasci.setForeground(new java.awt.Color(0, 0, 0));
-        btnObrisiPolazakIzTabeleSviPolasci.setText("Obrisi polazak");
+        btnObrisiPolazakIzTabeleSviPolasci.setText("Obriši polazak");
         add(btnObrisiPolazakIzTabeleSviPolasci, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 300, 60));
 
         btnUpdejtuj.setBackground(new java.awt.Color(153, 153, 153));
@@ -128,7 +128,7 @@ public class PanelUpravljanjePolascima extends javax.swing.JPanel {
         cmbSortiraj.setBackground(new java.awt.Color(153, 153, 153));
         cmbSortiraj.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cmbSortiraj.setForeground(new java.awt.Color(0, 0, 0));
-        cmbSortiraj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "po datumu u opadajucem", "po datumu u rastucem ", "po liniji " }));
+        cmbSortiraj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "po datumu u opadajućem", "po datumu u rastućem ", "po liniji " }));
         add(cmbSortiraj, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, 220, 40));
 
         lblSort.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
