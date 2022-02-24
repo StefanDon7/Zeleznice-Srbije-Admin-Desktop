@@ -187,7 +187,7 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
         }
     }
 
-    private void ucitajSvePolaske() {
+    public void ucitajSvePolaske() {
         try {
             KontrolerHTTP.getInstance().setSviPolasci(KontrolerHTTP.getInstance().vratiListuPolazaka());
         } catch (Exception ex) {

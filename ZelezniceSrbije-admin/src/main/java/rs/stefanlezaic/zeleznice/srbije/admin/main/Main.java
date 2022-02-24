@@ -18,15 +18,13 @@ import rs.stefanlezaic.zeleznice.srbije.admin.form.kontrolor.KontrolerGlavneForm
 public class Main {
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                UIManager.put("OptionPane.background", Color.WHITE);
-                UIManager.put("Panel.background", Color.WHITE);
-                UIManager.put("Button.background", new Color(155, 155, 155));
-            }
-        });
         KontrolerGlavneForme kontrolerGlavneForme = new KontrolerGlavneForme(new GlavnaForma());
-        kontrolerGlavneForme.otvoriGlavnuFormu();
+        SwingUtilities.invokeLater(() -> {
+            UIManager.put("OptionPane.background", Color.WHITE);
+            UIManager.put("Panel.background", Color.WHITE);
+            UIManager.put("Button.background", new Color(155, 155, 155));
+            kontrolerGlavneForme.otvoriGlavnuFormu();
+        });
 
     }
 }

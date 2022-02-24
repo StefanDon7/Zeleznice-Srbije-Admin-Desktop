@@ -144,6 +144,7 @@ public class KontrolerGlavneForme {
     }
 
     private void otvoriPanelUpravljanjePolascima() {
+        kontrolerUpravljanjePolascima.ucitajSvePolaske();
         glavnaForma.getPanelUpravljanjeLinijom().setVisible(false);
         glavnaForma.getPanelPolazak().setVisible(false);
         glavnaForma.getPanelUpravljanjePolascima().setVisible(true);
