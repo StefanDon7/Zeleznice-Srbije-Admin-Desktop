@@ -81,16 +81,6 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Obeležite polazak koji želite da obriđete!"));
         } else {
             Polazak p = mtsp.getList().get(broj);
-            Object[] options = {"Da", "Ne"};
-            int n = JOptionPane.showOptionDialog(forma,//parent container of JOptionPane
-                    "Da li želite da obrišete polazak:" + p.getNaziv() + "?",
-                    "PAZNJA",
-                    JOptionPane.YES_NO_CANCEL_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,//do not use a custom Icon
-                    options,//the titles of buttons
-                    options[1]);//default button title
-            if (n == 0) {
                 try {
                     KontrolerHTTP.getInstance().obrisiPolazak(new Polazak(p.getPolazakID()));
                     new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno ste obrisali polazak!"));
@@ -99,7 +89,6 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
                 } catch (Exception ex) {
                     new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError("Ne možete obrisati ovaj polazak!"));
                 }
-            }
         }
     }
 
@@ -109,7 +98,8 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
             Polazak polazak = mtsp.getList().get(row);
             try {
                 Polazak p =new Polazak(polazak.getPolazakID());
-                p.setNapomena(p.getNapomena());
+                p.setNapomena(polazak.getNapomena());
+                  System.out.println(p.getNapomena());
                 KontrolerHTTP.getInstance().izmeniPolazak(p);
                 new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešna ste izmenili polazak!"));
             } catch (Exception ex) {
@@ -190,6 +180,7 @@ public class KontrolerUpravljanjePolascima implements KontrolerInterface {
     public void ucitajSvePolaske() {
         try {
             KontrolerHTTP.getInstance().setSviPolasci(KontrolerHTTP.getInstance().vratiListuPolazaka());
+            dodajPolaske(KontrolerHTTP.getInstance().getSviPolasci());
         } catch (Exception ex) {
             System.out.println("Sistem ne moze da ucita polaske!");
         }

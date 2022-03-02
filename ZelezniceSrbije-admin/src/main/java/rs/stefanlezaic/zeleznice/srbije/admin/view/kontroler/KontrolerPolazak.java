@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -163,7 +165,6 @@ public class KontrolerPolazak implements KontrolerInterface {
         }
         new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Uspešno ste sačuvali listu polazaka!"));
         mtp.obrisiListu();
-
     }
 
     private void obrisiPolaske() {
